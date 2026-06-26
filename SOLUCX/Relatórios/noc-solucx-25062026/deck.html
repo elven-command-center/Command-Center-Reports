@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solucx | Relatório Command Center Operacional — 25/06/2026</title>
+    <link rel="stylesheet" href="elven-deck.css" />
+  </head>
+  <body>
+    <main class="deck">
+
+      <!-- 01 — CAPA -->
+      <section class="slide cover">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div style="position:absolute; top:42px; left:72px;">
+          <div style="font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:6px;">Cliente</div>
+          <div style="font-size:42px; font-weight:800; letter-spacing:0.04em; color:#d7ff63; line-height:1;">SOLUCX</div>
+        </div>
+        <div class="content" style="top:130px;">
+          <div class="kicker">Command Center Solucx - Relatório Operacional</div>
+          <h1>Baixo volume com alerta de consumo New Relic em aberto</h1>
+          <p class="sub">Métricas operacionais da organização Solucx — 2 eventos monitorados em 25/06/2026.</p>
+        </div>
+        <div class="metric-rail">
+          <div class="metric">
+            <div class="value">00:00:23</div>
+            <div class="label">MTTR médio</div>
+          </div>
+          <div class="metric">
+            <div class="value">2</div>
+            <div class="label">total de eventos</div>
+          </div>
+          <div class="metric">
+            <div class="value">50%</div>
+            <div class="label">taxa de resolução</div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 02 — RESUMO EXECUTIVO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Resumo executivo</div>
+          <h2>Dia de baixa atividade com atenção a alertas persistentes de longa duração</h2>
+          <div class="three-col">
+            <div class="panel">
+              <h3>Volume de eventos</h3>
+              <p>No dia 25/06, a Solucx registrou apenas 2 eventos — volume significativamente abaixo da média histórica recente. O alerta de Kubernetes Restart foi resolvido rapidamente; o NrMTD Consumption permanece em aberto.</p>
+            </div>
+            <div class="panel">
+              <h3>Tempo de resposta</h3>
+              <p>O único evento resolvido no dia apresentou TTR de 23 segundos, indicando resposta imediata ao alerta crítico de reinicialização de container. Nenhum evento ultrapassou o limiar de 30 minutos de resolução.</p>
+            </div>
+            <div class="panel">
+              <h3>Criticidade</h3>
+              <p>1 evento sev-1-critical (Kubernetes Restart) e 1 sev-2-high (NrMTD Consumption) compuseram o volume do dia. O alerta de consumo New Relic sinaliza possível esgotamento de quota mensal de ingestão.</p>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Leitura final:</strong> Apesar do baixo volume diário, 3 alertas críticos de longa duração permanecem abertos na plataforma, acumulando TTR de até 1.218 horas — prioridade de investigação para o próximo ciclo.
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 03 — BREAKDOWN DE STATUS -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Status dos eventos</div>
+          <h2>50% dos eventos resolvidos sem reconhecimento formal — 1 alerta permanece em aberto</h2>
+          <div class="two-col">
+            <div class="matrix">
+              <div class="matrix-row matrix-head">
+                <div>Status</div>
+                <div>Qtd</div>
+                <div>% do total</div>
+              </div>
+              <div class="matrix-row">
+                <div>ACK + Resolvido</div>
+                <div>0</div>
+                <div>0,0%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Resolvido sem ACK</div>
+                <div>1</div>
+                <div>50,0%</div>
+              </div>
+              <div class="matrix-row">
+                <div>ACK sem Resolução</div>
+                <div class="risk med">0</div>
+                <div class="risk med">0,0%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Sem ACK e Sem Resolução</div>
+                <div class="risk high">1</div>
+                <div class="risk high">50,0%</div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">1</div>
+                  <div class="small">NrMTDConsumption permanece em aberto sem reconhecimento — alerta de ingestão New Relic acima de 50% da quota mensal.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">0</div>
+                  <div class="small">Nenhum evento com ACK pendente registrado no turno.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">50%</div>
+                  <div class="small">dos eventos foram resolvidos ao longo do turno de 25/06.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 04 — DISTRIBUIÇÃO POR SEVERIDADE -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Severidade</div>
+          <h2>1 evento sev-1-critical resolvido e 1 sev-2-high em aberto — sem TTR prolongado no dia</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Distribuição por severidade</strong>
+                <span>25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-severidade"></div>
+              <div class="note">Distribuição balanceada entre sev-1 e sev-2. O evento crítico (Kubernetes) foi resolvido em menos de 1 minuto; o sev-2 (NrMTD) permanece ativo.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">1</div>
+                  <div class="small">evento sev-1-critical — 50% do total. Kubernetes Restart resolvido com resposta imediata em 23 segundos.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">0</div>
+                  <div class="small">eventos com TTR acima de 30 min — 0% do total. Resolução dentro do limiar saudável no turno.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">1</div>
+                  <div class="small">evento sev-2-high (NrMTD Consumption) — 50%. Candidato a triagem e escalonamento por consumo de quota.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 05 — TOP EVENTOS POR VOLUME -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Volume de alertas</div>
+          <h2>Apenas 2 títulos distintos registrados — Kubernetes Restart lidera com resolução imediata</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top eventos por ocorrências</strong>
+                <span>25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-top-eventos"></div>
+              <div class="note">Volume mínimo no dia — 2 títulos distintos. Kubernetes Restart é alerta crônico presente em 21 dos últimos 30 dias.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">1</div>
+                  <div class="small">Kubernetes Container - Restart count — sev-1-critical, resolvido em 23 segundos. Recorrente há 21 dias consecutivos.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">1</div>
+                  <div class="small">NrMTDConsumption — sev-2-high, consumo New Relic acima de 50% da quota mensal. Permanece em aberto.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">—</div>
+                  <div class="small">Nenhum outro título registrado no turno. Dia operacionalmente tranquilo em volume.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 06 — RECORRÊNCIA -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Recorrência</div>
+          <h2>Kubernetes Restart em 21 dos últimos 30 dias — padrão crônico que demanda causa raiz</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 alertas por recorrência (30 dias)</strong>
+                <span>25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-recorrencia"></div>
+              <div class="note">Kubernetes Container - Restart count dispara em 70% dos dias do último mês (98 ocorrências) — alerta estrutural com maior impacto acumulado.</div>
+            </div>
+            <div>
+              <div class="matrix">
+                <div class="matrix-row matrix-head">
+                  <div>Título</div>
+                  <div>Dias</div>
+                  <div>Total</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Kubernetes Container - Restart count</div>
+                  <div class="risk high">21</div>
+                  <div>98</div>
+                </div>
+                <div class="matrix-row">
+                  <div>New condition</div>
+                  <div class="risk high">14</div>
+                  <div>57</div>
+                </div>
+                <div class="matrix-row">
+                  <div>P1 Dreamsquad - Scale 99% Pods</div>
+                  <div class="risk med">13</div>
+                  <div>17</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Logs de erros nos pods do ETL</div>
+                  <div class="risk med">7</div>
+                  <div>81</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Condition for high_disk_p1</div>
+                  <div>7</div>
+                  <div>9</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 07 — ANÁLISE TTR PROLONGADO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Analise TTR prolongado</div>
+          <h2>Nenhum evento com TTR acima de 30 min no dia — resolução dentro do limiar saudável</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top títulos com TTR acima de 30 min</strong>
+                <span>25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-ttr"></div>
+              <div class="note">Nenhum evento ultrapassou 30 minutos de TTR no dia 25/06. Todos os alertas resolvidos foram tratados dentro do limiar operacional aceitável.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">0</div>
+                  <div class="small">eventos com TTR acima de 30 min — 0% do total do turno.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">00:00:23</div>
+                  <div class="small">Kubernetes Container - Restart count — maior TTR acumulado registrado no turno.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">GKE Prod</div>
+                  <div class="small">cluster com alerta resolvido no dia — sem TTR longo associado. Investigar causa raiz da recorrência.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 08 — TAGS E CONTEXTO OPERACIONAL -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Tags e contexto operacional</div>
+          <h2>Monitoramento HTTP externo domina as tags — endpoint solu.cx classificado como down</h2>
+          <div class="two-col">
+            <div>
+              <div class="matrix">
+                <div class="matrix-row matrix-head">
+                  <div>Tag</div>
+                  <div>Qtd</div>
+                  <div>% do total</div>
+                </div>
+                <div class="matrix-row">
+                  <div>grafana_folder: Monitors</div>
+                  <div>1</div>
+                  <div>14,3%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>target: https://solu.cx</div>
+                  <div>1</div>
+                  <div>14,3%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>monitor_type: http</div>
+                  <div>1</div>
+                  <div>14,3%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>reason: down</div>
+                  <div>1</div>
+                  <div>14,3%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>severity: critical</div>
+                  <div>1</div>
+                  <div>14,3%</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">grafana: Monitors</div>
+                  <div class="small">tag dominante com 1 evento — 14,3% do volume da semana.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">1</div>
+                  <div class="small">Alerta de monitoramento HTTP externo (target: https://solu.cx) — endpoint do produto classificado como down na semana.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">7</div>
+                  <div class="small">categorias distintas identificadas na semana — monitoramento HTTP externo como domínio principal impactado.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 09 — ALERTAS CRITICOS EM ABERTO -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Alertas criticos em aberto</div>
+          <h2>3 alertas críticos com TTR acumulado entre 15h e 1.218h sem resolução registrada</h2>
+          <div class="matrix">
+            <div class="matrix-row matrix-head">
+              <div>Alerta</div>
+              <div>Severidade</div>
+              <div>TTR acumulado</div>
+              <div>Serviço / Cluster</div>
+            </div>
+            <div class="matrix-row">
+              <div>Cloud Run Revision - Log entries</div>
+              <div class="risk high">sev-1-critical</div>
+              <div class="risk high">1218:46h</div>
+              <div>Cloud Run</div>
+            </div>
+            <div class="matrix-row">
+              <div>P1 Dreamsquad - Scale 99% Pods</div>
+              <div class="risk high">sev-1-critical</div>
+              <div class="risk med">387:04h</div>
+              <div>GKE / Dreamsquad</div>
+            </div>
+            <div class="matrix-row">
+              <div>NrMTDConsumption &gt; 2500.0 (quota 50%)</div>
+              <div>sev-2-high</div>
+              <div class="risk med">15:57h</div>
+              <div>New Relic</div>
+            </div>
+            <div class="matrix-row">
+              <div>TestAlert</div>
+              <div>not-classified</div>
+              <div>1435:19h</div>
+              <div>Sandbox / Teste</div>
+            </div>
+            <div class="matrix-row">
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Acao recomendada:</strong> Priorizar investigação de Cloud Run Revision (1.218h em aberto) e P1 Dreamsquad Scale (387h) — ambos sev-1-critical sem resolução registrada. Validar se TestAlert é alerta de ambiente de teste que pode ser encerrado.
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 10 — CONCLUSÃO E PRÓXIMOS PASSOS -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Conclusão e próximos passos</div>
+          <h2>Dia tranquilo em volume mas backlog crítico persistente requer atenção imediata</h2>
+          <div class="takeaways">
+            <div class="takeaway">Apenas 2 eventos no dia 25/06 — volume mínimo da semana. Kubernetes Restart resolvido em 23s; NrMTD Consumption permanece em aberto com risco de esgotamento de quota mensal.</div>
+            <div class="takeaway">Kubernetes Container - Restart count com 21 disparos em 30 dias (98 ocorrências) — alerta estrutural crônico que demanda investigação de causa raiz urgente no ambiente GKE.</div>
+            <div class="takeaway">Cloud Run Revision (1.218h) e P1 Dreamsquad Scale (387h) em aberto sem resolução — ambos sev-1-critical representam o maior risco de disponibilidade para a plataforma.</div>
+            <div class="takeaway">Endpoint https://solu.cx registrou alerta de down na semana via monitoramento HTTP externo — acompanhar disponibilidade e SLA do produto nos próximos turnos.</div>
+          </div>
+          <div class="callout light">
+            <strong>Proximo passo:</strong> Abrir task de investigação para Cloud Run Revision Log entries (sev-1, 1.218h) e para causa raiz do Kubernetes Restart recorrente — ambos com impacto direto na disponibilidade da plataforma Solucx.
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+    </main>
+
+    <script src="elven-deck-charts.js"></script>
+    <script>
+      function renderCharts() {
+        ElvenDeck.barChart(
+          document.getElementById("chart-severidade"),
+          { name: "Eventos", data: [1, 1], color: ElvenDeck.colors.red },
+          { labels: ["sev-1-critical", "sev-2-high"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-top-eventos"),
+          { name: "Ocorrências", data: [1, 1], color: ElvenDeck.colors.teal },
+          { labels: ["Kubernetes Restart", "NrMTD Consumo 50%"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-recorrencia"),
+          { name: "Dias", data: [21, 14, 13, 7, 7], color: "#34d399" },
+          { labels: ["Kubernetes Restart", "New condition", "P1 Dreamsquad Scale", "Logs ETL Pods", "High Disk P1"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-ttr"),
+          { name: "Eventos TTR>30min", data: [0, 0, 0, 0, 0], color: ElvenDeck.colors.red },
+          { labels: ["—", "—", "—", "—", "—"] }
+        );
+      }
+      window.addEventListener("load", renderCharts);
+      window.addEventListener("resize", renderCharts);
+    </script>
+  </body>
+</html>
