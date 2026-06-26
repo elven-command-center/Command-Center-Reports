@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" role="img" aria-label="Erros críticos por hora">
+  <style>
+    .axis { stroke: #cbd5e1; stroke-width: 1; }
+    .grid { stroke: #e2e8f0; stroke-width: 1; }
+    .label { font-family: Inter, sans-serif; font-size: 11px; fill: #64748b; }
+    .line-bad { stroke: #ff5252; stroke-width: 2.5; fill: none; }
+    .line-good { stroke: #7c3aed; stroke-width: 2; fill: none; opacity: 0.85; }
+    .legend { font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; }
+  </style>
+  <line class="grid" x1="40" y1="60" x2="580" y2="60"/>
+  <line class="grid" x1="40" y1="140" x2="580" y2="140"/>
+  <line class="grid" x1="40" y1="220" x2="580" y2="220"/>
+  <line class="axis" x1="40" y1="280" x2="580" y2="280"/>
+  <text class="label" x="20" y="60">28</text>
+  <text class="label" x="20" y="140">14</text>
+  <text class="label" x="20" y="220">0</text>
+  <text class="label" x="40" y="298">20h</text>
+  <text class="label" x="130" y="298">00h</text>
+  <text class="label" x="220" y="298">04h</text>
+  <text class="label" x="310" y="298">08h</text>
+  <text class="label" x="400" y="298">12h</text>
+  <text class="label" x="490" y="298">16h</text>
+  <text class="label" x="560" y="298">20h</text>
+  <polyline class="line-bad" points="40,250 70,240 100,80 130,220 160,255 190,250 220,255 250,250 280,240 310,255 340,245 370,250 400,255 430,180 460,250 490,260 520,255 550,250 580,235"/>
+  <polyline class="line-good" points="40,265 70,265 100,260 130,262 160,265 190,265 220,265 250,265 280,265 310,265 340,265 370,265 400,265 430,260 460,265 490,265 520,265 550,265 580,265"/>
+  <text class="legend" x="490" y="155" fill="#ff5252">verifyPayment</text>
+  <text class="legend" x="490" y="172" fill="#7c3aed">Payment CRITICAL</text>
+</svg>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blip | Relatório Command Center Operacional — 20/06/2026</title>
+    <link rel="stylesheet" href="elven-deck.css" />
+  </head>
+  <body>
+    <main class="deck">
+
+      <!-- 01 — CAPA -->
+      <section class="slide cover">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Command Center Blip - Relatório Operacional</div>
+          <h1>Turno resolve 99% dos eventos, mas a cauda longa de TTR puxa o MTTR para 3h39.</h1>
+          <p class="sub">Métricas operacionais da organização Blip — 967 eventos monitorados em 20/06/2026.</p>
+        </div>
+        <div class="metric-rail">
+          <div class="metric">
+            <div class="value">03:39:07</div>
+            <div class="label">MTTR médio</div>
+          </div>
+          <div class="metric">
+            <div class="value">967</div>
+            <div class="label">total de eventos</div>
+          </div>
+          <div class="metric">
+            <div class="value">99%</div>
+            <div class="label">taxa de resolução</div>
+          </div>
+        </div>
+        <div class="source">20/06/2026</div>
+      </section>
+
+      <!-- 02 — RESUMO EXECUTIVO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Resumo executivo</div>
+          <h2>Volume moderado e resolução quase total, com gargalo concentrado no tempo de resolução.</h2>
+          <div class="three-col">
+            <div class="panel">
+              <h3>Volume de eventos</h3>
+              <p>967 eventos no turno — volume mais baixo que a média da semana. Concentração em ruído de infraestrutura: pods restart e commands rate dominam o topo da lista.</p>
+            </div>
+            <div class="panel">
+              <h3>Tempo de resposta</h3>
+              <p>MTTR médio de 03:39:07, puxado pela cauda longa: 314 eventos (32%) levaram mais de 30 min para resolver e um caso isolado acumulou 124h. ACK presente em 64% dos eventos resolvidos.</p>
+            </div>
+            <div class="panel">
+              <h3>Criticidade</h3>
+              <p>229 eventos sev-1-critical (24%), todos resolvidos no turno. Nenhum sev-1 ficou em aberto. Apenas 8 eventos seguem pendentes, todos not-classified.</p>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Leitura final:</strong> dia de alta eficiência de resolução (99%) e zero sev-1 em aberto; a oportunidade está em atacar a cauda de TTR longo em pods restart e memory limits.
+          </div>
+        </div>
+        <div class="source">20/06/2026</div>
+      </section>
+
+      <!-- 03 — BREAKDOWN DE STATUS -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Status dos eventos</div>
+          <h2>64% dos eventos foram reconhecidos e resolvidos; quase nada ficou pendente.</h2>
+          <div class="two-col">
+            <div class="matrix">
+              <div class="matrix-row matrix-head">
+                <div>Status</div>
+                <div>Qtd</div>
+                <div>%</div>
+              </div>
+              <div class="matrix-row">
+                <div>ACK + Resolvido</div>
+                <div>614</div>
+                <div>63,5%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Resolvido sem ACK</div>
+                <div>345</div>
+                <div>35,7%</div>
+              </div>
+              <div class="matrix-row">
+                <div>ACK sem Resolução</div>
+                <div class="risk med">8</div>
+                <div class="risk med">0,8%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Sem ACK e Sem Resolução</div>
+                <div class="risk high">0</div>
+                <div class="risk high">0,0%</div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">0</div>
+                  <div class="small">eventos sem ACK e sem resolução — nenhum evento ficou totalmente sem tratamento no turno.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">8</div>
+                  <div class="small">eventos com ACK porém ainda sem resolução — única frente pendente, toda not-classified.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">99%</div>
+                  <div class="small">dos eventos foram resolvidos ao longo do turno de 20/06.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">20/06/2026</div>
+      </section>
+
+      <!-- 04 — DISTRIBUIÇÃO POR SEVERIDADE -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Severidade</div>
+          <h2>Um quarto dos eventos é sev-1, mas o TTR longo afeta o turno inteiro.</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Distribuição por severidade</strong>
+                <span>20/06/2026</span>
+              </div>
+              <div class="chart" id="chart-severidade"></div>
+              <div class="note">229 sev-1-critical contra 738 not-classified: a maior parte do volume permanece sem classificação formal de severidade.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">229</div>
+                  <div class="small">eventos sev-1-critical — 24% do total. Requerem resposta imediata.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">314</div>
+                  <div class="small">eventos com TTR acima de 30 min — 32% do total. Gargalo principal de resolução.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">738</div>
+                  <div class="small">eventos not-classified — 76%. Candidatos a triagem e classificação proativa.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">20/06/2026</div>
+      </section>
+
+      <!-- 05 — TOP EVENTOS POR VOLUME -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Volume de alertas</div>
+          <h2>Commands rate e pods restart concentram o topo do volume do turno.</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 eventos por ocorrências</strong>
+                <span>20/06/2026</span>
+              </div>
+              <div class="chart" id="chart-top-eventos"></div>
+              <div class="note">Os 5 títulos somam 311 eventos (32% do turno). Quatro dos cinco são ruído recorrente de infraestrutura (pods restart e commands rate).</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">96</div>
+                  <div class="small">Low commands rate - Husky (Lime Gateway) — maior ofensor do turno, sinaliza degradação de throughput.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">70</div>
+                  <div class="small">Pods restart - Tools — reinicializações repetidas de pods no cluster Tools.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">49</div>
+                  <div class="small">Pods restart - Golden — instabilidade recorrente de pods no cluster Golden.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">20/06/2026</div>
+      </section>
+
+      <!-- 06 — RECORRÊNCIA -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Recorrência</div>
+          <h2>Os mesmos alertas de infraestrutura reaparecem há centenas de dias.</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 alertas por recorrência</strong>
+                <span>20/06/2026</span>
+              </div>
+              <div class="chart" id="chart-recorrencia"></div>
+              <div class="note">Os 5 títulos somam ~96 mil disparos no histórico. Memory limits e pods restart são crônicos — candidatos prioritários a tuning de limites e automação de runbook.</div>
+            </div>
+            <div>
+              <div class="matrix">
+                <div class="matrix-row matrix-head">
+                  <div>Título</div>
+                  <div>Dias</div>
+                  <div>Total</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Pod com erro de container - Bots</div>
+                  <div class="risk high">137</div>
+                  <div>31.718</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Memory Limits by Pod - Golden</div>
+                  <div class="risk high">291</div>
+                  <div>25.436</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Pods restart - Golden</div>
+                  <div class="risk med">210</div>
+                  <div>15.229</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Memory Limits by Pod - Labrador</div>
+                  <div class="risk med">260</div>
+                  <div>12.028</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Node CPU Usage - LGTM</div>
+                  <div>221</div>
+                  <div>11.816</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">20/06/2026</div>
+      </section>
+
+      <!-- 07 — ANÁLISE TTR PROLONGADO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Analise TTR prolongado</div>
+          <h2>Um terço dos eventos passou de 30 min e um caso isolado acumulou 124 horas.</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 títulos com TTR acima de 30 min</strong>
+                <span>20/06/2026</span>
+              </div>
+              <div class="chart" id="chart-ttr"></div>
+              <div class="note">Pods restart - Dalmata sozinho responde por 47 eventos de TTR longo. A concentração está no cluster Off Hour, fora do horário comercial.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">314</div>
+                  <div class="small">eventos com TTR acima de 30 min — 32% do total do turno.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">124:22:10</div>
+                  <div class="small">Node CPU Usage - LGTM — maior TTR acumulado registrado no turno.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">Off Hour</div>
+                  <div class="small">cluster com maior concentração de TTR longo — investigar causa raiz.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">20/06/2026</div>
+      </section>
+
+      <!-- 08 — TAGS E CONTEXTO OPERACIONAL -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Tags e contexto operacional</div>
+          <h2>SRE e Iris Server respondem por três quartos dos eventos do turno.</h2>
+          <div class="two-col">
+            <div>
+              <div class="matrix">
+                <div class="matrix-row matrix-head">
+                  <div>Tag</div>
+                  <div>Qtd</div>
+                  <div>%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>SRE</div>
+                  <div>385</div>
+                  <div>40%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Iris Server</div>
+                  <div>333</div>
+                  <div>34%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Kubernetes</div>
+                  <div>145</div>
+                  <div>15%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Iris Application</div>
+                  <div>32</div>
+                  <div>3%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>DBRE - SQL Azure</div>
+                  <div>25</div>
+                  <div>3%</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">SRE</div>
+                  <div class="small">tag dominante com 385 eventos — 40% do volume total.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">145</div>
+                  <div class="small">eventos de infraestrutura Kubernetes — núcleo do ruído recorrente de pods e memory limits.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">11</div>
+                  <div class="small">categorias distintas identificadas no turno — diversidade de domínios impactados.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">20/06/2026</div>
+      </section>
+
+      <!-- 09 — ALERTAS CRITICOS EM ABERTO -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Alertas criticos em aberto</div>
+          <h2>Apenas 3 títulos seguem em aberto — nenhum sev-1, todos de infraestrutura.</h2>
+          <div class="matrix">
+            <div class="matrix-row matrix-head">
+              <div>Alerta</div>
+              <div>Severidade</div>
+              <div>TTR acumulado</div>
+              <div>Serviço / Cluster</div>
+            </div>
+            <div class="matrix-row">
+              <div>DatasourceNoData</div>
+              <div>not-classified</div>
+              <div class="risk high">135:01:22</div>
+              <div>Sleep Hour</div>
+            </div>
+            <div class="matrix-row">
+              <div>Memory Limits by Pod - Labrador</div>
+              <div>not-classified</div>
+              <div class="risk high">134:44:32</div>
+              <div>Sleep Hour</div>
+            </div>
+            <div class="matrix-row">
+              <div>Memory Limits by Pod - Golden</div>
+              <div>not-classified</div>
+              <div class="risk med">116:49:32</div>
+              <div>Off Hour</div>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Acao recomendada:</strong> tratar os 3 pendentes (8 eventos, todos not-classified) como backlog de infraestrutura — DatasourceNoData precisa de revisão da fonte de dados e os memory limits de ajuste de limites no cluster.
+          </div>
+        </div>
+        <div class="source">20/06/2026</div>
+      </section>
+
+      <!-- 10 — CONCLUSÃO E PRÓXIMOS PASSOS -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Conclusão e próximos passos</div>
+          <h2>Turno controlado: alta resolução, zero sev-1 em aberto, foco na cauda de TTR.</h2>
+          <div class="takeaways">
+            <div class="takeaway">967 eventos com 99% de resolução e nenhum sev-1 deixado em aberto — turno operacionalmente saudável.</div>
+            <div class="takeaway">MTTR de 03:39:07 é puxado por 314 eventos (32%) acima de 30 min e um caso isolado de 124h; a mediana é bem menor.</div>
+            <div class="takeaway">Ruído crônico de infraestrutura (pods restart, memory limits, commands rate) domina volume e recorrência há centenas de dias.</div>
+            <div class="takeaway">Apenas 3 títulos pendentes, todos not-classified e de infraestrutura — backlog pequeno e bem delimitado.</div>
+          </div>
+          <div class="callout light">
+            <strong>Proximo passo:</strong> abrir frente de tuning de limites e automação de runbook para pods restart e memory limits, atacando simultaneamente o gargalo de TTR longo e a recorrência crônica.
+          </div>
+        </div>
+        <div class="source">20/06/2026</div>
+      </section>
+
+    </main>
+
+    <script src="elven-deck-charts.js"></script>
+    <script>
+      function renderCharts() {
+        ElvenDeck.barChart(
+          document.getElementById("chart-severidade"),
+          { name: "Eventos", data: [229, 738], color: ElvenDeck.colors.red },
+          { labels: ["sev-1-critical", "not-classified"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-top-eventos"),
+          { name: "Ocorrências", data: [96, 70, 49, 48, 48], color: ElvenDeck.colors.teal },
+          { labels: ["Low commands rate - Husky", "Pods restart - Tools", "Pods restart - Golden", "Commands rate - Dobermann", "Pods restart - Dalmata"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-recorrencia"),
+          { name: "Ocorrências", data: [31718, 25436, 15229, 12028, 11816], color: "#34d399" },
+          { labels: ["Pod erro container - Bots", "Memory Limits - Golden", "Pods restart - Golden", "Memory Limits - Labrador", "Node CPU Usage - LGTM"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-ttr"),
+          { name: "Eventos TTR>30min", data: [47, 25, 24, 24, 22], color: ElvenDeck.colors.red },
+          { labels: ["Pods restart - Dalmata", "Pods restart - Tools", "Low commands rate - Husky", "Memory Limits - Take", "DatasourceNoData"] }
+        );
+      }
+      window.addEventListener("load", renderCharts);
+      window.addEventListener("resize", renderCharts);
+    </script>
+  </body>
+</html>
