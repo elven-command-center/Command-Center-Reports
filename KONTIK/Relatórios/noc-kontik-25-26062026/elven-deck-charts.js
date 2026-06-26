@@ -61,6 +61,12 @@
     return Math.round(v).toString();
   }
 
+  /* Valor exato com separador de milhar pt-BR (ex.: 1754 -> "1.754"). */
+  function fmtExact(v) {
+    return Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+  function labelColor(dark) { return dark ? "#ffffff" : "#0f1923"; }
+
   function isDark(el) { return el.closest(".dark") != null; }
   function gridColor(dark) { return dark ? "rgba(255,255,255,.12)" : "rgba(15,25,35,.12)"; }
   function axisColor(dark) { return dark ? "rgba(255,255,255,.62)" : "#64748b"; }
@@ -243,6 +249,12 @@
       var color = opts.hot != null && v >= opts.hot ? colors.red : series.color;
       svg += '<rect x="' + x + '" y="' + yv + '" width="' + (bw * 0.64) +
         '" height="' + (h - p.b - yv) + '" fill="' + color + '"/>';
+      /* rótulo de dados acima da barra */
+      var lblX = p.l + i * bw + bw / 2;
+      var lbl = opts.percent ? Math.round(v) + "%" : fmtExact(v);
+      svg += '<text x="' + lblX + '" y="' + (yv - 6) +
+        '" text-anchor="middle" font-size="12" font-weight="800" fill="' +
+        labelColor(dark) + '">' + lbl + "</text>";
     });
 
     ticks.forEach(function (i) {

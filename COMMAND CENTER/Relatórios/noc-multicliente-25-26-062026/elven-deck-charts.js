@@ -239,10 +239,18 @@
 
     series.data.forEach(function (v, i) {
       var x = p.l + i * bw + bw * 0.18;
+      var cx = x + bw * 0.32;
       var yv = y(v);
       var color = opts.hot != null && v >= opts.hot ? colors.red : series.color;
       svg += '<rect x="' + x + '" y="' + yv + '" width="' + (bw * 0.64) +
         '" height="' + (h - p.b - yv) + '" fill="' + color + '"/>';
+      /* rótulo de dados acima da barra */
+      var labelY = yv - 6;
+      var labelFill = dark ? "rgba(255,255,255,.88)" : "#0f1923";
+      if (labelY < p.t + 14) { labelY = yv + 15; labelFill = "#fff"; }
+      svg += '<text x="' + cx + '" y="' + labelY +
+        '" text-anchor="middle" font-size="12" font-weight="800" fill="' + labelFill + '">' +
+        fmt(v) + '</text>';
     });
 
     ticks.forEach(function (i) {

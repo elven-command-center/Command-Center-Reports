@@ -79,7 +79,7 @@ body { counter-reset: slide; }
 
 .content { position: absolute; inset: 52px 72px 54px 72px; }
 
-.logo { position: absolute; right: 68px; top: 42px; width: 172px; height: auto; }
+.logo { position: absolute; right: 68px; top: 42px; width: 104px; height: auto; }
 .logo.on-dark { filter: brightness(0) invert(1); }
 /* Salvaguarda: mesmo sem a classe .on-dark, o logo fica branco em fundo
  * escuro. O autor não precisa lembrar — a variante do slide resolve. */
@@ -163,15 +163,6 @@ code { background: rgba(15, 25, 35, 0.07); padding: 1px 4px; }
 /* Grades ------------------------------------------------------------ */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 28px; }
 .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 28px; }
-/* score-grid: gráfico (largo) + lateral (cards/tabela). Spec do
- * component-catalog. Sem esta regra o grid colapsa em coluna única e o
- * conteúdo da lateral estoura o slide. */
-.score-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 28px; margin-top: 28px; align-items: start; }
-.score-grid .evidence-row { margin-top: 0; }
-
-/* Slides de texto curto: centraliza verticalmente o conteúdo para não
- * deixar a metade inferior vazia. */
-.slide.vcenter .content { display: flex; flex-direction: column; justify-content: center; }
 
 /* Panel — card branco genérico -------------------------------------- */
 .panel {
@@ -261,12 +252,6 @@ code { background: rgba(15, 25, 35, 0.07); padding: 1px 4px; }
 /* Matrix (tabela de ações) ------------------------------------------ */
 .matrix { margin-top: 24px; border-top: 1px solid var(--line); }
 .matrix-row { display: grid; grid-template-columns: 0.85fr 1.45fr 1.1fr 1fr; border-bottom: 1px solid var(--line); }
-/* Tabelas de 3 colunas (status, tags, recorrência) reusam a .matrix-row
- * de 4 colunas do slide de alertas. Reescala para 3 células e remove o
- * vão da 4ª coluna fantasma. */
-.two-col .matrix-row { grid-template-columns: 1.4fr 0.8fr 0.8fr; }
-.score-grid .matrix { margin-top: 0; }
-.score-grid .matrix-row { grid-template-columns: 1.9fr 0.6fr 0.9fr; }
 .matrix-row > div { padding: 12px 13px; font-size: 13px; line-height: 1.25; }
 .matrix-head > div { font-size: 11px; font-weight: 900; letter-spacing: 1.3px; text-transform: uppercase; color: #65758a; }
 .risk { font-weight: 850; }

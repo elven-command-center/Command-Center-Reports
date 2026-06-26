@@ -2,7 +2,7 @@
 import pyodbc, json
 
 ORG = 'e6c88769-8a85-42be-8709-fc67660d3f5a'
-D1, D2 = '2026-06-24', '2026-06-25'
+D1, D2 = '2026-06-25', '2026-06-26'
 
 cn = pyodbc.connect("DSN=PostgreSQL35W")
 cur = cn.cursor()
@@ -51,6 +51,14 @@ out['resolvidos'] = q(f"""
   WHERE {PERIOD} AND m.is_resolved = true
 """, A)[0]['c']
 
+# Runbooks executados (has_runbook)
+out['runbook'] = q(f"""
+  SELECT count(*) AS c
+  FROM dbt_prd.fct__events e
+  {RJ}
+  WHERE {PERIOD} AND r.has_runbook = true
+""", A)[0]['c']
+
 # --- Slide 3: matriz ACK x Resolucao ---
 out['matrix'] = q(f"""
   SELECT
@@ -92,6 +100,15 @@ out['top_volume'] = q(f"""
 """, A)
 
 # --- Slide 6: recorrencia (historico completo do org, mesmo responsavel) ---
+out['rec_range'] = q(f"""
+  SELECT min(e.event_happened_tzbr::date) AS dmin,
+         max(e.event_happened_tzbr::date) AS dmax,
+         count(DISTINCT e.event_happened_tzbr::date) AS ndias
+  FROM dbt_prd.fct__events e
+  {RJ}
+  WHERE e.org_uid = ?
+""", (ORG,))[0]
+
 out['recorrencia'] = q(f"""
   SELECT e.title,
          count(DISTINCT e.event_happened_tzbr::date) AS dias,
@@ -161,6 +178,20 @@ out['abertos'] = q(f"""
   {RJ}
   WHERE {PERIOD} AND coalesce(m.is_resolved,false) = false
   ORDER BY e.event_happened_at ASC LIMIT 5
+""", A)
+
+# --- Slide 10: detalhamento por titulo ---
+out['detail'] = q(f"""
+  SELECT e.title,
+         count(*) AS qtd,
+         count(*) FILTER (WHERE m.is_resolved) AS resolv,
+         count(*) FILTER (WHERE r.has_runbook) AS rb,
+         round(avg(m.ttr)/60.0, 1) AS ttr_min
+  FROM dbt_prd.fct__events e
+  JOIN dbt_prd."dim__eventsMetrics" m ON {JM}
+  {RJ}
+  WHERE {PERIOD}
+  GROUP BY e.title ORDER BY qtd DESC
 """, A)
 
 print(json.dumps(out, default=str, ensure_ascii=False, indent=1))

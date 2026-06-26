@@ -39,7 +39,18 @@
       "PowerShell($f=\"C:\\\\Users\\\\PC\\\\OneDrive\\\\Desktop\\\\CLAUDE\\\\COMMAND CENTER\\\\BLIP\\\\_extract_range.py\"; \\(Get-Content $f -Raw\\) -replace 'ON m\\\\.event_uid = e\\\\.event_uid','ON {JM}' -replace 'ON t\\\\.event_uid = e\\\\.event_uid','ON {JT}' -replace 'count\\\\\\(DISTINCT e\\\\.event_uid\\\\\\)','count\\(DISTINCT e.event_id\\)' | Set-Content $f -Encoding utf8; Write-Output \"done\")",
       "Bash(python _extract_range.py)",
       "Bash(mkdir -p Relatórios/__TRACKED_VAR__)",
-      "Bash(cp -r Relatórios/_template-noc/. Relatórios/__TRACKED_VAR__/)"
+      "Bash(cp -r Relatórios/_template-noc/. Relatórios/__TRACKED_VAR__/)",
+      "Bash(python *)",
+      "Bash(bash ~/.claude/skills/decks-skill/scripts/lint.sh *)",
+      "Bash(cp *)",
+      "Bash(cp -r *)",
+      "Bash(mkdir *)",
+      "Bash(mkdir -p *)",
+      "Bash(ls *)",
+      "Bash(grep *)",
+      "Bash(cd *)",
+      "PowerShell(node \"C:\\\\Users\\\\PC\\\\.claude\\\\skills\\\\decks-skill\\\\scripts\\\\render-deck.js\" *)",
+      "PowerShell(python *)"
     ]
   }
 }

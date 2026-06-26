@@ -21,7 +21,8 @@
       "PowerShell(python \"C:\\\\Users\\\\PC\\\\AppData\\\\Local\\\\Temp\\\\noc_elven2.py\")",
       "Bash(node \"C:/Users/PC/.claude/skills/decks-skill/scripts/render-deck.js\" \"Relatórios/noc-multicliente-24-25-062026/deck.html\" --out \"Relatórios/noc-multicliente-24-25-062026/noc-multicliente-24-25-062026.pdf\")",
       "Bash(cd \"C:/Users/PC/.claude/projects/C--Users-PC-OneDrive-Desktop-CLAUDE-COMMAND-CENTER/memory\")",
-      "Bash(cat MEMORY.md)"
+      "Bash(cat MEMORY.md)",
+      "PowerShell(python \"C:\\\\Users\\\\PC\\\\AppData\\\\Local\\\\Temp\\\\noc_25_26_062026.py\")"
     ]
   }
 }

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Command Center Multi-cliente — 25 a 26/06/2026</title>
+  <link rel="stylesheet" href="elven-deck.css" />
+  <script src="elven-deck-charts.js" defer></script>
+  <style>
+    .score-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 30px; margin-top: 28px; }
+    .matrix-wide .matrix-row      { grid-template-columns: 1.7fr 0.55fr 0.55fr 0.65fr 0.65fr 0.6fr; }
+    .matrix-wide .matrix-row > div { padding: 7px 9px; font-size: 12px; line-height: 1.2; }
+    .matrix-wide .matrix-head > div { font-size: 10px; padding: 7px 9px; }
+    .matrix-detail .matrix-row      { grid-template-columns: 1.6fr 0.42fr 0.5fr 0.42fr 0.52fr 0.44fr 0.52fr; }
+    .matrix-detail .matrix-row > div { padding: 6px 7px; font-size: 11px; line-height: 1.2; }
+    .matrix-detail .matrix-head > div { font-size: 9px; padding: 6px 7px; letter-spacing: 1px; }
+    .matrix-5col .matrix-row      { grid-template-columns: 0.7fr 1fr 1fr 1fr 0.8fr; }
+    .matrix-5col .matrix-row > div { padding: 7px 10px; font-size: 12px; }
+    .matrix-5col .matrix-head > div { font-size: 10px; padding: 7px 10px; }
+    .badge { display: inline-block; padding: 2px 7px; font-size: 10px; font-weight: 800; border-radius: 2px; }
+    .badge.alto  { background: rgba(255,82,82,.15);  color: #ff5252; }
+    .badge.medio { background: rgba(251,191,36,.15); color: #b45309; }
+    .badge.baixo { background: rgba(0,191,165,.15);  color: #00897b; }
+    .slide .content { overflow: hidden; }
+    .logo { width: 148px !important; }
+    .dark .panel, .dark .panel p, .dark .panel h3 { color: #0f1923; }
+    .kpi-row { display: flex; gap: 0; margin-top: 52px; }
+    .kpi-item { flex: 1; text-align: center; padding: 28px 16px; border-right: 1px solid rgba(255,255,255,.12); }
+    .kpi-item:last-child { border-right: none; }
+    .kpi-val { font-size: 56px; font-weight: 900; line-height: 1; }
+    .kpi-label { font-size: 11px; opacity: .65; margin-top: 8px; letter-spacing: .5px; text-transform: uppercase; }
+  </style>
+</head>
+<body>
+  <div class="deck">
+
+    <!-- 01 — CAPA -->
+    <section class="slide cover dark">
+      <img class="logo" src="assets/elven-logo.png" alt="Elven" style="filter:brightness(0) invert(1);" />
+      <div class="content">
+        <div class="kicker">Relatório Operacional · 25 a 26/06/2026</div>
+        <h1>Command Center<br/>Multi-cliente</h1>
+        <div class="kpi-row">
+          <div class="kpi-item">
+            <div class="kpi-val" style="color:#00bfa5;">213</div>
+            <div class="kpi-label">Total de Eventos</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-val" style="color:#64b5f6;">157</div>
+            <div class="kpi-label">Alertas</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-val" style="color:#ef9a9a;">56</div>
+            <div class="kpi-label">Incidentes</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-val" style="color:#00bfa5;">95%</div>
+            <div class="kpi-label">Taxa de Resolução</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-val" style="color:#fbbf24;">5%</div>
+            <div class="kpi-label">SLA Não Atingido</div>
+          </div>
+        </div>
+      </div>
+      <div class="source">Command Center — Time NOC - Elven · noc@elven.works</div>
+    </section>
+
+    <!-- 02 — RESUMO EXECUTIVO -->
+    <section class="slide">
+      <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+      <div class="content">
+        <div class="kicker">Resumo executivo</div>
+        <h2>213 eventos, 95% resolvidos, MTTA 00:02:55 — volume 73% menor no 26/06 vs 25/06.</h2>
+        <div class="two-col">
+          <div>
+            <div class="matrix">
+              <div class="matrix-row matrix-head">
+                <div>Métrica</div>
+                <div>Valor</div>
+              </div>
+              <div class="matrix-row"><div>Total de eventos</div><div><strong>213</strong></div></div>
+              <div class="matrix-row"><div>Alertas</div><div>157</div></div>
+              <div class="matrix-row"><div>Incidentes</div><div>56</div></div>
+              <div class="matrix-row"><div>MTTA</div><div><strong>00:02:55</strong></div></div>
+              <div class="matrix-row"><div>MTTR</div><div><strong>00:46:10</strong></div></div>
+              <div class="matrix-row"><div>Resolvidos</div><div>203 (95,3%)</div></div>
+              <div class="matrix-row"><div>SLA não atingido</div><div class="risk med">10 (4,7%)</div></div>
+              <div class="matrix-row"><div>Clientes monitorados</div><div>12</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="panel">
+              <h3>Destaques do período</h3>
+              <p><strong>JCA</strong> com 33 eventos de Synthetic Purchase Flow. <strong>Kontik</strong> ativa 91 runbooks em 2 dias.</p>
+              <p style="margin-top:8px;"><strong>Trillia</strong> encerrou 5/5 ocorrências via IA Agente — 100% de automação.</p>
+              <p style="margin-top:8px;"><strong>Elven Works</strong> com 7 eventos de SLA não atingido (46,7% dos próprios eventos).</p>
+            </div>
+            <div class="callout light" style="margin-top:12px;">
+              <strong>25/06:</strong> 168 eventos (79%) · <strong>26/06:</strong> 45 eventos (21%) — queda de 73% no segundo dia.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="source">Consolidado 25 a 26/06/2026 — Command Center Time NOC - Elven.</div>
+    </section>
+
+    <!-- 03 — COMPARATIVO DIÁRIO -->
+    <section class="slide dark">
+      <img class="logo" src="assets/elven-logo.png" alt="Elven" style="filter:brightness(0) invert(1);" />
+      <div class="content">
+        <div class="kicker">Comparativo diário</div>
+        <h2>Queda de 73% no volume entre 25/06 (168 ev) e 26/06 (45 ev).</h2>
+        <div class="two-col" style="margin-top:20px;">
+          <div>
+            <!-- SVG Barras Comparativo -->
+            <svg viewBox="0 0 460 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:200px;">
+              <!-- Eixo X -->
+              <line x1="45" y1="185" x2="445" y2="185" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+              <!-- Grupo 25/06 -->
+              <!-- Alertas 122 -->
+              <rect x="100" y="34" width="55" height="151" fill="#64b5f6" rx="2"/>
+              <text x="127" y="28" text-anchor="middle" font-size="12" font-weight="800" fill="rgba(255,255,255,.9)">122</text>
+              <!-- Incidentes 46 -->
+              <rect x="162" y="128" width="55" height="57" fill="#ef9a9a" rx="2"/>
+              <text x="189" y="122" text-anchor="middle" font-size="12" font-weight="800" fill="rgba(255,255,255,.9)">46</text>
+              <!-- Label 25/06 -->
+              <text x="156" y="202" text-anchor="middle" font-size="13" font-weight="700" fill="rgba(255,255,255,.8)">25/06</text>
+              <!-- Grupo 26/06 -->
+              <!-- Alertas 35 -->
+              <rect x="264" y="140" width="55" height="45" fill="#64b5f6" rx="2"/>
+              <text x="291" y="134" text-anchor="middle" font-size="12" font-weight="800" fill="rgba(255,255,255,.9)">35</text>
+              <!-- Incidentes 10 -->
+              <rect x="326" y="172" width="55" height="13" fill="#ef9a9a" rx="2"/>
+              <text x="353" y="166" text-anchor="middle" font-size="12" font-weight="800" fill="rgba(255,255,255,.9)">10</text>
+              <!-- Label 26/06 -->
+              <text x="320" y="202" text-anchor="middle" font-size="13" font-weight="700" fill="rgba(255,255,255,.8)">26/06</text>
+              <!-- Legenda -->
+              <rect x="100" y="218" width="12" height="8" fill="#64b5f6" rx="1"/>
+              <text x="116" y="226" font-size="10" fill="rgba(255,255,255,.65)">Alertas</text>
+              <rect x="180" y="218" width="12" height="8" fill="#ef9a9a" rx="1"/>
+              <text x="196" y="226" font-size="10" fill="rgba(255,255,255,.65)">Incidentes</text>
+            </svg>
+          </div>
+          <div>
+            <div class="matrix matrix-5col" style="margin-top:0;">
+              <div class="matrix-row matrix-head">
+                <div>Dia</div>
+                <div>Eventos</div>
+                <div>Alertas</div>
+                <div>Incidentes</div>
+                <div>Sem ACK</div>
+              </div>
+              <div class="matrix-row">
+                <div>25/06</div><div><strong>168</strong></div><div>122</div><div>46</div><div class="risk med">5</div>
+              </div>
+              <div class="matrix-row">
+                <div>26/06</div><div><strong>45</strong></div><div>35</div><div>10</div><div>1</div>
+              </div>
+              <div class="matrix-row" style="font-weight:800;">
+                <div>Total</div><div>213</div><div>157</div><div>56</div><div>6</div>
+              </div>
+            </div>
+            <div class="callout" style="margin-top:16px;">
+              <strong>-73%</strong> de volume do 25/06 para o 26/06. Operação mais estável no segundo dia.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="source">Comparativo por dia — Command Center Time NOC - Elven — 25/06 a 26/06/2026.</div>
+    </section>
+
+    <!-- 04 — VISÃO GERAL CLIENTES -->
+    <section class="slide">
+      <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+      <div class="content">
+        <div class="kicker">Visão geral por cliente</div>
+        <h2>12 clientes monitorados — Vórtx e Kontik no topo; Elven Works com maior concentração de SLA não atingido.</h2>
+        <div class="matrix matrix-wide" style="margin-top:20px;">
+          <div class="matrix-row matrix-head">
+            <div>Cliente</div>
+            <div>Eventos</div>
+            <div>Sem ACK</div>
+            <div>SLA n/ ating.</div>
+            <div>Runbooks</div>
+            <div>Resolvidos</div>
+          </div>
+          <div class="matrix-row"><div>Vórtx</div><div>55</div><div>1</div><div>1 (1,8%)</div><div>1</div><div>55</div></div>
+          <div class="matrix-row"><div>Kontik</div><div>55</div><div>0</div><div>0</div><div>48</div><div>55</div></div>
+          <div class="matrix-row"><div>JCA</div><div>33</div><div>1</div><div>1 (3,0%)</div><div>32</div><div>32</div></div>
+          <div class="matrix-row"><div><strong>Elven Works</strong></div><div>15</div><div>4</div><div class="risk hi">7 (46,7%)</div><div>4</div><div>7</div></div>
+          <div class="matrix-row"><div>Conta Azul</div><div>13</div><div>0</div><div>0</div><div>0</div><div>13</div></div>
+          <div class="matrix-row"><div>Onfly</div><div>12</div><div>0</div><div>0</div><div>0</div><div>12</div></div>
+          <div class="matrix-row"><div>Elven observability</div><div>11</div><div>0</div><div>1 (9,1%)</div><div>6</div><div>11</div></div>
+          <div class="matrix-row"><div>Trillia</div><div>7</div><div>0</div><div>0</div><div>0</div><div>7</div></div>
+          <div class="matrix-row"><div>Dotz</div><div>5</div><div>0</div><div>0</div><div>0</div><div>5</div></div>
+          <div class="matrix-row"><div>TotalPass</div><div>3</div><div>0</div><div>0</div><div>0</div><div>3</div></div>
+          <div class="matrix-row"><div>Cogtive</div><div>2</div><div>0</div><div>0</div><div>0</div><div>1</div></div>
+          <div class="matrix-row"><div>SOLUCX</div><div>2</div><div>0</div><div>0</div><div>0</div><div>2</div></div>
+        </div>
+      </div>
+      <div class="source">Visão geral clientes — Command Center Time NOC - Elven — 25/06 a 26/06/2026.</div>
+    </section>
+
+    <!-- 05 — SLA NÃO ATINGIDO -->
+    <section class="slide dark">
+      <img class="logo" src="assets/elven-logo.png" alt="Elven" style="filter:brightness(0) invert(1);" />
+      <div class="content">
+        <div class="kicker">SLA não atingido</div>
+        <h2>10 eventos com SLA não atingido (4,7%) — 70% concentrados na Elven Works.</h2>
+        <div class="two-col" style="margin-top:20px;">
+          <div>
+            <div class="matrix">
+              <div class="matrix-row matrix-head">
+                <div>Cliente</div>
+                <div>Qtd</div>
+                <div>% do cliente</div>
+                <div>Categoria</div>
+              </div>
+              <div class="matrix-row">
+                <div><strong>Elven Works</strong></div><div class="risk hi">7</div><div>46,7%</div><div>Sem ACK + TTA longo</div>
+              </div>
+              <div class="matrix-row">
+                <div>Elven observability</div><div>1</div><div>9,1%</div><div>TTA &gt; 15min</div>
+              </div>
+              <div class="matrix-row">
+                <div>JCA</div><div>1</div><div>3,0%</div><div>Sem ACK</div>
+              </div>
+              <div class="matrix-row">
+                <div>Vórtx</div><div>1</div><div>1,8%</div><div>Sem ACK</div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;">
+              <div class="callout" style="text-align:center;padding:14px 10px;">
+                <div style="font-size:28px;font-weight:900;color:#ff5252;">6</div>
+                <div style="font-size:10px;opacity:.7;margin-top:4px;">Alertas Sem ACK</div>
+              </div>
+              <div class="callout" style="text-align:center;padding:14px 10px;border-color:rgba(251,191,36,.4);">
+                <div style="font-size:28px;font-weight:900;color:#fbbf24;">4</div>
+                <div style="font-size:10px;opacity:.7;margin-top:4px;">TTA &gt; 15min</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="panel">
+              <h3>Análise</h3>
+              <p><strong>Elven Works</strong> concentra 70% dos casos: 4 sem ACK e 3 com TTA &gt; 15min, todos no dia 25/06.</p>
+              <p style="margin-top:8px;">Os demais clientes (JCA, Vórtx, Elven obs) registraram 1 caso cada — ocorrências isoladas.</p>
+            </div>
+            <div class="callout" style="margin-top:12px;">
+              <strong style="color:#00bfa5;">95,3%</strong> dos eventos foram resolvidos dentro do SLA — operação sólida no geral.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="source">SLA não atingido — Command Center Time NOC - Elven — 25/06 a 26/06/2026.</div>
+    </section>
+
+    <!-- 06 — ANALISTAS SLA RESUMO -->
+    <section class="slide">
+      <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+      <div class="content">
+        <div class="kicker">Analistas — SLA não atingido</div>
+        <h2>6 sem ACK e 4 com TTA &gt; 15min — ocorrências pontuais, sem padrão de recorrência entre analistas.</h2>
+        <div class="two-col">
+          <div>
+            <div class="matrix">
+              <div class="matrix-row matrix-head" style="grid-template-columns:2fr 1fr 1.4fr;">
+                <div>Analista</div>
+                <div>Qtd</div>
+                <div>% do Total (213)</div>
+              </div>
+              <div class="matrix-row" style="grid-template-columns:2fr 1fr 1.4fr;">
+                <div>(sem ACK)</div><div class="risk med">6</div><div>2,8%</div>
+              </div>
+              <div class="matrix-row" style="grid-template-columns:2fr 1fr 1.4fr;">
+                <div>Thallyson Yakko</div><div>2</div><div>0,9% — só 25/06</div>
+              </div>
+              <div class="matrix-row" style="grid-template-columns:2fr 1fr 1.4fr;">
+                <div>Felipe Oliveira</div><div>1</div><div>0,5% — só 25/06</div>
+              </div>
+              <div class="matrix-row" style="grid-template-columns:2fr 1fr 1.4fr;">
+                <div>Magna Christiano</div><div>1</div><div>0,5% — só 26/06</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="panel">
+              <h3>Interpretação</h3>
+              <p>Os 6 eventos sem ACK distribuem-se: 5 no 25/06 (Elven Works) e 1 no 26/06 (JCA). Os analistas com TTA &gt; 15min atuaram em dias distintos — sem padrão sistemático.</p>
+            </div>
+            <div class="callout light" style="margin-top:12px;">
+              <strong>Ação:</strong> Investigar os 5 eventos sem ACK do 25/06 na Elven Works — verificar roteamento e cobertura de plantão.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="source">SLA por analista — Command Center Time NOC - Elven — 25/06 a 26/06/2026.</div>
+    </section>
+
+    <!-- 07 — ANALISTAS SLA DETALHAMENTO -->
+    <section class="slide dark">
+      <img class="logo" src="assets/elven-logo.png" alt="Elven" style="filter:brightness(0) invert(1);" />
+      <div class="content">
+        <div class="kicker">Analistas criticos em aberto</div>
+        <h2>10 ocorrências em 213 eventos (4,7%) — Sem ACK lidera com 6 casos, TTA &gt; 15min com 4.</h2>
+        <div class="score-grid" style="margin-top:18px;">
+          <div>
+            <div class="matrix">
+              <div class="matrix-row matrix-head" style="grid-template-columns:1.8fr 1.1fr 0.5fr 0.5fr 0.5fr 0.6fr;">
+                <div>Analista</div><div>Categoria</div><div>25/06</div><div>26/06</div><div>Total</div><div>%</div>
+              </div>
+              <div class="matrix-row" style="grid-template-columns:1.8fr 1.1fr 0.5fr 0.5fr 0.5fr 0.6fr;">
+                <div>(sem ACK)</div><div><span class="badge alto">Sem ACK</span></div><div>5</div><div>1</div><div><strong>6</strong></div><div>2,8%</div>
+              </div>
+              <div class="matrix-row" style="grid-template-columns:1.8fr 1.1fr 0.5fr 0.5fr 0.5fr 0.6fr;">
+                <div>Thallyson Yakko</div><div><span class="badge medio">TTA &gt; 15min</span></div><div>2</div><div>—</div><div><strong>2</strong></div><div>0,9%</div>
+              </div>
+              <div class="matrix-row" style="grid-template-columns:1.8fr 1.1fr 0.5fr 0.5fr 0.5fr 0.6fr;">
+                <div>Felipe Oliveira</div><div><span class="badge medio">TTA &gt; 15min</span></div><div>1</div><div>—</div><div><strong>1</strong></div><div>0,5%</div>
+              </div>
+              <div class="matrix-row" style="grid-template-columns:1.8fr 1.1fr 0.5fr 0.5fr 0.5fr 0.6fr;">
+                <div>Magna Christiano</div><div><span class="badge medio">TTA &gt; 15min</span></div><div>—</div><div>1</div><div><strong>1</strong></div><div>0,5%</div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px;">
+              <div class="callout" style="text-align:center;padding:10px 8px;">
+                <div style="font-size:22px;font-weight:900;color:#fbbf24;">10</div>
+                <div style="font-size:10px;opacity:.7;margin-top:3px;">Total ocorrências</div>
+                <div style="font-size:10px;opacity:.6;">4,7% de 213 ev.</div>
+              </div>
+              <div class="callout" style="text-align:center;padding:10px 8px;border-color:rgba(255,82,82,.4);">
+                <div style="font-size:22px;font-weight:900;color:#ff5252;">6</div>
+                <div style="font-size:10px;opacity:.7;margin-top:3px;">Sem ACK</div>
+                <div style="font-size:10px;opacity:.6;">não reconhecido</div>
+              </div>
+              <div class="callout" style="text-align:center;padding:10px 8px;border-color:rgba(251,191,36,.4);">
+                <div style="font-size:22px;font-weight:900;color:#fbbf24;">4</div>
+                <div style="font-size:10px;opacity:.7;margin-top:3px;">TTA &gt; 15min</div>
+                <div style="font-size:10px;opacity:.6;">reconhecido c/ atraso</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="panel">
+              <h3>Categorias de SLA não atingido</h3>
+              <p><strong style="color:#ff5252;">Sem ACK (6):</strong> alerta nunca reconhecido. 5 casos na Elven Works no 25/06; 1 caso via JCA no 26/06.</p>
+              <p style="margin-top:8px;"><strong style="color:#b45309;">TTA &gt; 15min (4):</strong> reconhecido com atraso. Thallyson e Felipe no 25/06; Magna no 26/06 — ocorrências isoladas.</p>
+            </div>
+            <div class="callout light" style="margin-top:12px;">
+              <strong>Prioridade:</strong> Investigar os 5 sem ACK do 25/06 na Elven Works — gap de cobertura ou falha de roteamento.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="source">SLA por analista — Command Center Time NOC - Elven — 25/06 a 26/06/2026. TTA = tempo até ACK (SLA: ≤ 15min).</div>
+    </section>
+
+    <!-- 08 — VOLUME DE EVENTOS -->
+    <section class="slide">
+      <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+      <div class="content">
+        <div class="kicker">Volume de eventos por cliente</div>
+        <h2>Vórtx e Kontik empatados (55 cada); JCA terceiro com 33 — top 3 somam 67% do volume total.</h2>
+        <div class="score-grid" style="margin-top:16px;">
+          <div>
+            <!-- SVG Volume por cliente -->
+            <svg viewBox="0 0 460 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:218px;">
+              <line x1="40" y1="195" x2="450" y2="195" stroke="rgba(15,25,35,.15)" stroke-width="1"/>
+              <!-- Vórtx 55 -->
+              <rect x="49"  y="39"  width="36" height="156" fill="#00bfa5" rx="2"/>
+              <text x="67"  y="33"  text-anchor="middle" font-size="11" font-weight="800" fill="#0f1923">55</text>
+              <!-- Kontik 55 -->
+              <rect x="100" y="39"  width="36" height="156" fill="#00bfa5" rx="2"/>
+              <text x="118" y="33"  text-anchor="middle" font-size="11" font-weight="800" fill="#0f1923">55</text>
+              <!-- JCA 33 -->
+              <rect x="151" y="101" width="36" height="94"  fill="#00bfa5" rx="2"/>
+              <text x="169" y="95"  text-anchor="middle" font-size="11" font-weight="800" fill="#0f1923">33</text>
+              <!-- Elven Works 15 -->
+              <rect x="202" y="152" width="36" height="43"  fill="#00bfa5" rx="2"/>
+              <text x="220" y="146" text-anchor="middle" font-size="11" font-weight="800" fill="#0f1923">15</text>
+              <!-- Conta Azul 13 -->
+              <rect x="253" y="158" width="36" height="37"  fill="#00bfa5" rx="2"/>
+              <text x="271" y="152" text-anchor="middle" font-size="11" font-weight="800" fill="#0f1923">13</text>
+              <!-- Onfly 12 -->
+              <rect x="304" y="161" width="36" height="34"  fill="#00bfa5" rx="2"/>
+              <text x="322" y="155" text-anchor="middle" font-size="11" font-weight="800" fill="#0f1923">12</text>
+              <!-- Elven obs 11 -->
+              <rect x="355" y="164" width="36" height="31"  fill="#00bfa5" rx="2"/>
+              <text x="373" y="158" text-anchor="middle" font-size="11" font-weight="800" fill="#0f1923">11</text>
+              <!-- Trillia 7 -->
+              <rect x="406" y="175" width="36" height="20"  fill="#00bfa5" rx="2"/>
+              <text x="424" y="169" text-anchor="middle" font-size="11" font-weight="800" fill="#0f1923">7</text>
+              <!-- Labels eixo X -->
+              <text x="67"  y="210" text-anchor="middle" font-size="9" fill="#666">Vórtx</text>
+              <text x="118" y="210" text-anchor="middle" font-size="9" fill="#666">Kontik</text>
+              <text x="169" y="210" text-anchor="middle" font-size="9" fill="#666">JCA</text>
+              <text x="220" y="208" text-anchor="middle" font-size="9" fill="#666">Elven</text>
+              <text x="220" y="219" text-anchor="middle" font-size="9" fill="#666">Works</text>
+              <text x="271" y="208" text-anchor="middle" font-size="9" fill="#666">Conta</text>
+              <text x="271" y="219" text-anchor="middle" font-size="9" fill="#666">Azul</text>
+              <text x="322" y="210" text-anchor="middle" font-size="9" fill="#666">Onfly</text>
+              <text x="373" y="208" text-anchor="middle" font-size="9" fill="#666">Elven</text>
+              <text x="373" y="219" text-anchor="middle" font-size="9" fill="#666">obs</text>
+              <text x="424" y="210" text-anchor="middle" font-size="9" fill="#666">Trillia</text>
+            </svg>
+          </div>
+          <div>
+            <div class="matrix">
+              <div class="matrix-row matrix-head">
+                <div>Cliente</div><div>Total</div><div>% período</div>
+              </div>
+              <div class="matrix-row"><div>Vórtx</div><div>55</div><div>25,8%</div></div>
+              <div class="matrix-row"><div>Kontik</div><div>55</div><div>25,8%</div></div>
+              <div class="matrix-row"><div>JCA</div><div>33</div><div>15,5%</div></div>
+              <div class="matrix-row"><div>Elven Works</div><div>15</div><div>7,0%</div></div>
+              <div class="matrix-row"><div>Conta Azul</div><div>13</div><div>6,1%</div></div>
+              <div class="matrix-row"><div>Onfly</div><div>12</div><div>5,6%</div></div>
+              <div class="matrix-row"><div>Elven obs</div><div>11</div><div>5,2%</div></div>
+              <div class="matrix-row"><div>Trillia</div><div>7</div><div>3,3%</div></div>
+              <div class="matrix-row"><div>Demais (4)</div><div>12</div><div>5,6%</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="source">Volume por cliente — Command Center Time NOC - Elven — 25/06 a 26/06/2026.</div>
+    </section>
+
+    <!-- 09 — RECORRÊNCIA DOS EVENTOS -->
+    <section class="slide dark">
+      <img class="logo" src="assets/elven-logo.png" alt="Elven" style="filter:brightness(0) invert(1);" />
+      <div class="content">
+        <div class="kicker">Recorrência dos eventos</div>
+        <h2>JCA com 33 disparos do Synthetic Purchase Flow; Kontik com múltiplos alertas de queda de vendas Zupper.</h2>
+        <div class="matrix" style="margin-top:20px;">
+          <div class="matrix-row matrix-head">
+            <div>Cliente</div><div>Evento (resumo)</div><div>Qtd</div>
+          </div>
+          <div class="matrix-row"><div>JCA</div><div>Synthetic - Purchase Flow - Step Failure</div><div><strong>33</strong></div></div>
+          <div class="matrix-row"><div>Vórtx</div><div>[INVESTIDOR] VxMeetings - Erros em lambda</div><div>11</div></div>
+          <div class="matrix-row"><div>Kontik</div><div>Zupper - Queda de vendas Latam (média ponderada)</div><div>9</div></div>
+          <div class="matrix-row"><div>Kontik</div><div>Comparativo vendas menor x média ponderada</div><div>9</div></div>
+          <div class="matrix-row"><div>Kontik</div><div>Comparativo vendas menor x mesmo dia semana anterior</div><div>7</div></div>
+          <div class="matrix-row"><div>Vórtx</div><div>[BANKING] - Possível lentidão no processo de pagamento</div><div>6</div></div>
+          <div class="matrix-row"><div>Kontik</div><div>Zupper - Queda de vendas Azul (média ponderada)</div><div>6</div></div>
+          <div class="matrix-row"><div>Vórtx</div><div>[INVESTIDOR] VxMeetings - Taxa de Erro &gt; 0,5%</div><div>5</div></div>
+          <div class="matrix-row"><div>Kontik</div><div>Zupper — Queda de Vendas 50% mais baixo</div><div>5</div></div>
+          <div class="matrix-row"><div>Onfly</div><div>[RabbitMQ] Mensagens não consumidas na fila</div><div>4</div></div>
+        </div>
+      </div>
+      <div class="source">Top 10 eventos recorrentes — Command Center Time NOC - Elven — 25/06 a 26/06/2026.</div>
+    </section>
+
+    <!-- 10 — RUNBOOKS + IA AGENTE -->
+    <section class="slide">
+      <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+      <div class="content">
+        <div class="kicker">Runbooks + IA Agente</div>
+        <h2>91 acionamentos de runbook — Kontik (48) e JCA (32) lideram; Trillia com 100% de resolução via IA.</h2>
+        <div class="score-grid" style="margin-top:16px;">
+          <div>
+            <!-- SVG Runbooks -->
+            <svg viewBox="0 0 460 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:200px;">
+              <line x1="40" y1="180" x2="420" y2="180" stroke="rgba(15,25,35,.15)" stroke-width="1"/>
+              <!-- Kontik 48 -->
+              <rect x="60"  y="23"  width="60" height="157" fill="#7c3aed" rx="2"/>
+              <text x="90"  y="17"  text-anchor="middle" font-size="13" font-weight="800" fill="#0f1923">48</text>
+              <!-- JCA 32 -->
+              <rect x="155" y="75"  width="60" height="105" fill="#7c3aed" rx="2"/>
+              <text x="185" y="69"  text-anchor="middle" font-size="13" font-weight="800" fill="#0f1923">32</text>
+              <!-- Elven obs 6 -->
+              <rect x="250" y="160" width="60" height="20"  fill="#7c3aed" rx="2"/>
+              <text x="280" y="154" text-anchor="middle" font-size="13" font-weight="800" fill="#0f1923">6</text>
+              <!-- Elven Works 4 -->
+              <rect x="345" y="166" width="60" height="14"  fill="#7c3aed" rx="2"/>
+              <text x="375" y="160" text-anchor="middle" font-size="13" font-weight="800" fill="#0f1923">4</text>
+              <!-- Labels eixo X -->
+              <text x="90"  y="196" text-anchor="middle" font-size="10" fill="#666">Kontik</text>
+              <text x="185" y="196" text-anchor="middle" font-size="10" fill="#666">JCA</text>
+              <text x="280" y="194" text-anchor="middle" font-size="10" fill="#666">Elven</text>
+              <text x="280" y="205" text-anchor="middle" font-size="10" fill="#666">obs</text>
+              <text x="375" y="194" text-anchor="middle" font-size="10" fill="#666">Elven</text>
+              <text x="375" y="205" text-anchor="middle" font-size="10" fill="#666">Works</text>
+            </svg>
+          </div>
+          <div>
+            <div class="panel" style="margin-bottom:12px;">
+              <h3>IA Agente — Trillia</h3>
+              <p>Trillia encerrou <strong>5 de 5 ocorrências</strong> via IA Agente — <strong>100%</strong> de automação no período.</p>
+              <p style="margin-top:6px;">4 atendimentos no 25/06 · 1 no 26/06, todos com fechamento automático.</p>
+            </div>
+            <div class="matrix">
+              <div class="matrix-row matrix-head">
+                <div>Cliente</div><div>Runbooks</div><div>% eventos</div>
+              </div>
+              <div class="matrix-row"><div>Kontik</div><div>48</div><div>87,3%</div></div>
+              <div class="matrix-row"><div>JCA</div><div>32</div><div>97,0%</div></div>
+              <div class="matrix-row"><div>Elven obs</div><div>6</div><div>54,5%</div></div>
+              <div class="matrix-row"><div>Elven Works</div><div>4</div><div>26,7%</div></div>
+              <div class="matrix-row"><div>Vórtx</div><div>1</div><div>1,8%</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="source">Runbooks e IA Agente — Command Center Time NOC - Elven — 25/06 a 26/06/2026.</div>
+    </section>
+
+    <!-- 11 — PERFIL DETALHADO POR CLIENTE -->
+    <section class="slide">
+      <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+      <div class="content">
+        <div class="kicker">Perfil detalhado por cliente</div>
+        <h2>Visão 360° — volume, SLA, automação e runbooks por cliente no período consolidado.</h2>
+        <div class="matrix matrix-detail" style="margin-top:18px;">
+          <div class="matrix-row matrix-head">
+            <div>Cliente</div><div>Eventos</div><div>SLA n/ at.</div><div>Sem ACK</div><div>Runbooks</div><div>IA Agente</div><div>Risco</div>
+          </div>
+          <div class="matrix-row"><div>Vórtx</div><div>55</div><div>1 (1,8%)</div><div>1</div><div>1</div><div>—</div><div><span class="badge baixo">Baixo</span></div></div>
+          <div class="matrix-row"><div>Kontik</div><div>55</div><div>0</div><div>0</div><div>48</div><div>—</div><div><span class="badge baixo">Baixo</span></div></div>
+          <div class="matrix-row"><div>JCA</div><div>33</div><div>1 (3,0%)</div><div>1</div><div>32</div><div>—</div><div><span class="badge baixo">Baixo</span></div></div>
+          <div class="matrix-row"><div>Elven Works</div><div>15</div><div>7 (46,7%)</div><div>4</div><div>4</div><div>—</div><div><span class="badge alto">Alto</span></div></div>
+          <div class="matrix-row"><div>Conta Azul</div><div>13</div><div>0</div><div>0</div><div>0</div><div>—</div><div><span class="badge baixo">Baixo</span></div></div>
+          <div class="matrix-row"><div>Onfly</div><div>12</div><div>0</div><div>0</div><div>0</div><div>—</div><div><span class="badge baixo">Baixo</span></div></div>
+          <div class="matrix-row"><div>Elven obs</div><div>11</div><div>1 (9,1%)</div><div>0</div><div>6</div><div>—</div><div><span class="badge medio">Médio</span></div></div>
+          <div class="matrix-row"><div>Trillia</div><div>7</div><div>0</div><div>0</div><div>0</div><div>5/5</div><div><span class="badge baixo">Baixo</span></div></div>
+          <div class="matrix-row"><div>Dotz</div><div>5</div><div>0</div><div>0</div><div>0</div><div>—</div><div><span class="badge baixo">Baixo</span></div></div>
+          <div class="matrix-row"><div>TotalPass</div><div>3</div><div>0</div><div>0</div><div>0</div><div>—</div><div><span class="badge baixo">Baixo</span></div></div>
+          <div class="matrix-row"><div>Cogtive</div><div>2</div><div>0</div><div>0</div><div>0</div><div>—</div><div><span class="badge baixo">Baixo</span></div></div>
+          <div class="matrix-row"><div>SOLUCX</div><div>2</div><div>0</div><div>0</div><div>0</div><div>—</div><div><span class="badge baixo">Baixo</span></div></div>
+        </div>
+      </div>
+      <div class="source">Perfil por cliente — Command Center Time NOC - Elven — 25/06 a 26/06/2026.</div>
+    </section>
+
+    <!-- 12 — PRÓXIMOS PASSOS -->
+    <section class="slide">
+      <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+      <div class="content">
+        <div class="kicker">Próximos passos</div>
+        <h2>Foco em Elven Works e cobertura de plantão — operação sólida no geral.</h2>
+        <div class="two-col" style="margin-top:20px;">
+          <div>
+            <div class="matrix" style="font-size:11px;">
+              <div class="matrix-row matrix-head" style="grid-template-columns:0.7fr 2fr 1fr;">
+                <div>Prioridade</div><div>Ação</div><div>Cliente</div>
+              </div>
+              <div class="matrix-row" style="grid-template-columns:0.7fr 2fr 1fr;">
+                <div class="risk hi" style="font-size:10px;">Alta</div>
+                <div>Investigar 5 eventos sem ACK do 25/06 — roteamento e cobertura</div>
+                <div>Elven Works</div>
+              </div>
+              <div class="matrix-row" style="grid-template-columns:0.7fr 2fr 1fr;">
+                <div class="risk hi" style="font-size:10px;">Alta</div>
+                <div>Revisar runbook e escalonamento para alertas internos</div>
+                <div>Elven Works</div>
+              </div>
+              <div class="matrix-row" style="grid-template-columns:0.7fr 2fr 1fr;">
+                <div class="risk med" style="font-size:10px;">Média</div>
+                <div>Criar runbook para Synthetic Purchase Flow (33 disparos)</div>
+                <div>JCA</div>
+              </div>
+              <div class="matrix-row" style="grid-template-columns:0.7fr 2fr 1fr;">
+                <div class="risk med" style="font-size:10px;">Média</div>
+                <div>Investigar erros em lambda VxMeetings (11 disparos)</div>
+                <div>Vórtx</div>
+              </div>
+              <div class="matrix-row" style="grid-template-columns:0.7fr 2fr 1fr;">
+                <div style="font-size:10px;">Baixa</div>
+                <div>Expandir runbooks — Conta Azul, Onfly, Dotz com 0 runbooks</div>
+                <div>Múltiplos</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="panel">
+              <h3>Pontos positivos</h3>
+              <p>Trillia: 100% automação via IA (5/5). Kontik e JCA com cobertura de runbooks de 87% e 97%. MTTA de 2min55s demonstra agilidade do time.</p>
+            </div>
+            <div class="callout light" style="margin-top:12px;">
+              <strong>Tendência:</strong> Volume 73% menor no 26/06. Monitorar padrão no final de semana e calibrar escala de plantão.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="source">Command Center Multi-cliente — Time NOC - Elven · noc@elven.works · 25 a 26/06/2026.</div>
+    </section>
+
+  </div>
+</body>
+</html>
