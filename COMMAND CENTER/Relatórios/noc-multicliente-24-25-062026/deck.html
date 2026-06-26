@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Command Center | Relatório Operacional — 24/06 a 25/06/2026</title>
+    <link rel="stylesheet" href="elven-deck.css" />
+    <style>
+      /* score-grid: ausente do elven-deck.css — define grid lateral */
+      .score-grid {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        gap: 30px;
+        margin-top: 28px;
+      }
+      /* matrix de 6 colunas para slide visão geral clientes */
+      .matrix-wide .matrix-row {
+        grid-template-columns: 1.7fr 0.55fr 0.55fr 0.65fr 0.65fr 0.6fr;
+      }
+      .matrix-wide .matrix-row > div { padding: 7px 9px; font-size: 12px; line-height: 1.2; }
+      .matrix-wide .matrix-head > div { font-size: 10px; padding: 7px 9px; }
+      /* tabela detalhada 7 colunas — slide perfil clientes */
+      .matrix-detail .matrix-row { grid-template-columns: 1.6fr 0.42fr 0.5fr 0.42fr 0.52fr 0.44fr 0.52fr; }
+      .matrix-detail .matrix-row > div { padding: 6px 7px; font-size: 11px; line-height: 1.2; }
+      .matrix-detail .matrix-head > div { font-size: 9px; padding: 6px 7px; letter-spacing: 1px; }
+      .badge { display: inline-block; padding: 2px 7px; font-size: 10px; font-weight: 800; border-radius: 2px; }
+      .badge.alto  { background: rgba(255,82,82,.15);  color: #ff5252; }
+      .badge.medio { background: rgba(251,191,36,.15); color: #b45309; }
+      .badge.baixo { background: rgba(0,191,165,.15);  color: #00897b; }
+      /* proteção global: content não vaza para cima do source */
+      .slide .content { overflow: hidden; }
+      /* logo maior */
+      .logo { width: 148px !important; }
+    </style>
+  </head>
+  <body>
+    <main class="deck">
+
+      <!-- 01 — CAPA -->
+      <section class="slide cover">
+        <img class="logo on-dark" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Command Center — Time NOC - Elven — Relatório Operacional</div>
+          <h1>Command Center | Relatório Operacional — 24/06 a 25/06/2026</h1>
+          <p class="sub">Consolidado de dois dias operacionais — 12 clientes Time NOC - Elven — 24 e 25/06/2026.</p>
+        </div>
+        <div class="metric-rail">
+          <div class="metric">
+            <div class="value">449</div>
+            <div class="label">total de eventos</div>
+          </div>
+          <div class="metric">
+            <div class="value">340</div>
+            <div class="label">alertas</div>
+          </div>
+          <div class="metric">
+            <div class="value">109</div>
+            <div class="label">incidentes</div>
+          </div>
+          <div class="metric">
+            <div class="value">3%</div>
+            <div class="label">SLA não atingido</div>
+          </div>
+        </div>
+        <div class="source">Command Center — Time NOC - Elven — 24/06 a 25/06/2026</div>
+      </section>
+
+      <!-- 02 — RESUMO EXECUTIVO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Resumo executivo</div>
+          <h2>Kontik liderou com 137 eventos (31%); SLA não atingido foi de apenas 3% no período — cobertura Time NOC - Elven.</h2>
+          <div class="three-col">
+            <div class="panel">
+              <h3>Visão geral consolidada</h3>
+              <p>449 eventos em 12 clientes ao longo de dois dias. 340 alertas e 109 incidentes. SLA não atingido: apenas 13 eventos (3% do total). 211 runbooks executados. Kontik concentrou 31% do volume total com 137 eventos.</p>
+            </div>
+            <div class="panel">
+              <h3>Comparativo 24 vs 25</h3>
+              <p>Dia 24: 332 eventos, SLA 2,1%, 164 runbooks, IA Agente ativa (Trillia 3/3). Dia 25: 117 eventos, SLA 5,1%, 47 runbooks, IA Agente ativa (Trillia 3/3). Excelente cobertura nos dois dias.</p>
+            </div>
+            <div class="panel">
+              <h3>Destaques operacionais</h3>
+              <p>Elven Works (127 eventos, 103 runbooks, 9,4% SLA não) é o maior cliente em volume e automação. Trillia foi o único com IA Agente em ambos os dias — 6/6 fechamentos automáticos.</p>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Leitura final:</strong> SLA não atingido de apenas 3% — 13 eventos sem ACK em 449. Time NOC - Elven manteve cobertura exemplar nos dois dias analisados.
+          </div>
+        </div>
+        <div class="source">Período analisado: 24/06 a 25/06/2026 — 12 clientes Time NOC - Elven.</div>
+      </section>
+
+      <!-- 03 — COMPARATIVO DIÁRIO -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Comparativo diário</div>
+          <h2>Dia 25/06 teve 65% menos volume que o dia 24 — SLA mantido em níveis baixos nos dois dias.</h2>
+          <div class="two-col">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Volume de eventos por dia</strong>
+                <span>24/06 vs 25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-comparativo"></div>
+              <div class="note">24/06: 332 eventos, 260 alertas, 72 incidentes. 25/06: 117 eventos, 80 alertas, 37 incidentes.</div>
+            </div>
+            <div class="matrix">
+              <div class="matrix-row matrix-head">
+                <div>Métrica</div>
+                <div>24/06</div>
+                <div>25/06</div>
+              </div>
+              <div class="matrix-row">
+                <div>Eventos</div>
+                <div>332</div>
+                <div>117</div>
+              </div>
+              <div class="matrix-row">
+                <div>Alertas</div>
+                <div>260</div>
+                <div>80</div>
+              </div>
+              <div class="matrix-row">
+                <div>Incidentes</div>
+                <div>72</div>
+                <div>37</div>
+              </div>
+              <div class="matrix-row">
+                <div>SLA Não Atingido</div>
+                <div>2,1%</div>
+                <div>5,1%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Runbooks</div>
+                <div>164</div>
+                <div>47</div>
+              </div>
+              <div class="matrix-row">
+                <div>IA Agente</div>
+                <div>Sim (Trillia 3/3)</div>
+                <div>Sim (Trillia 3/3)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">Comparativo diário — Command Center Time NOC - Elven — 24/06 a 25/06/2026.</div>
+      </section>
+
+      <!-- 04 — VISÃO GERAL CLIENTES -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Visão geral dos clientes</div>
+          <h2>12 clientes Time NOC - Elven — volume, SLA não atingido e runbooks consolidados por período.</h2>
+          <div class="matrix matrix-wide">
+            <div class="matrix-row matrix-head">
+              <div>Cliente</div>
+              <div>24/06</div>
+              <div>25/06</div>
+              <div>Total</div>
+              <div>Sem ACK</div>
+              <div>Runbooks</div>
+            </div>
+            <div class="matrix-row">
+              <div>Kontik</div>
+              <div>100</div>
+              <div>37</div>
+              <div>137</div>
+              <div>0</div>
+              <div>84</div>
+            </div>
+            <div class="matrix-row">
+              <div>Elven Works</div>
+              <div>115</div>
+              <div>12</div>
+              <div>127</div>
+              <div class="risk med">12</div>
+              <div>103</div>
+            </div>
+            <div class="matrix-row">
+              <div>Vórtx</div>
+              <div>56</div>
+              <div>21</div>
+              <div>77</div>
+              <div>1</div>
+              <div>1</div>
+            </div>
+            <div class="matrix-row">
+              <div>Dotz</div>
+              <div>30</div>
+              <div>3</div>
+              <div>33</div>
+              <div>0</div>
+              <div>—</div>
+            </div>
+            <div class="matrix-row">
+              <div>JCA</div>
+              <div>7</div>
+              <div>13</div>
+              <div>20</div>
+              <div>0</div>
+              <div>18</div>
+            </div>
+            <div class="matrix-row">
+              <div>Onfly</div>
+              <div>5</div>
+              <div>11</div>
+              <div>16</div>
+              <div>0</div>
+              <div>—</div>
+            </div>
+            <div class="matrix-row">
+              <div>Conta Azul</div>
+              <div>2</div>
+              <div>8</div>
+              <div>10</div>
+              <div>0</div>
+              <div>—</div>
+            </div>
+            <div class="matrix-row">
+              <div>Cogtive</div>
+              <div>8</div>
+              <div>0</div>
+              <div>8</div>
+              <div>0</div>
+              <div>—</div>
+            </div>
+            <div class="matrix-row">
+              <div>Elven observability</div>
+              <div>2</div>
+              <div>6</div>
+              <div>8</div>
+              <div>0</div>
+              <div>4</div>
+            </div>
+            <div class="matrix-row">
+              <div>Trillia</div>
+              <div>3</div>
+              <div>3</div>
+              <div>6</div>
+              <div>0</div>
+              <div>—</div>
+            </div>
+            <div class="matrix-row">
+              <div>TotalPass</div>
+              <div>2</div>
+              <div>2</div>
+              <div>4</div>
+              <div>0</div>
+              <div>1</div>
+            </div>
+            <div class="matrix-row">
+              <div>SOLUCX</div>
+              <div>2</div>
+              <div>1</div>
+              <div>3</div>
+              <div>0</div>
+              <div>—</div>
+            </div>
+          </div>
+        </div>
+        <div class="source">Consolidado por cliente — Command Center Time NOC - Elven — 24/06 a 25/06/2026.</div>
+      </section>
+
+      <!-- 05 — SLA NÃO ATINGIDO -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">SLA não atingido por cliente</div>
+          <h2>13 eventos fora do SLA em 449 — Elven Works concentra 12 dos 13 casos (92% do SLA não atingido).</h2>
+          <div class="two-col">
+            <div class="matrix">
+              <div class="matrix-row matrix-head">
+                <div>Cliente</div>
+                <div>Total</div>
+                <div>Sem ACK</div>
+                <div>% Sem ACK</div>
+              </div>
+              <div class="matrix-row">
+                <div>Elven Works</div>
+                <div>127</div>
+                <div class="risk med">12</div>
+                <div class="risk med">9,4%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Vórtx</div>
+                <div>77</div>
+                <div>1</div>
+                <div>1,3%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Kontik</div>
+                <div>137</div>
+                <div>0</div>
+                <div>0%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Dotz</div>
+                <div>33</div>
+                <div>0</div>
+                <div>0%</div>
+              </div>
+              <div class="matrix-row">
+                <div>JCA</div>
+                <div>20</div>
+                <div>0</div>
+                <div>0%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Onfly</div>
+                <div>16</div>
+                <div>0</div>
+                <div>0%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Conta Azul</div>
+                <div>10</div>
+                <div>0</div>
+                <div>0%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Demais (5 clientes)</div>
+                <div>29</div>
+                <div>0</div>
+                <div>0%</div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">13</div>
+                  <div class="small">eventos sem ACK — 3% do total. Operação com SLA quase perfeito no período.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">92%</div>
+                  <div class="small">Elven Works concentra 12 dos 13 casos de SLA não atingido — foco de atenção imediata.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">10</div>
+                  <div class="small">clientes com 0% SLA não atingido — cobertura total. Padrão de excelência operacional no período.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">SLA por cliente — Command Center Time NOC - Elven — 24/06 a 25/06/2026.</div>
+      </section>
+
+      <!-- 06 — ANALISTAS SLA NÃO ATINGIDO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Analistas — SLA não atingido</div>
+          <h2>17 eventos com TTA > 15min por Renan Caldeira — 13 sem ACK; cobertura geral do time foi exemplar.</h2>
+          <div class="two-col">
+            <div class="matrix">
+              <div class="matrix-row matrix-head">
+                <div>Analista</div>
+                <div>SLA Não Atingido</div>
+                <div>% do Total (449)</div>
+              </div>
+              <div class="matrix-row">
+                <div>Renan Caldeira da Silva</div>
+                <div class="risk med">17</div>
+                <div>3,8% (apenas 24/06)</div>
+              </div>
+              <div class="matrix-row">
+                <div>(sem ACK)</div>
+                <div class="risk med">13</div>
+                <div>2,9%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Thallyson Yakko</div>
+                <div>2</div>
+                <div>0,4% (apenas 25/06)</div>
+              </div>
+              <div class="matrix-row">
+                <div>Antonio Sandes</div>
+                <div>1</div>
+                <div>0,2% (apenas 24/06)</div>
+              </div>
+              <div class="matrix-row">
+                <div>Leandro Belati</div>
+                <div>1</div>
+                <div>0,2% (apenas 24/06)</div>
+              </div>
+            </div>
+            <div>
+              <div class="panel">
+                <h3>Interpretação</h3>
+                <p>A maioria dos eventos foi atendida dentro do SLA. Os 13 sem ACK representam apenas 3% do volume. Renan atuou com 17 eventos de TTA > 15min apenas no dia 24/06. No dia 25/06 apenas Thallyson e sem ACK (6 casos) registraram SLA não atingido — operação exemplar no geral.</p>
+              </div>
+              <div class="callout light" style="margin-top:12px;">
+                <strong>Ação recomendada:</strong> Investigar os 13 eventos sem ACK da Elven Works — identificar se são falhas de roteamento, escalamento ou ausência de plantão. Os 17 eventos de Renan com TTA > 15min no dia 24 merecem análise para otimização de resposta.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">SLA por analista — Command Center Time NOC - Elven — 24/06 a 25/06/2026.</div>
+      </section>
+
+      <!-- 07 — DETALHAMENTO ANALISTAS SLA -->
+      <section class="slide dark">
+        <img class="logo" src="assets/elven-logo.png" alt="Elven" style="filter:brightness(0) invert(1);" />
+        <div class="content">
+          <div class="kicker">Analistas criticos em aberto</div>
+          <h2>Detalhamento SLA não atingido por analista, categoria e dia — 34 ocorrências em 449 eventos (7,6%)</h2>
+          <div class="score-grid" style="margin-top:18px;">
+            <div>
+              <div class="matrix matrix-detail" style="--cols:6;">
+                <div class="matrix-row matrix-head" style="grid-template-columns:2fr 1.2fr 0.5fr 0.5fr 0.5fr 0.6fr;">
+                  <div>Analista</div>
+                  <div>Categoria</div>
+                  <div>24/06</div>
+                  <div>25/06</div>
+                  <div>Total</div>
+                  <div>% do total</div>
+                </div>
+                <div class="matrix-row" style="grid-template-columns:2fr 1.2fr 0.5fr 0.5fr 0.5fr 0.6fr;">
+                  <div>Renan Caldeira da Silva</div>
+                  <div><span class="badge medio">TTA &gt; 15min</span></div>
+                  <div>17</div>
+                  <div>—</div>
+                  <div><strong>17</strong></div>
+                  <div>3,8%</div>
+                </div>
+                <div class="matrix-row" style="grid-template-columns:2fr 1.2fr 0.5fr 0.5fr 0.5fr 0.6fr;">
+                  <div>(sem ACK)</div>
+                  <div><span class="badge alto">Sem ACK</span></div>
+                  <div>7</div>
+                  <div>6</div>
+                  <div><strong>13</strong></div>
+                  <div>2,9%</div>
+                </div>
+                <div class="matrix-row" style="grid-template-columns:2fr 1.2fr 0.5fr 0.5fr 0.5fr 0.6fr;">
+                  <div>Thallyson Yakko</div>
+                  <div><span class="badge medio">TTA &gt; 15min</span></div>
+                  <div>—</div>
+                  <div>2</div>
+                  <div><strong>2</strong></div>
+                  <div>0,4%</div>
+                </div>
+                <div class="matrix-row" style="grid-template-columns:2fr 1.2fr 0.5fr 0.5fr 0.5fr 0.6fr;">
+                  <div>Antonio Sandes</div>
+                  <div><span class="badge baixo">TTA &gt; 15min</span></div>
+                  <div>1</div>
+                  <div>—</div>
+                  <div><strong>1</strong></div>
+                  <div>0,2%</div>
+                </div>
+                <div class="matrix-row" style="grid-template-columns:2fr 1.2fr 0.5fr 0.5fr 0.5fr 0.6fr;">
+                  <div>Leandro Belati</div>
+                  <div><span class="badge baixo">TTA &gt; 15min</span></div>
+                  <div>1</div>
+                  <div>—</div>
+                  <div><strong>1</strong></div>
+                  <div>0,2%</div>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px;">
+                <div class="callout" style="text-align:center;padding:10px 8px;">
+                  <div style="font-size:22px;font-weight:900;color:#fbbf24;">34</div>
+                  <div style="font-size:10px;opacity:.7;margin-top:3px;">Total ocorrências</div>
+                  <div style="font-size:10px;opacity:.6;">7,6% de 449 eventos</div>
+                </div>
+                <div class="callout" style="text-align:center;padding:10px 8px;border-color:rgba(255,82,82,.4);">
+                  <div style="font-size:22px;font-weight:900;color:#ff5252;">13</div>
+                  <div style="font-size:10px;opacity:.7;margin-top:3px;">Sem ACK</div>
+                  <div style="font-size:10px;opacity:.6;">alerta não reconhecido</div>
+                </div>
+                <div class="callout" style="text-align:center;padding:10px 8px;border-color:rgba(251,191,36,.4);">
+                  <div style="font-size:22px;font-weight:900;color:#fbbf24;">21</div>
+                  <div style="font-size:10px;opacity:.7;margin-top:3px;">TTA &gt; 15min</div>
+                  <div style="font-size:10px;opacity:.6;">reconhecido com atraso</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="panel" style="margin-bottom:12px;">
+                <h3>Categorias de SLA não atingido</h3>
+                <p><strong style="color:#ff5252;">Sem ACK (13):</strong> alerta nunca reconhecido. Indica ausência de plantão ou falha de roteamento. Todos 13 casos distribuídos entre 24/06 (7) e 25/06 (6).</p>
+                <p style="margin-top:8px;"><strong style="color:#fbbf24;">TTA &gt; 15min (21):</strong> alerta reconhecido com atraso. Renan lidera com 17 no dia 24/06. Thallyson 2 casos no 25/06; Antonio e Leandro 1 cada no 24/06.</p>
+              </div>
+              <div class="callout light">
+                <strong>Prioridade:</strong> Investigar origem dos 13 sem ACK (possível gap de plantão) e entender o contexto do Renan no dia 24/06 — volume elevado naquele dia pode explicar o atraso de TTA.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">SLA por analista — Command Center Time NOC - Elven — 24/06 a 25/06/2026. TTA = tempo até primeiro ACK (SLA: ≤ 15min).</div>
+      </section>
+
+      <!-- 08 — VOLUME DE EVENTOS -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Volume de eventos</div>
+          <h2>Kontik e Elven Works concentram 58% dos eventos — 12 clientes com distribuição saudável de volume.</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Eventos por cliente — top 7</strong>
+                <span>24/06 a 25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-volume-cliente"></div>
+              <div class="note">Kontik (137), Elven Works (127), Vórtx (77), Dotz (33), JCA (20), Onfly (16), Conta Azul (10). Os 5 demais somam 29 eventos.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">264</div>
+                  <div class="small">eventos nos 2 maiores clientes — 59% do volume total do período em Kontik e Elven Works.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">109</div>
+                  <div class="small">incidentes de 449 eventos totais (24%). Proporção equilibrada de incidentes vs alertas no período.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">137</div>
+                  <div class="small">eventos da Kontik em dois dias — maior volume individual. 84 runbooks garantem boa cobertura operacional.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">Volume por cliente — Command Center Time NOC - Elven — 24/06 a 25/06/2026.</div>
+      </section>
+
+      <!-- 08 — RECORRÊNCIA DOS EVENTOS -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Recorrência dos eventos</div>
+          <h2>Top alertas recorrentes — Elven Works, Vórtx e Kontik lideram em repetições no período.</h2>
+          <div class="two-col">
+            <div class="matrix">
+              <div class="matrix-row matrix-head">
+                <div>Cliente</div>
+                <div>Evento</div>
+                <div>Qtd</div>
+              </div>
+              <div class="matrix-row">
+                <div>Elven Works</div>
+                <div>Error Send message in Notifier</div>
+                <div class="risk high">101</div>
+              </div>
+              <div class="matrix-row">
+                <div>Vórtx</div>
+                <div>VxMeetings - Erros em lambda</div>
+                <div class="risk med">30</div>
+              </div>
+              <div class="matrix-row">
+                <div>Kontik</div>
+                <div>MySQL rows examined alto por digest</div>
+                <div class="risk med">21</div>
+              </div>
+              <div class="matrix-row">
+                <div>Kontik</div>
+                <div>Comparativo vendas x média ponderada</div>
+                <div class="risk med">20</div>
+              </div>
+              <div class="matrix-row">
+                <div>JCA</div>
+                <div>Synthetic - Purchase Flow - Step Failure</div>
+                <div class="risk med">20</div>
+              </div>
+              <div class="matrix-row">
+                <div>Kontik</div>
+                <div>Comparativo vendas x mesmo dia semana</div>
+                <div>17</div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">152</div>
+                  <div class="small">ocorrências somando os top 3 alertas — 34% do volume do período concentrado em 3 títulos recorrentes.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">101</div>
+                  <div class="small">ocorrências do Error Send Notifier na Elven Works — maior alerta individual do período.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">20</div>
+                  <div class="small">alertas JCA Synthetic Flow — padrão de falha em teste sintético que merece atenção e investigação de causa raiz.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">Top eventos recorrentes — Command Center Time NOC - Elven — 24/06 a 25/06/2026.</div>
+      </section>
+
+      <!-- 09 — RUNBOOKS + IA AGENTE -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Runbooks e IA Agente</div>
+          <h2>211 runbooks no período — Elven Works lidera com 103; IA Agente (Trillia) ativa nos dois dias com 100% de fechamento.</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Runbooks executados por cliente</strong>
+                <span>24/06 a 25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-runbooks"></div>
+              <div class="note">Elven Works (103), Kontik (84), JCA (18), Elven observability (4), TotalPass (1), Vórtx (1).</div>
+            </div>
+            <div>
+              <div class="panel">
+                <h3>IA Agente — Trillia</h3>
+                <p>Dia 24/06: <strong>3 eventos atendidos, 3 fechados (100%)</strong><br />
+                Dia 25/06: <strong>3 eventos atendidos, 3 fechados (100%)</strong><br />
+                Total período: <strong>6/6 fechamentos automáticos</strong><br />
+                Intervenção humana no período: <strong>zero</strong></p>
+              </div>
+              <div class="callout light" style="margin-top:12px;">
+                <strong>Diferencial:</strong> Trillia operou com IA Agente nos dois dias com 100% de eficácia. Recomenda-se expandir para Elven Works (127 eventos, 12 sem ACK) como próxima prioridade.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">Runbooks e IA Agente — Command Center Time NOC - Elven — 24/06 a 25/06/2026.</div>
+      </section>
+
+      <!-- 10 — PERFIL DETALHADO POR CLIENTE -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Perfil detalhado por cliente</div>
+          <h2>Risco, cobertura de automação e SLA — visão individual dos 12 clientes Time NOC - Elven.</h2>
+          <div class="matrix matrix-detail" style="margin-top:18px;">
+            <div class="matrix-row matrix-head">
+              <div>Cliente</div>
+              <div>Total</div>
+              <div>% SLA Não</div>
+              <div>Runbooks</div>
+              <div>Cob. RB%</div>
+              <div>IA Agente</div>
+              <div>Risco</div>
+            </div>
+            <div class="matrix-row">
+              <div>Elven Works</div><div>127</div><div class="risk med">9,4%</div><div>103</div><div class="risk low">81,1%</div><div>Não</div><div><span class="badge medio">Médio</span></div>
+            </div>
+            <div class="matrix-row">
+              <div>Kontik</div><div>137</div><div>0%</div><div>84</div><div class="risk low">61,3%</div><div>Não</div><div><span class="badge baixo">Baixo</span></div>
+            </div>
+            <div class="matrix-row">
+              <div>Vórtx</div><div>77</div><div>1,3%</div><div>1</div><div class="risk med">1,3%</div><div>Não</div><div><span class="badge medio">Médio</span></div>
+            </div>
+            <div class="matrix-row">
+              <div>Dotz</div><div>33</div><div>0%</div><div>—</div><div class="risk high">0%</div><div>Não</div><div><span class="badge baixo">Baixo</span></div>
+            </div>
+            <div class="matrix-row">
+              <div>JCA</div><div>20</div><div>0%</div><div>18</div><div class="risk low">90%</div><div>Não</div><div><span class="badge baixo">Baixo</span></div>
+            </div>
+            <div class="matrix-row">
+              <div>Onfly</div><div>16</div><div>0%</div><div>—</div><div class="risk high">0%</div><div>Não</div><div><span class="badge baixo">Baixo</span></div>
+            </div>
+            <div class="matrix-row">
+              <div>Conta Azul</div><div>10</div><div>0%</div><div>—</div><div class="risk high">0%</div><div>Não</div><div><span class="badge baixo">Baixo</span></div>
+            </div>
+            <div class="matrix-row">
+              <div>Cogtive</div><div>8</div><div>0%</div><div>—</div><div class="risk high">0%</div><div>Não</div><div><span class="badge baixo">Baixo</span></div>
+            </div>
+            <div class="matrix-row">
+              <div>Elven observability</div><div>8</div><div>0%</div><div>4</div><div class="risk low">50%</div><div>Não</div><div><span class="badge baixo">Baixo</span></div>
+            </div>
+            <div class="matrix-row">
+              <div>Trillia</div><div>6</div><div>0%</div><div>—</div><div>—</div><div class="risk low">Sim</div><div><span class="badge baixo">Baixo</span></div>
+            </div>
+            <div class="matrix-row">
+              <div>TotalPass</div><div>4</div><div>0%</div><div>1</div><div>25%</div><div>Não</div><div><span class="badge baixo">Baixo</span></div>
+            </div>
+            <div class="matrix-row">
+              <div>SOLUCX</div><div>3</div><div>0%</div><div>—</div><div class="risk high">0%</div><div>Não</div><div><span class="badge baixo">Baixo</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="source">Perfil por cliente — Command Center Time NOC - Elven — 24/06 a 25/06/2026.</div>
+      </section>
+
+      <!-- 11 — PRÓXIMOS PASSOS -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Conclusão e próximos passos</div>
+          <h2>Seis ações para manter a excelência operacional e expandir cobertura de automação.</h2>
+          <div class="takeaways">
+            <div class="takeaway">Investigar os 12 eventos sem ACK da Elven Works — identificar se são falhas de roteamento, escalamento ou ausência de plantão. 9,4% de SLA não atingido num cliente de 127 eventos merece atenção imediata.</div>
+            <div class="takeaway">Expandir IA Agente para Elven Works seguindo o modelo Trillia (6/6 fechamentos automáticos nos dois dias). Priorizar alertas "Error Send message in Notifier" — 101 ocorrências no período.</div>
+            <div class="takeaway">Ampliar runbooks para Vórtx (77 eventos, apenas 1 runbook) e Dotz (33 eventos, zero runbooks) — clientes com cobertura de automação abaixo de 5%.</div>
+            <div class="takeaway">Investigar os 20 alertas Synthetic - Purchase Flow - Step Failure do JCA em dois dias — padrão de falha recorrente em teste sintético pode indicar instabilidade funcional não resolvida.</div>
+            <div class="takeaway">Expandir Trillia para outros clientes com volume recorrente (Kontik 137 eventos, Elven Works 127 eventos) — potencial de automação alto com base no desempenho de 6/6 no período.</div>
+            <div class="takeaway">Manter cadência de runbooks no Kontik (84 no período) e JCA (18) como benchmark interno de maturidade operacional para replicar nos demais clientes.</div>
+          </div>
+        </div>
+        <div class="source">Relatório Command Center Time NOC - Elven — 24/06 a 25/06/2026.</div>
+      </section>
+
+    </main>
+
+    <script src="elven-deck-charts.js"></script>
+    <script>
+      function renderCharts() {
+        ElvenDeck.barChart(
+          document.getElementById("chart-comparativo"),
+          { name: "Eventos", data: [332, 117], color: ElvenDeck.colors.teal },
+          { labels: ["24/06", "25/06"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-volume-cliente"),
+          { name: "Eventos", data: [137, 127, 77, 33, 20, 16, 10], color: ElvenDeck.colors.teal },
+          { labels: ["Kontik", "Elven Works", "Vórtx", "Dotz", "JCA", "Onfly", "Conta Azul"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-runbooks"),
+          { name: "Runbooks", data: [103, 84, 18, 4, 1, 1], color: ElvenDeck.colors.teal },
+          { labels: ["Elven Works", "Kontik", "JCA", "Elven obs.", "TotalPass", "Vórtx"] }
+        );
+      }
+      window.addEventListener("load", renderCharts);
+      window.addEventListener("resize", renderCharts);
+    </script>
+  </body>
+</html>

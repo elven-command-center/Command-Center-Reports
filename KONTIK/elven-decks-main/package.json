@@ -1,0 +1,57 @@
+{
+  "name": "@elven-observability/decks-skill",
+  "version": "0.1.2",
+  "description": "Anthropic skill-creator pack codifying Elven Works presentation deck standards: 2 canonical deck types (client-report, workshop-mentorship), 12 locked layouts, binary lint, and Puppeteer PDF+preview rendering. Sibling of @elven-observability/docs-skill.",
+  "license": "MIT",
+  "author": "Elven Works <docs@elven.works>",
+  "homepage": "https://github.com/elven-observability/elven-decks#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elven-observability/elven-decks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/elven-observability/elven-decks/issues"
+  },
+  "bin": {
+    "decks-skill": "./bin/decks-skill.js"
+  },
+  "files": [
+    "bin/",
+    "skill/",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "bash tests/lint.test.sh && bash tests/render-pdf.test.sh && bash tests/preview.test.sh",
+    "test:lint": "bash tests/lint.test.sh",
+    "test:render": "bash tests/render-pdf.test.sh",
+    "test:preview": "bash tests/preview.test.sh",
+    "prepack": "chmod +x bin/decks-skill.js skill/scripts/lint.sh"
+  },
+  "dependencies": {
+    "marked": "^14.1.0",
+    "puppeteer": "^23.5.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "claude-code",
+    "anthropic",
+    "skill",
+    "presentation",
+    "deck",
+    "slides",
+    "elven",
+    "elven-observability",
+    "pt-br",
+    "lint",
+    "html",
+    "pdf",
+    "puppeteer"
+  ]
+}

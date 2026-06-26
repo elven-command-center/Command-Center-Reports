@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "powerbi-modeling-mcp": {
+      "command": "C:\\Users\\PC\\AppData\\Roaming\\npm\\node_modules\\@microsoft\\powerbi-modeling-mcp\\node_modules\\@microsoft\\powerbi-modeling-mcp-win32-x64\\dist\\powerbi-modeling-mcp.exe",
+      "args": ["--start"]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__powerbi-modeling-mcp__model_operations",
+      "mcp__powerbi-modeling-mcp__dax_query_operations",
+      "mcp__powerbi-modeling-mcp__measure_operations",
+      "Bash(python3 -c ' *)",
+      "mcp__visualize__read_me",
+      "Bash(python -c \"import zipfile; z=zipfile.ZipFile\\(r'C:\\\\Users\\\\PC\\\\OneDrive\\\\Desktop\\\\CLAUDE\\\\COMMAND CENTER\\\\BLIP\\\\Relatorio_NOC_Blip_23062026.docx'\\); print\\('OK - arquivos:', len\\(z.namelist\\(\\)\\)\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(python -c \"import re; data=open\\('C:/Users/PC/.claude/projects/C--Users-PC-OneDrive-Desktop-CLAUDE-COMMAND-CENTER-COMMAND-CENTER/d34a50b1-8c7a-4fbf-981c-16f5dd6b2f66/tool-results/mcp-powerbi-modeling-mcp-table_operations-1782351816427.txt'\\).read\\(\\); cols=re.findall\\(r'\\\\\"name\\\\\":\\\\s*\\\\\"\\([^\\\\\"]+\\)\\\\\".*?\\\\\"dataType\\\\\":\\\\s*\\\\\"\\([^\\\\\"]+\\)\\\\\"', data\\); [print\\(c\\) for c in cols[:80]]\")",
+      "PowerShell(Get-OdbcDsn)",
+      "PowerShell(python C:\\\\Users\\\\PC\\\\AppData\\\\Local\\\\Temp\\\\noc_query.py 2>&1)",
+      "PowerShell(pip install psycopg2-binary -q 2>&1)",
+      "PowerShell(python C:\\\\Users\\\\PC\\\\AppData\\\\Local\\\\Temp\\\\noc_cols.py 2>&1)",
+      "PowerShell(python C:\\\\Users\\\\PC\\\\AppData\\\\Local\\\\Temp\\\\noc_report.py 2>&1)",
+      "PowerShell(python \"C:\\\\Users\\\\PC\\\\AppData\\\\Local\\\\Temp\\\\noc_26.py\")",
+      "PowerShell(\\(Get-Content \"c:\\\\Users\\\\PC\\\\OneDrive\\\\Desktop\\\\CLAUDE\\\\COMMAND CENTER\\\\COMMAND CENTER\\\\noc-multicliente-24-25-062026\\\\deck.html\" -Raw\\) -replace 'NOC Multi-cliente', 'Command Center Multi-cliente' -replace '\\\\bNOC\\\\b', 'Command Center' | Set-Content \"c:\\\\Users\\\\PC\\\\OneDrive\\\\Desktop\\\\CLAUDE\\\\COMMAND CENTER\\\\COMMAND CENTER\\\\noc-multicliente-24-25-062026\\\\deck.html\" -Encoding utf8)",
+      "PowerShell(\\(Get-Content \"c:\\\\Users\\\\PC\\\\OneDrive\\\\Desktop\\\\CLAUDE\\\\COMMAND CENTER\\\\COMMAND CENTER\\\\noc-multicliente-24-25-062026\\\\deck.html\" -Raw\\) -replace ' — Gerado via Claude Code', '' -replace 'Gerado via Claude Code — ', '' -replace 'Gerado via Claude Code', '' | Set-Content \"c:\\\\Users\\\\PC\\\\OneDrive\\\\Desktop\\\\CLAUDE\\\\COMMAND CENTER\\\\COMMAND CENTER\\\\noc-multicliente-24-25-062026\\\\deck.html\" -Encoding utf8)",
+      "PowerShell(python \"C:\\\\Users\\\\PC\\\\AppData\\\\Local\\\\Temp\\\\noc_noc_elven.py\")",
+      "PowerShell(python \"C:\\\\Users\\\\PC\\\\AppData\\\\Local\\\\Temp\\\\noc_elven2.py\")",
+      "Bash(node \"C:/Users/PC/.claude/skills/decks-skill/scripts/render-deck.js\" \"Relatórios/noc-multicliente-24-25-062026/deck.html\" --out \"Relatórios/noc-multicliente-24-25-062026/noc-multicliente-24-25-062026.pdf\")",
+      "Bash(cd \"C:/Users/PC/.claude/projects/C--Users-PC-OneDrive-Desktop-CLAUDE-COMMAND-CENTER/memory\")",
+      "Bash(cat MEMORY.md)"
+    ]
+  }
+}

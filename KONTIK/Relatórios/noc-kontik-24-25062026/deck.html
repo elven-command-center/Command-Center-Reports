@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontik | Relatório Command Center Operacional — 24–25/06/2026</title>
+    <link rel="stylesheet" href="elven-deck.css" />
+    <style>
+      /* Slide de detalhamento: tabela densa de 4 colunas (título largo).
+         Espaçamento apertado para a tabela + callout caberem na .content
+         sem invadir o rodapé .source. */
+      .slide.detail .matrix { margin-top: 12px; }
+      .slide.detail .matrix-row { grid-template-columns: 2.7fr 0.5fr 0.7fr 0.8fr; }
+      .slide.detail .matrix-row > div { padding: 6px 13px; font-size: 12px; }
+      .slide.detail .matrix-row > div:nth-child(n + 2) { text-align: right; }
+      .slide.detail .callout { margin-top: 14px; padding: 13px 20px; font-size: 13px; line-height: 1.34; }
+      /* Nome do cliente em destaque na capa. */
+      .cover .client { margin: 4px 0 18px; font-size: 46px; font-weight: 900; color: #fff; line-height: 1.02; letter-spacing: -0.5px; }
+      .cover .client span { display: block; font-size: 12px; font-weight: 900; letter-spacing: 2.5px; text-transform: uppercase; color: var(--lime); margin-bottom: 8px; }
+    </style>
+  </head>
+  <body>
+    <main class="deck">
+
+      <!-- 01 — CAPA -->
+      <section class="slide cover">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Command Center · Time NOC - Elven</div>
+          <div class="client"><span>Cliente</span>Kontik</div>
+          <h1>112 eventos do Time NOC - Elven: 100% reconhecidos e 98% resolvidos</h1>
+          <p class="sub">Métricas operacionais do Time NOC - Elven na organização Kontik — 112 eventos monitorados em 24–25/06/2026.</p>
+        </div>
+        <div class="metric-rail">
+          <div class="metric">
+            <div class="value">01:05:02</div>
+            <div class="label">MTTR médio</div>
+          </div>
+          <div class="metric">
+            <div class="value">112</div>
+            <div class="label">total de eventos</div>
+          </div>
+          <div class="metric">
+            <div class="value">98%</div>
+            <div class="label">taxa de resolução</div>
+          </div>
+          <div class="metric">
+            <div class="value">64</div>
+            <div class="label">runbooks executados</div>
+          </div>
+        </div>
+        <div class="source">24–25/06/2026 · Time NOC - Elven</div>
+      </section>
+
+      <!-- 02 — RESUMO EXECUTIVO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Resumo executivo</div>
+          <h2>Carga 100% Zupper/negócio: reconhecida integralmente, mas com TTR alto</h2>
+          <div class="three-col">
+            <div class="panel">
+              <h3>Volume de eventos</h3>
+              <p>112 eventos atribuídos ao Time NOC - Elven entre 24 e 25/06, concentrados em alertas de negócio Zupper e métricas MySQL. O maior gerador foi o digest de rows examined do MySQL (21 eventos).</p>
+            </div>
+            <div class="panel">
+              <h3>Tempo de resposta</h3>
+              <p>MTTR médio de 01:05:02 com 110 dos 112 eventos resolvidos (98%). Todos os 112 receberam ACK — reconhecimento de 100% da fila. Mas metade (56) levou mais de 30 min para resolver.</p>
+            </div>
+            <div class="panel">
+              <h3>Criticidade</h3>
+              <p>Os 112 eventos são integralmente not-classified — nenhum sev-1 ou sev-2. São alertas de negócio (quedas de venda, anomalias) e banco MySQL que exigem análise manual.</p>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Leitura final:</strong> O Time NOC - Elven reconhece 100% da fila, mas o TTR elevado em alertas de venda Zupper e a ausência total de classificação pedem playbooks de triagem dedicados.
+          </div>
+        </div>
+        <div class="source">24–25/06/2026 · Time NOC - Elven</div>
+      </section>
+
+      <!-- 03 — BREAKDOWN DE STATUS -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Status dos eventos</div>
+          <h2>Reconhecimento de 100%: toda a fila do time recebeu ACK</h2>
+          <div class="two-col">
+            <div class="matrix">
+              <div class="matrix-row matrix-head">
+                <div>Status</div>
+                <div>Qtd</div>
+                <div>%</div>
+              </div>
+              <div class="matrix-row">
+                <div>ACK + Resolvido</div>
+                <div>110</div>
+                <div>98,2%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Resolvido sem ACK</div>
+                <div>0</div>
+                <div>0,0%</div>
+              </div>
+              <div class="matrix-row">
+                <div>ACK sem Resolução</div>
+                <div class="risk med">2</div>
+                <div class="risk med">1,8%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Sem ACK e Sem Resolução</div>
+                <div>0</div>
+                <div>0,0%</div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence">
+                  <div class="big">100%</div>
+                  <div class="small">da fila recebeu ACK — nenhum evento ficou sem reconhecimento formal no turno.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">2</div>
+                  <div class="small">eventos reconhecidos mas ainda sem resolução — acompanhar até o fechamento.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">64</div>
+                  <div class="small">eventos com runbook executado — 57% da fila do turno foi guiada ou automatizada por runbook.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">24–25/06/2026 · Time NOC - Elven</div>
+      </section>
+
+      <!-- 04 — DISTRIBUIÇÃO POR SEVERIDADE -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Severidade</div>
+          <h2>Fila 100% não classificada — alertas de negócio e MySQL</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Distribuição por severidade</strong>
+                <span>24–25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-severidade"></div>
+              <div class="note">Todos os 112 eventos do Time NOC - Elven são not-classified — fila de alertas de negócio e MySQL sem severidade atribuída. Forte candidato a classificação proativa.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence">
+                  <div class="big">0</div>
+                  <div class="small">eventos sev-1-critical ou sev-2-high — nenhum evento classificado atribuído ao time.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">56</div>
+                  <div class="small">eventos com TTR acima de 30 min — 50% da fila. Gargalo principal de resolução.</div>
+                </div>
+                <div class="evidence hot">
+                  <div class="big">112</div>
+                  <div class="small">eventos not-classified — 100% da fila. Candidatos a triagem e classificação proativa.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">24–25/06/2026 · Time NOC - Elven</div>
+      </section>
+
+      <!-- 05 — TOP EVENTOS POR VOLUME -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Volume de alertas</div>
+          <h2>Digest MySQL e comparativos de venda lideram o volume</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 eventos por ocorrências</strong>
+                <span>24–25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-top-eventos"></div>
+              <div class="note">Os cinco maiores títulos somam 66 eventos (59% da fila do time), dominados pelo digest de rows examined do MySQL e pelos comparativos de queda de vendas Zupper.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">21</div>
+                  <div class="small">ocorrências do digest "MySQL rows examined alto" — maior gerador de ruído da fila do time.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">15</div>
+                  <div class="small">alertas de comparativo de vendas abaixo da média ponderada — análise de tendência de receita.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">12</div>
+                  <div class="small">comparativos de venda contra o mesmo dia da semana anterior — segundo maior monitor de negócio.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">24–25/06/2026 · Time NOC - Elven</div>
+      </section>
+
+      <!-- 06 — RECORRÊNCIA -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Recorrência</div>
+          <h2>MySQL e quedas de venda Zupper são os crônicos do time</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 alertas por recorrência</strong>
+                <span>histórico 30/03–25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-recorrencia"></div>
+              <div class="note">Recorrência medida sobre o histórico completo da fila do Time NOC - Elven (30/03–25/06/2026, 64 dias) — não apenas o turno de 112 eventos. CPU no PDB03 (163 disparos), pedidos/hora e MySQL disk busy lideram.</div>
+            </div>
+            <div>
+              <div class="matrix">
+                <div class="matrix-row matrix-head">
+                  <div>Título</div>
+                  <div>Dias</div>
+                  <div>Total</div>
+                </div>
+                <div class="matrix-row">
+                  <div>MySQL disk busy alto por instância</div>
+                  <div class="risk high">32</div>
+                  <div>119</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Zupper — Queda de Vendas 50%</div>
+                  <div class="risk high">31</div>
+                  <div>104</div>
+                </div>
+                <div class="matrix-row">
+                  <div>PDB03 — High CPU (&gt;95% 15m)</div>
+                  <div class="risk med">30</div>
+                  <div>163</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Queda de pedidos/hora (proxy MySQL)</div>
+                  <div class="risk med">25</div>
+                  <div>131</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Skyscanner/Gol queda 50% vs hora anterior</div>
+                  <div>22</div>
+                  <div>82</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">24–25/06/2026 · Time NOC - Elven</div>
+      </section>
+
+      <!-- 07 — ANÁLISE TTR PROLONGADO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Analise TTR prolongado</div>
+          <h2>TTR longo concentrado em vendas Zupper e digest MySQL</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 títulos com TTR acima de 30 min</strong>
+                <span>24–25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-ttr"></div>
+              <div class="note">Metade da fila (56 eventos) ultrapassou 30 min. Os TTRs mais altos estão em quedas de venda Zupper e no digest MySQL — investigações manuais de negócio.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">56</div>
+                  <div class="small">eventos com TTR acima de 30 min — 50% da fila do turno.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">08:42:14</div>
+                  <div class="small">Queda de vendas Latam (Zupper) — maior TTR acumulado registrado no turno.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">Zupper / Vendas</div>
+                  <div class="small">cluster com maior concentração de TTR longo — investigar causa raiz.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">24–25/06/2026 · Time NOC - Elven</div>
+      </section>
+
+      <!-- 08 — TAGS E CONTEXTO OPERACIONAL -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Tags e contexto operacional</div>
+          <h2>Zupper Business e Datastores concentram a fila do time</h2>
+          <div class="two-col">
+            <div>
+              <div class="matrix">
+                <div class="matrix-row matrix-head">
+                  <div>Tag</div>
+                  <div>Qtd</div>
+                  <div>%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Zupper Business</div>
+                  <div>59</div>
+                  <div>52,7%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Datastores</div>
+                  <div>39</div>
+                  <div>34,8%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Applications</div>
+                  <div>8</div>
+                  <div>7,1%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Monitors</div>
+                  <div>3</div>
+                  <div>2,7%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Zupper Intenção de Compras</div>
+                  <div>2</div>
+                  <div>1,8%</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">Zupper</div>
+                  <div class="small">tag dominante com 59 eventos — 52,7% do volume da fila.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">1</div>
+                  <div class="small">evento marcado como Infra — fila do time é quase toda negócio/banco, sem pressão de infraestrutura.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">6</div>
+                  <div class="small">categorias distintas identificadas no turno — diversidade de domínios impactados.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">24–25/06/2026 · Time NOC - Elven</div>
+      </section>
+
+      <!-- 09 — ALERTAS CRITICOS EM ABERTO -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Alertas criticos em aberto</div>
+          <h2>Dois alertas Zupper em aberto, um há quase 36 horas</h2>
+          <div class="matrix">
+            <div class="matrix-row matrix-head">
+              <div>Alerta</div>
+              <div>Severidade</div>
+              <div>TTR acumulado</div>
+              <div>Serviço / Cluster</div>
+            </div>
+            <div class="matrix-row">
+              <div>MySQL QPS alto — Server-06</div>
+              <div class="risk high">not-classified</div>
+              <div class="risk high">35:58:54</div>
+              <div>MySQL / Zupper</div>
+            </div>
+            <div class="matrix-row">
+              <div>Queda de vendas Gol (vs média ponderada)</div>
+              <div class="risk high">not-classified</div>
+              <div class="risk med">28:07:44</div>
+              <div>Zupper Business</div>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Acao recomendada:</strong> Os dois alertas em aberto são de negócio/banco Zupper, ambos acima de 28h — priorizar o QPS MySQL no Server-06 (≈36h) e validar a queda de vendas Gol com o time de negócio.
+          </div>
+        </div>
+        <div class="source">24–25/06/2026 · Time NOC - Elven</div>
+      </section>
+
+      <!-- 10 — DETALHAMENTO DOS EVENTOS -->
+      <section class="slide detail">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Detalhamento dos eventos</div>
+          <h2>Eventos do turno por título, runbook e TTR médio</h2>
+          <div class="matrix">
+            <div class="matrix-row matrix-head">
+              <div>Evento</div>
+              <div>Qtd</div>
+              <div>Runbook</div>
+              <div>TTR médio</div>
+            </div>
+            <div class="matrix-row">
+              <div>MySQL rows examined alto (digest)</div>
+              <div>21</div>
+              <div>1</div>
+              <div>43 min</div>
+            </div>
+            <div class="matrix-row">
+              <div>Comparativo vendas x média ponderada</div>
+              <div>15</div>
+              <div>15</div>
+              <div>81 min</div>
+            </div>
+            <div class="matrix-row">
+              <div>Comparativo vendas x mesmo dia (sem. ant.)</div>
+              <div>12</div>
+              <div>11</div>
+              <div>93 min</div>
+            </div>
+            <div class="matrix-row">
+              <div>Zupper — Queda de vendas Gol</div>
+              <div>9</div>
+              <div>8</div>
+              <div class="risk med">107 min</div>
+            </div>
+            <div class="matrix-row">
+              <div>Zupper — Queda de vendas Azul</div>
+              <div>9</div>
+              <div>9</div>
+              <div>69 min</div>
+            </div>
+            <div class="matrix-row">
+              <div>Zupper — Queda de vendas Latam</div>
+              <div>7</div>
+              <div>7</div>
+              <div class="risk high">180 min</div>
+            </div>
+            <div class="matrix-row">
+              <div>Redis — Fragmentation Ratios</div>
+              <div>6</div>
+              <div>0</div>
+              <div>16 min</div>
+            </div>
+            <div class="matrix-row">
+              <div>Zupper — Queda de Vendas 50%</div>
+              <div>5</div>
+              <div>5</div>
+              <div>66 min</div>
+            </div>
+            <div class="matrix-row">
+              <div>DatasourceNoData</div>
+              <div>3</div>
+              <div>0</div>
+              <div>10 min</div>
+            </div>
+            <div class="matrix-row">
+              <div>Migração Zupper — CDC tasks falhando</div>
+              <div>3</div>
+              <div>0</div>
+              <div>7 min</div>
+            </div>
+            <div class="matrix-row">
+              <div>Erros monitores HTTP (Login / Home)</div>
+              <div>2</div>
+              <div>0</div>
+              <div>28 min</div>
+            </div>
+            <div class="matrix-row">
+              <div>MySQL disk busy alto por instância</div>
+              <div>2</div>
+              <div>1</div>
+              <div>8 min</div>
+            </div>
+            <div class="matrix-row">
+              <div>Outros — 16 títulos (≤ 2 eventos cada)</div>
+              <div>18</div>
+              <div>7</div>
+              <div>—</div>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Total:</strong> 112 eventos em 28 títulos distintos · 64 runbooks executados · MTTR 01:05:02. Quedas de venda Zupper (Latam, Gol) puxam o TTR; o digest MySQL lidera o volume.
+          </div>
+        </div>
+        <div class="source">24–25/06/2026 · Time NOC - Elven</div>
+      </section>
+
+      <!-- 11 — CONCLUSÃO E PRÓXIMOS PASSOS -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Conclusão e próximos passos</div>
+          <h2>Fila de negócio bem reconhecida, mas com TTR e classificação a melhorar</h2>
+          <div class="takeaways">
+            <div class="takeaway">112 eventos atribuídos ao Time NOC - Elven, com 100% de ACK, 98% de resolução e 64 (57%) com runbook executado — fila integralmente reconhecida.</div>
+            <div class="takeaway">Toda a fila é not-classified e de negócio (Zupper/MySQL) — oportunidade clara de classificação proativa e playbooks dedicados.</div>
+            <div class="takeaway">Metade dos eventos (56) ultrapassou 30 min de TTR, com MTTR de 01:05:02 — gargalo em quedas de venda e digest MySQL.</div>
+            <div class="takeaway">Apenas 2 alertas em aberto, ambos Zupper e acima de 28h — QPS MySQL Server-06 e queda de vendas Gol.</div>
+          </div>
+          <div class="callout light">
+            <strong>Proximo passo:</strong> Criar playbook de triagem para os alertas de venda Zupper e o digest MySQL, reduzindo o TTR e classificando a fila hoje not-classified, nas próximas 24h.
+          </div>
+        </div>
+        <div class="source">24–25/06/2026 · Time NOC - Elven</div>
+      </section>
+
+    </main>
+
+    <script src="elven-deck-charts.js"></script>
+    <script>
+      function renderCharts() {
+        ElvenDeck.barChart(
+          document.getElementById("chart-severidade"),
+          { name: "Eventos", data: [112, 0, 0], color: ElvenDeck.colors.red },
+          { labels: ["not-classified", "sev-2-high", "sev-1-critical"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-top-eventos"),
+          { name: "Ocorrências", data: [21, 15, 12, 9, 9], color: ElvenDeck.colors.teal },
+          { labels: ["MySQL digest", "Vendas vs média", "Vendas vs D-7", "Queda Azul", "Queda Gol"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-recorrencia"),
+          { name: "Disparos totais", data: [163, 131, 119, 104, 82], color: "#34d399" },
+          { labels: ["CPU PDB03", "Pedidos/hora", "MySQL disk busy", "Vendas -50%", "Skyscanner Gol"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-ttr"),
+          { name: "Eventos TTR>30min", data: [11, 9, 8, 7, 6], color: ElvenDeck.colors.red },
+          { labels: ["MySQL digest", "Vendas vs média", "Vendas vs D-7", "Queda Gol", "Queda Azul"] }
+        );
+      }
+      window.addEventListener("load", renderCharts);
+      window.addEventListener("resize", renderCharts);
+    </script>
+  </body>
+</html>

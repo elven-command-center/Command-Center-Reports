@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Observability: From Zero to Hero | Dia 2</title>
+    <link rel="stylesheet" href="elven-deck.css" />
+  </head>
+  <body>
+    <main class="deck">
+      <section class="slide layout-cover cover">
+        <img class="logo on-dark" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Observability: From Zero to Hero - Dia 2</div>
+          <h1>Runtime suite fora do Kubernetes e AWS Lambda.</h1>
+          <p class="sub">
+            Bootstrap explícito em Node, Python e Lambda, com identidade de telemetria coerente entre runtimes.
+          </p>
+        </div>
+        <div class="metric-rail">
+          <div class="metric">
+            <div class="value">90'</div>
+            <div class="label">duração da sessão, seis blocos</div>
+          </div>
+          <div class="metric">
+            <div class="value">3</div>
+            <div class="label">runtimes: Node, Python e Lambda</div>
+          </div>
+          <div class="metric">
+            <div class="value">2</div>
+            <div class="label">hands-on guiados em ambiente real</div>
+          </div>
+          <div class="metric">
+            <div class="value">1</div>
+            <div class="label">mensagem: runtime muda, narrativa não</div>
+          </div>
+        </div>
+        <div class="source">Instrutor: time PS Elven. Curso de 3 dias - Dia 2.</div>
+      </section>
+
+      <section class="slide layout-executive-summary">
+        <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Teoria objetiva</div>
+          <h2>Cada runtime tem um caminho de bootstrap diferente, mas a mesma identidade de telemetria.</h2>
+          <div class="three-col">
+            <div class="panel">
+              <h3>Node</h3>
+              <p>Bootstrap via <code>NODE_OPTIONS</code> com preload do SDK Elven. O processo enxerga a instrumentação antes do primeiro require da aplicação.</p>
+            </div>
+            <div class="panel">
+              <h3>Python</h3>
+              <p>CLI wrapper e <code>sitecustomize</code>. O <code>init_from_env()</code> lê identidade e endpoint do ambiente.</p>
+            </div>
+            <div class="panel">
+              <h3>Lambda</h3>
+              <p>Layer via <code>AWS_LAMBDA_EXEC_WRAPPER=/opt/bootstrap</code>. Comparação honesta entre caminho manual e plugin Serverless.</p>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Frase do dia:</strong> fora do K8s a observabilidade fica menos mágica e mais honesta. O time entende como a telemetria realmente nasce.
+          </div>
+        </div>
+        <div class="source">Runtime suite real em day2-platform/, ambiente compose-lab.</div>
+      </section>
+
+      <section class="slide layout-architecture dark">
+        <img class="logo on-dark" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Arquitetura</div>
+          <h2>Node, Python e Lambda contam a mesma história para o mesmo collector.</h2>
+          <div class="diagram">
+            <div class="node">
+              <h3>Aplicações</h3>
+              <p><code>node-app</code>, <code>python-app</code> e <code>node-lambda</code>, cada uma com seu bootstrap.</p>
+            </div>
+            <div class="arrow">&rarr;</div>
+            <div class="node">
+              <h3>OTel Collector</h3>
+              <p>Recebe OTLP em <code>:4318</code>. Ambiente <code>compose-lab</code> local, <code>prod-lab</code> remoto.</p>
+            </div>
+            <div class="arrow">&rarr;</div>
+            <div class="node">
+              <h3>Stack LGTM</h3>
+              <p>Loki, Tempo e Mimir. Logs com <code>trace_id</code>, traces e métricas correlacionados.</p>
+            </div>
+          </div>
+          <div class="decision">
+            <div>
+              <h3>O que precisa permanecer igual</h3>
+              <p class="light-sub"><code>service.name</code>, <code>service.namespace</code>, <code>deployment.environment</code> e o endpoint OTLP entre os três runtimes.</p>
+            </div>
+            <div>
+              <h3>O que muda por runtime</h3>
+              <p class="light-sub">Apenas o mecanismo de bootstrap: preload, wrapper ou layer. A narrativa operacional não muda.</p>
+            </div>
+          </div>
+        </div>
+        <div class="source">Validação com smoke-local e smoke-aws antes de abrir dashboards no Dia 3.</div>
+      </section>
+
+      <section class="slide layout-hands-on">
+        <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Hands-on 1</div>
+          <h2>Habilitar o bootstrap comentado e provar a base com smoke-local antes do Grafana.</h2>
+          <div class="two-col">
+            <div>
+              <div class="code-block"><span class="cmt"># sobe o ambiente compose-lab</span>
+make compose-up
+
+<span class="cmt"># habilita bootstrap em node-app e python-app</span>
+make smoke-local
+
+<span class="cmt"># valida o caminho local:</span>
+<span class="cmt">#   collector  otel-collector:4318</span>
+<span class="cmt">#   ambiente   compose-lab</span>
+<span class="cmt">#   logs com trace_id e span_id</span>
+<span class="ok">OK</span> 3 serviços reportando telemetria</div>
+            </div>
+            <div class="panel" style="min-height: 300px;">
+              <h3>Critério de sucesso</h3>
+              <ul>
+                <li>Os três serviços aparecem no collector com identidade coerente.</li>
+                <li>Logs carregam <code>trace_id</code> e <code>span_id</code>.</li>
+                <li>Cenários de latência, erro e retry ficam visíveis em Tempo.</li>
+              </ul>
+              <div class="callout light">
+                <strong>Erro clássico:</strong> preload ausente. Sem ele, a app sobe sem instrumentação e o collector não recebe nada.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">Lab completo em labs/day-2/lab.md.</div>
+      </section>
+
+      <section class="slide layout-closing dark">
+        <img class="logo on-dark" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Fechamento - Dia 2</div>
+          <h2>Runtime muda. Narrativa operacional não.</h2>
+          <div class="takeaways">
+            <div class="takeaway">node-app mostra a borda e o começo da correlação entre serviços.</div>
+            <div class="takeaway">python-app mostra quote, commit, erro e retry no caminho real.</div>
+            <div class="takeaway">node-lambda mostra bootstrap serverless por dois caminhos.</div>
+            <div class="takeaway">smoke-local e smoke-aws provam a base antes de qualquer dashboard.</div>
+            <div class="takeaway">identidade coerente entre runtimes impede o Dia 3 de quebrar.</div>
+            <div class="takeaway">o próximo dia constrói alertas e dashboards sobre essa fundação.</div>
+          </div>
+        </div>
+        <div class="source">Próximo: Dia 3 - alertas e dashboards sobre a base instrumentada.</div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cliente | Tipo de análise — período</title>
+    <link rel="stylesheet" href="elven-deck.css" />
+  </head>
+  <body>
+    <main class="deck">
+      <!--
+        TEMPLATE client-report-deck — sistema visual kontik.
+        Regras de moldura (o lint checa): todo slide tem .content, .kicker e .logo;
+        o primeiro slide é class="slide cover"; canvas 1280x720; sem emoji.
+        Dentro do .content você COMPÕE livremente com os componentes do tema
+        (panel, two-col, three-col, timeline, callout, evidence, chart-card,
+        diagram, decision, matrix, takeaways). Catálogo: reference/slide-recipes.md
+      -->
+
+      <!-- 01 — CAPA (sempre class="slide cover"; logo on-dark) -->
+      <section class="slide cover">
+        <img class="logo on-dark" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Cliente / contexto - tipo de análise</div>
+          <h1>Headline-tese em uma frase declarativa e forte.</h1>
+          <p class="sub">
+            Subtítulo descritivo: escopo, fontes e janela temporal —
+            ex.: análise de logs e métricas entre DD/MM 00:00 e DD/MM 00:00 BRT.
+          </p>
+        </div>
+        <div class="metric-rail">
+          <div class="metric">
+            <div class="value">00:00</div>
+            <div class="label">descrição curta do número âncora</div>
+          </div>
+          <div class="metric">
+            <div class="value">000</div>
+            <div class="label">descrição curta do número âncora</div>
+          </div>
+          <div class="metric">
+            <div class="value">~00%</div>
+            <div class="label">descrição curta do número âncora</div>
+          </div>
+          <div class="metric">
+            <div class="value">+00%</div>
+            <div class="label">descrição curta do número âncora</div>
+          </div>
+        </div>
+        <div class="source">Fonte: Grafana orgId 000, datasources, cliente, ambiente.</div>
+      </section>
+
+      <!-- 02 — RESUMO EXECUTIVO (three-col de panels + callout) -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Resumo executivo</div>
+          <h2>A tese principal do relatório, em até duas linhas.</h2>
+          <div class="three-col">
+            <div class="panel">
+              <h3>1. Primeiro pilar</h3>
+              <p>Explicação objetiva em duas ou três linhas, com o dado que sustenta.</p>
+            </div>
+            <div class="panel">
+              <h3>2. Segundo pilar</h3>
+              <p>Explicação objetiva em duas ou três linhas, com o dado que sustenta.</p>
+            </div>
+            <div class="panel">
+              <h3>3. Terceiro pilar</h3>
+              <p>Explicação objetiva em duas ou três linhas, com o dado que sustenta.</p>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Leitura final:</strong> frase que costura os três pilares numa conclusão única.
+          </div>
+        </div>
+        <div class="source">Período analisado: DD/MM 00:00 a DD/MM 00:00 BRT.</div>
+      </section>
+
+      <!-- 03 — LINHA DO TEMPO (slide dark; timeline de até 6 marcos) -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Linha do tempo</div>
+          <h2>Resuma a janela em fases — frase curta que dá o arco da história.</h2>
+          <div class="timeline">
+            <div class="tl-item hot">
+              <div class="tl-time">00h-00h</div>
+              <div class="tl-title">Título do marco</div>
+              <div class="tl-copy">O que aconteceu nessa janela, em uma ou duas linhas.</div>
+            </div>
+            <div class="tl-item warn">
+              <div class="tl-time">00h-00h</div>
+              <div class="tl-title">Título do marco</div>
+              <div class="tl-copy">O que aconteceu nessa janela, em uma ou duas linhas.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-time">00h-00h</div>
+              <div class="tl-title">Título do marco</div>
+              <div class="tl-copy">O que aconteceu nessa janela, em uma ou duas linhas.</div>
+            </div>
+          </div>
+        </div>
+        <div class="source">Observação metodológica sobre como ler os timestamps.</div>
+      </section>
+
+      <!-- 04 — GRÁFICO + EVIDÊNCIA (score-grid: chart-card + 3 evidence) -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Ponto de análise</div>
+          <h2>Headline que diz o que o gráfico prova.</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Título do gráfico</strong>
+                <span>séries exibidas</span>
+              </div>
+              <div class="chart" data-chart="exemplo"></div>
+              <div class="note">Legenda: o que observar no gráfico, em uma ou duas linhas.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">dado</div>
+                  <div class="small">Evidência crítica que sustenta a tese.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">dado</div>
+                  <div class="small">Evidência de atenção.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">dado</div>
+                  <div class="small">Evidência positiva ou de contexto.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">Fonte da query / inspeção que originou os dados.</div>
+      </section>
+
+      <!-- 05 — FECHAMENTO (takeaways; pode usar matrix de ações no lugar) -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Conclusão e próximos passos</div>
+          <h2>Frase-chave de encerramento.</h2>
+          <div class="takeaways">
+            <div class="takeaway">Primeiro ponto de fechamento.</div>
+            <div class="takeaway">Segundo ponto de fechamento.</div>
+            <div class="takeaway">Terceiro ponto de fechamento.</div>
+            <div class="takeaway">Quarto ponto de fechamento.</div>
+          </div>
+          <div class="callout light">
+            <strong>Próximo passo:</strong> a ação concreta recomendada ao cliente.
+          </div>
+        </div>
+        <div class="source">Contato / responsável pela análise.</div>
+      </section>
+    </main>
+
+    <!-- Motor de gráficos. Defina os dados de cada [data-chart] em renderCharts(). -->
+    <script src="elven-deck-charts.js"></script>
+    <script>
+      function renderCharts() {
+        // Exemplo de gráfico de linha. Troque pelos seus dados reais.
+        ElvenDeck.lineChart(
+          document.querySelector('[data-chart="exemplo"]'),
+          [
+            { name: "Série A", data: [4, 6, 5, 9, 12, 10, 14], color: ElvenDeck.colors.teal },
+            { name: "Série B", data: [2, 3, 3, 4, 5, 6, 7], color: ElvenDeck.colors.red },
+          ],
+          { labels: ["00h", "04h", "08h", "12h", "16h", "20h", "24h"] }
+        );
+        // Gráfico de barras: ElvenDeck.barChart(el, { data: [...], color: ... }, { labels: [...] });
+      }
+      window.addEventListener("load", renderCharts);
+      window.addEventListener("resize", renderCharts);
+    </script>
+  </body>
+</html>

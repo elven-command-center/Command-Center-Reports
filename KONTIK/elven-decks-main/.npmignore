@@ -1,0 +1,9 @@
+docs/
+tests/
+.github/
+*.log
+.DS_Store
+.tmp-*
+node_modules/
+*.tgz
+.npm-pack-test/

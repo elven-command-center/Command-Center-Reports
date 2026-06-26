@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(claude mcp --help 2>&1)",
+      "Bash(claude mcp *)",
+      "Bash(/c/Users/PC/AppData/Roaming/npm/claude mcp *)",
+      "PowerShell($proc = Start-Process -FilePath \"C:\\\\Users\\\\PC\\\\AppData\\\\Roaming\\\\npm\\\\powerbi-modeling-mcp.cmd\" -NoNewWindow -PassThru -RedirectStandardOutput \"$env:TEMP\\\\pbi-out.txt\" -RedirectStandardError \"$env:TEMP\\\\pbi-err.txt\"; Start-Sleep -Seconds 3; $proc.Kill\\(\\); Get-Content \"$env:TEMP\\\\pbi-out.txt\" -ErrorAction SilentlyContinue; Get-Content \"$env:TEMP\\\\pbi-err.txt\" -ErrorAction SilentlyContinue)",
+      "mcp__powerbi-modeling-mcp__connection_operations",
+      "mcp__powerbi-modeling-mcp__table_operations",
+      "Bash(python -c ' *)",
+      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\PC\\\\OneDrive\\\\Desktop\\\\CLAUDE\\\\COMMAND CENTER\\\\BLIP\\\\Relatórios\\\\_template-noc\")",
+      "mcp__powerbi-modeling-mcp__database_operations"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\PC"
+    ]
+  }
+}
