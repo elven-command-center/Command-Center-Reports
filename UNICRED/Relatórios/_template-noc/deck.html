@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unicred | Relatório Command Center Operacional — {{DATA_EXIBICAO}}</title>
+    <link rel="stylesheet" href="elven-deck.css" />
+  </head>
+  <body>
+    <main class="deck">
+
+      <!-- 01 — CAPA -->
+      <section class="slide cover">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Command Center Unicred - Relatório Operacional</div>
+          <h1>{{HEADLINE_CAPA}}</h1>
+          <p class="sub">Métricas operacionais da organização Unicred — {{TOTAL_EVENTOS}} eventos monitorados em {{DATA_EXIBICAO}}.</p>
+        </div>
+        <div class="metric-rail">
+          <div class="metric">
+            <div class="value">{{MTTR}}</div>
+            <div class="label">MTTR médio</div>
+          </div>
+          <div class="metric">
+            <div class="value">{{TOTAL_EVENTOS}}</div>
+            <div class="label">total de eventos</div>
+          </div>
+          <div class="metric">
+            <div class="value">{{TAXA_RESOLUCAO}}</div>
+            <div class="label">taxa de resolução</div>
+          </div>
+        </div>
+        <div class="source">{{DATA_EXIBICAO}}</div>
+      </section>
+
+      <!-- 02 — RESUMO EXECUTIVO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Resumo executivo</div>
+          <h2>{{HEADLINE_RESUMO}}</h2>
+          <div class="three-col">
+            <div class="panel">
+              <h3>Volume de eventos</h3>
+              <p>{{TEXTO_VOLUME}}</p>
+            </div>
+            <div class="panel">
+              <h3>Tempo de resposta</h3>
+              <p>{{TEXTO_TEMPO}}</p>
+            </div>
+            <div class="panel">
+              <h3>Criticidade</h3>
+              <p>{{TEXTO_CRITICIDADE}}</p>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Leitura final:</strong> {{CALLOUT_RESUMO}}
+          </div>
+        </div>
+        <div class="source">{{DATA_EXIBICAO}}</div>
+      </section>
+
+      <!-- 03 — BREAKDOWN DE STATUS -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Status dos eventos</div>
+          <h2>{{HEADLINE_STATUS}}</h2>
+          <div class="two-col">
+            <div class="matrix">
+              <div class="matrix-row matrix-head">
+                <div>Status</div>
+                <div>Qtd</div>
+                <div>%</div>
+              </div>
+              <div class="matrix-row">
+                <div>ACK + Resolvido</div>
+                <div>{{ACK_RESOLVIDO}}</div>
+                <div>{{ACK_RESOLVIDO_PCT}}</div>
+              </div>
+              <div class="matrix-row">
+                <div>Resolvido sem ACK</div>
+                <div>{{RESOLVIDO_SEM_ACK}}</div>
+                <div>{{RESOLVIDO_SEM_ACK_PCT}}</div>
+              </div>
+              <div class="matrix-row">
+                <div>ACK sem Resolução</div>
+                <div class="risk med">{{ACK_SEM_RESOLUCAO}}</div>
+                <div class="risk med">{{ACK_SEM_RESOLUCAO_PCT}}</div>
+              </div>
+              <div class="matrix-row">
+                <div>Sem ACK e Sem Resolução</div>
+                <div class="risk high">{{SEM_ACK_SEM_RES}}</div>
+                <div class="risk high">{{SEM_ACK_SEM_RES_PCT}}</div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">{{SEM_ACK_SEM_RES}}</div>
+                  <div class="small">{{EVIDENCIA_SEM_ACK}}</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">{{ACK_SEM_RESOLUCAO}}</div>
+                  <div class="small">{{EVIDENCIA_ACK_PENDENTE}}</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">{{TAXA_RESOLUCAO}}</div>
+                  <div class="small">dos eventos foram resolvidos ao longo do turno de {{DATA_EXIBICAO_CURTA}}.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">{{DATA_EXIBICAO}}</div>
+      </section>
+
+      <!-- 04 — DISTRIBUIÇÃO POR SEVERIDADE -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Severidade</div>
+          <h2>{{HEADLINE_SEVERIDADE}}</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Distribuição por severidade</strong>
+                <span>{{DATA_EXIBICAO}}</span>
+              </div>
+              <div class="chart" id="chart-severidade"></div>
+              <div class="note">{{NOTA_SEVERIDADE}}</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">{{SEV1_QTD}}</div>
+                  <div class="small">eventos sev-1-critical — {{SEV1_PCT}} do total. Requerem resposta imediata.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">{{TTR30_QTD}}</div>
+                  <div class="small">eventos com TTR acima de 30 min — {{TTR30_PCT}} do total. Gargalo principal de resolução.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">{{NOT_CLASS_QTD}}</div>
+                  <div class="small">eventos not-classified — {{NOT_CLASS_PCT}}. Candidatos a triagem e classificação proativa.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">{{DATA_EXIBICAO}}</div>
+      </section>
+
+      <!-- 05 — TOP EVENTOS POR VOLUME -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Volume de alertas</div>
+          <h2>{{HEADLINE_VOLUME}}</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 eventos por ocorrências</strong>
+                <span>{{DATA_EXIBICAO}}</span>
+              </div>
+              <div class="chart" id="chart-top-eventos"></div>
+              <div class="note">{{NOTA_TOP5}}</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">{{TOP1_QTD}}</div>
+                  <div class="small">{{EVIDENCIA_TOP1}}</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">{{TOP2_QTD}}</div>
+                  <div class="small">{{EVIDENCIA_TOP2}}</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">{{TOP3_QTD}}</div>
+                  <div class="small">{{EVIDENCIA_TOP3}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">{{DATA_EXIBICAO}}</div>
+      </section>
+
+      <!-- 06 — RECORRÊNCIA -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Recorrência</div>
+          <h2>{{HEADLINE_RECORRENCIA}}</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 alertas por recorrência</strong>
+                <span>{{DATA_EXIBICAO}}</span>
+              </div>
+              <div class="chart" id="chart-recorrencia"></div>
+              <div class="note">{{NOTA_RECORRENCIA}}</div>
+            </div>
+            <div>
+              <div class="matrix">
+                <div class="matrix-row matrix-head">
+                  <div>Título</div>
+                  <div>Dias</div>
+                  <div>Total</div>
+                </div>
+                <div class="matrix-row">
+                  <div>{{REC1_TITULO}}</div>
+                  <div class="risk high">{{REC1_DIAS}}</div>
+                  <div>{{REC1_TOTAL}}</div>
+                </div>
+                <div class="matrix-row">
+                  <div>{{REC2_TITULO}}</div>
+                  <div class="risk high">{{REC2_DIAS}}</div>
+                  <div>{{REC2_TOTAL}}</div>
+                </div>
+                <div class="matrix-row">
+                  <div>{{REC3_TITULO}}</div>
+                  <div class="risk med">{{REC3_DIAS}}</div>
+                  <div>{{REC3_TOTAL}}</div>
+                </div>
+                <div class="matrix-row">
+                  <div>{{REC4_TITULO}}</div>
+                  <div class="risk med">{{REC4_DIAS}}</div>
+                  <div>{{REC4_TOTAL}}</div>
+                </div>
+                <div class="matrix-row">
+                  <div>{{REC5_TITULO}}</div>
+                  <div>{{REC5_DIAS}}</div>
+                  <div>{{REC5_TOTAL}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">{{DATA_EXIBICAO}}</div>
+      </section>
+
+      <!-- 07 — ANÁLISE TTR PROLONGADO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Analise TTR prolongado</div>
+          <h2>{{HEADLINE_TTR}}</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 títulos com TTR acima de 30 min</strong>
+                <span>{{DATA_EXIBICAO}}</span>
+              </div>
+              <div class="chart" id="chart-ttr"></div>
+              <div class="note">{{NOTA_TTR}}</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">{{TTR30_QTD}}</div>
+                  <div class="small">eventos com TTR acima de 30 min — {{TTR30_PCT}} do total do turno.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">{{TTR_MAX}}</div>
+                  <div class="small">{{EVIDENCIA_TTR_MAX}} — maior TTR acumulado registrado no turno.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">{{TTR_CLUSTER_PRINCIPAL}}</div>
+                  <div class="small">cluster com maior concentração de TTR longo — investigar causa raiz.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">{{DATA_EXIBICAO}}</div>
+      </section>
+
+      <!-- 08 — TAGS E CONTEXTO OPERACIONAL -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Tags e contexto operacional</div>
+          <h2>{{HEADLINE_TAGS}}</h2>
+          <div class="two-col">
+            <div>
+              <div class="matrix">
+                <div class="matrix-row matrix-head">
+                  <div>Tag</div>
+                  <div>Qtd</div>
+                  <div>%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>{{TAG1_NOME}}</div>
+                  <div>{{TAG1_QTD}}</div>
+                  <div>{{TAG1_PCT}}</div>
+                </div>
+                <div class="matrix-row">
+                  <div>{{TAG2_NOME}}</div>
+                  <div>{{TAG2_QTD}}</div>
+                  <div>{{TAG2_PCT}}</div>
+                </div>
+                <div class="matrix-row">
+                  <div>{{TAG3_NOME}}</div>
+                  <div>{{TAG3_QTD}}</div>
+                  <div>{{TAG3_PCT}}</div>
+                </div>
+                <div class="matrix-row">
+                  <div>{{TAG4_NOME}}</div>
+                  <div>{{TAG4_QTD}}</div>
+                  <div>{{TAG4_PCT}}</div>
+                </div>
+                <div class="matrix-row">
+                  <div>{{TAG5_NOME}}</div>
+                  <div>{{TAG5_QTD}}</div>
+                  <div>{{TAG5_PCT}}</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">{{TAG1_NOME}}</div>
+                  <div class="small">tag dominante com {{TAG1_QTD}} eventos — {{TAG1_PCT}} do volume total.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">{{TAG_INFRA_QTD}}</div>
+                  <div class="small">{{EVIDENCIA_TAGS_INFRA}}</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">{{TAG_TOTAL_CATEGORIAS}}</div>
+                  <div class="small">categorias distintas identificadas no turno — diversidade de domínios impactados.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">{{DATA_EXIBICAO}}</div>
+      </section>
+
+      <!-- 09 — ALERTAS CRITICOS EM ABERTO -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Alertas criticos em aberto</div>
+          <h2>{{HEADLINE_ALERTAS}}</h2>
+          <div class="matrix">
+            <div class="matrix-row matrix-head">
+              <div>Alerta</div>
+              <div>Severidade</div>
+              <div>TTR acumulado</div>
+              <div>Serviço / Cluster</div>
+            </div>
+            <!-- Repetir matrix-row para cada alerta em aberto -->
+            <div class="matrix-row">
+              <div>{{ALERTA_1_NOME}}</div>
+              <div class="risk high">{{ALERTA_1_SEV}}</div>
+              <div class="risk high">{{ALERTA_1_TTR}}</div>
+              <div>{{ALERTA_1_SERVICO}}</div>
+            </div>
+            <div class="matrix-row">
+              <div>{{ALERTA_2_NOME}}</div>
+              <div class="risk high">{{ALERTA_2_SEV}}</div>
+              <div class="risk med">{{ALERTA_2_TTR}}</div>
+              <div>{{ALERTA_2_SERVICO}}</div>
+            </div>
+            <div class="matrix-row">
+              <div>{{ALERTA_3_NOME}}</div>
+              <div>{{ALERTA_3_SEV}}</div>
+              <div class="risk med">{{ALERTA_3_TTR}}</div>
+              <div>{{ALERTA_3_SERVICO}}</div>
+            </div>
+            <div class="matrix-row">
+              <div>{{ALERTA_4_NOME}}</div>
+              <div>{{ALERTA_4_SEV}}</div>
+              <div class="risk med">{{ALERTA_4_TTR}}</div>
+              <div>{{ALERTA_4_SERVICO}}</div>
+            </div>
+            <div class="matrix-row">
+              <div>{{ALERTA_5_NOME}}</div>
+              <div>{{ALERTA_5_SEV}}</div>
+              <div>{{ALERTA_5_TTR}}</div>
+              <div>{{ALERTA_5_SERVICO}}</div>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Acao recomendada:</strong> {{CALLOUT_ALERTAS}}
+          </div>
+        </div>
+        <div class="source">{{DATA_EXIBICAO}}</div>
+      </section>
+
+      <!-- 10 — CONCLUSÃO E PRÓXIMOS PASSOS -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Conclusão e próximos passos</div>
+          <h2>{{HEADLINE_CONCLUSAO}}</h2>
+          <div class="takeaways">
+            <div class="takeaway">{{TAKEAWAY_1}}</div>
+            <div class="takeaway">{{TAKEAWAY_2}}</div>
+            <div class="takeaway">{{TAKEAWAY_3}}</div>
+            <div class="takeaway">{{TAKEAWAY_4}}</div>
+          </div>
+          <div class="callout light">
+            <strong>Proximo passo:</strong> {{CALLOUT_CONCLUSAO}}
+          </div>
+        </div>
+        <div class="source">{{DATA_EXIBICAO}}</div>
+      </section>
+
+    </main>
+
+    <script src="elven-deck-charts.js"></script>
+    <script>
+      function renderCharts() {
+        ElvenDeck.barChart(
+          document.getElementById("chart-severidade"),
+          { name: "Eventos", data: [{{SEV1_QTD_NUM}}, {{NOT_CLASS_QTD_NUM}}], color: ElvenDeck.colors.red },
+          { labels: ["sev-1-critical", "not-classified"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-top-eventos"),
+          { name: "Ocorrências", data: [{{TOP5_DADOS}}], color: ElvenDeck.colors.teal },
+          { labels: [{{TOP5_LABELS}}] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-recorrencia"),
+          { name: "Ocorrências", data: [{{REC5_DADOS}}], color: "#34d399" },
+          { labels: [{{REC5_LABELS}}] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-ttr"),
+          { name: "Eventos TTR>30min", data: [{{TTR5_DADOS}}], color: ElvenDeck.colors.red },
+          { labels: [{{TTR5_LABELS}}] }
+        );
+      }
+      window.addEventListener("load", renderCharts);
+      window.addEventListener("resize", renderCharts);
+    </script>
+  </body>
+</html>
