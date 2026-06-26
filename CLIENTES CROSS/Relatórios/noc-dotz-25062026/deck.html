@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dotz | Relatório Command Center Operacional — 25/06/2026</title>
+    <link rel="stylesheet" href="elven-deck.css" />
+  </head>
+  <body>
+    <main class="deck">
+
+      <!-- 01 — CAPA -->
+      <section class="slide cover">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div style="position:absolute; top:42px; left:72px;">
+          <div style="font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:6px;">Cliente</div>
+          <div style="font-size:42px; font-weight:800; letter-spacing:0.04em; color:#d7ff63; line-height:1;">Dotz</div>
+        </div>
+        <div class="content" style="top:130px;">
+          <div class="kicker">Command Center Dotz - Relatório Operacional</div>
+          <h1>Operação estável com alerta de boleto crítico prolongado e Canal STDCred em aberto</h1>
+          <p class="sub">Métricas operacionais da organização Dotz — 12 eventos monitorados em 25/06/2026.</p>
+        </div>
+        <div class="metric-rail">
+          <div class="metric">
+            <div class="value">01:30:24</div>
+            <div class="label">MTTR médio</div>
+          </div>
+          <div class="metric">
+            <div class="value">00:00:40</div>
+            <div class="label">MTTA médio</div>
+          </div>
+          <div class="metric">
+            <div class="value">12</div>
+            <div class="label">total de eventos</div>
+          </div>
+          <div class="metric">
+            <div class="value">92%</div>
+            <div class="label">taxa de resolução</div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 02 — RESUMO EXECUTIVO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Resumo executivo</div>
+          <h2>12 eventos monitorados — operação estável com foco em resolução de TTR longo</h2>
+          <div class="three-col">
+            <div class="panel">
+              <h3>Volume de eventos</h3>
+              <p>12 eventos registrados no turno de 25/06. Payments Conductor DataHub e Canal STDCred Sem Acúmulos lideraram as ocorrências com 3 disparos cada, concentrando 50% do volume total.</p>
+            </div>
+            <div class="panel">
+              <h3>Tempo de resposta</h3>
+              <p>MTTR médio de 01:30:24, fortemente impactado pelo evento Payments - Pagamento de Boletos Bancários com TTR de 10h 59min. MTTA médio de 00:00:40 — 5 eventos reconhecidos com tempo de ACK ágil.</p>
+            </div>
+            <div class="panel">
+              <h3>Criticidade</h3>
+              <p>5 eventos sev-2-high e 4 not-classified. 4 eventos ultrapassaram 30 min de TTR, sendo o principal o Boletos Bancários com quase 11 horas em resolução. Canal STDCred encerrou o turno em aberto.</p>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Leitura final:</strong> Turno operacionalmente controlado, com 92% de resolução e MTTA de 40s — atenção ao evento de boletos que permaneceu ativo por 11 horas e ao Canal STDCred ainda em aberto ao fim do turno.
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 03 — BREAKDOWN DE STATUS -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Status dos eventos</div>
+          <h2>5 eventos reconhecidos no turno — MTTA médio de 40 segundos e 1 alerta em aberto</h2>
+          <div class="two-col">
+            <div class="matrix">
+              <div class="matrix-row matrix-head">
+                <div>Status</div>
+                <div>Qtd</div>
+                <div>%</div>
+              </div>
+              <div class="matrix-row">
+                <div>ACK + Resolvido</div>
+                <div>4</div>
+                <div>33,3%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Resolvido sem ACK</div>
+                <div>7</div>
+                <div>58,3%</div>
+              </div>
+              <div class="matrix-row">
+                <div>ACK sem Resolução</div>
+                <div class="risk med">1</div>
+                <div class="risk med">8,3%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Sem ACK e Sem Resolução</div>
+                <div class="risk high">0</div>
+                <div class="risk high">0,0%</div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">4</div>
+                  <div class="small">eventos com ACK + Resolução no turno de 25/06 — reconhecimento operacional presente</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">00:00:40</div>
+                  <div class="small">MTTA médio — 5 eventos reconhecidos, tempo de reconhecimento ágil</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">92%</div>
+                  <div class="small">dos eventos foram resolvidos ao longo do turno de 25/06.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 04 — DISTRIBUIÇÃO POR SEVERIDADE -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Severidade</div>
+          <h2>sev-2-high domina com 42% — 4 eventos com TTR acima de 30 min evidenciam gargalos de resolução</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Distribuição por severidade</strong>
+                <span>25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-severidade"></div>
+              <div class="note">Dotz não possui sev-1-critical; sev-2-high é a severidade mais crítica com 5 eventos (42%). Not-classified com 4 eventos (33%) e sev-5-informational com 3 (25%).</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">5</div>
+                  <div class="small">eventos sev-2-high — 42% do total. Severidade mais crítica monitorada na Dotz.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">4</div>
+                  <div class="small">eventos com TTR acima de 30 min — 33% do total. Gargalo principal de resolução.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">4</div>
+                  <div class="small">eventos not-classified — 33%. Candidatos a triagem e classificação proativa.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 05 — TOP EVENTOS POR VOLUME -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Volume de alertas</div>
+          <h2>Payments Conductor e Canal STDCred lideram com 3 disparos cada em 25/06</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 eventos por ocorrências</strong>
+                <span>25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-top-eventos"></div>
+              <div class="note">Payments Conductor DataHub e Canal STDCred dispararam 3 vezes cada, concentrando 50% do volume do turno. Os demais 3 títulos registraram 1 ocorrência cada.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">3</div>
+                  <div class="small">disparos do Payments Conductor DataHub — API Dotz-com-br, todos resolvidos em menos de 4 min.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">3</div>
+                  <div class="small">disparos do Canal STDCred Sem Acúmulos (30 min) — 2 resolvidos, 1 em aberto ao fim do turno.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">1</div>
+                  <div class="small">Canal TEF Sem Trocas (90 min) — resolvido com TTR de 1h 51min.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 06 — RECORRÊNCIA -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Recorrência</div>
+          <h2>Payments Conductor DataHub presente todos os 7 dias consecutivos — padrão de recorrência crítica</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 alertas por recorrência</strong>
+                <span>25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-recorrencia"></div>
+              <div class="note">Payments Conductor DataHub disparou em todos os 7 dias da janela analisada (15 eventos total). DatasourceNoData concentra 58 eventos em 4 dias — investigação urgente.</div>
+            </div>
+            <div>
+              <div class="matrix">
+                <div class="matrix-row matrix-head">
+                  <div>Título</div>
+                  <div>Dias</div>
+                  <div>Total</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Payments Conductor DataHub</div>
+                  <div class="risk high">7</div>
+                  <div>15</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Canal STDCred Sem Acúmulos</div>
+                  <div class="risk high">5</div>
+                  <div>13</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Apple Store - Conta Dotz</div>
+                  <div class="risk med">5</div>
+                  <div>10</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Payments - Pgto de Boletos</div>
+                  <div class="risk med">5</div>
+                  <div>5</div>
+                </div>
+                <div class="matrix-row">
+                  <div>DatasourceNoData</div>
+                  <div>4</div>
+                  <div>58</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 07 — ANÁLISE TTR PROLONGADO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Analise TTR prolongado</div>
+          <h2>4 eventos com TTR acima de 30 min — Payments Boletos acumula quase 11 horas sem resolução rápida</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top títulos com TTR acima de 30 min</strong>
+                <span>25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-ttr"></div>
+              <div class="note">4 eventos ultrapassaram 30 min de TTR. Payments Boletos domina com 10h 59min — candidato prioritário a análise de causa raiz e revisão de threshold.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">4</div>
+                  <div class="small">eventos com TTR acima de 30 min — 33% do total do turno.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">10:59:02</div>
+                  <div class="small">Payments - Pagamento de Boletos Bancários — maior TTR acumulado registrado no turno.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">Payments</div>
+                  <div class="small">cluster com maior concentração de TTR longo — investigar causa raiz.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 08 — TAGS E CONTEXTO OPERACIONAL -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Tags e contexto operacional</div>
+          <h2>4 categorias de tags identificadas — negócios varejo lidera com 5 eventos taggeados</h2>
+          <div class="two-col">
+            <div>
+              <div class="matrix">
+                <div class="matrix-row matrix-head">
+                  <div>Tag</div>
+                  <div>Qtd</div>
+                  <div>% do total</div>
+                </div>
+                <div class="matrix-row">
+                  <div>negocios: varejo</div>
+                  <div>5</div>
+                  <div>42%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>canal: STDCred</div>
+                  <div>3</div>
+                  <div>25%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>canal: 41</div>
+                  <div>1</div>
+                  <div>8%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>canal: TOTVS</div>
+                  <div>1</div>
+                  <div>8%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>—</div>
+                  <div>—</div>
+                  <div>—</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">negocios: varejo</div>
+                  <div class="small">tag dominante com 5 eventos — 42% do volume total.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">0</div>
+                  <div class="small">Nenhum evento de infraestrutura (kubernetes, redis, cloud) identificado no turno — alertas concentrados em canais e negócios.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">4</div>
+                  <div class="small">categorias distintas identificadas no turno — diversidade de domínios impactados.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 09 — ALERTAS CRITICOS EM ABERTO -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Alertas criticos em aberto</div>
+          <h2>1 alerta em aberto ao fim do turno — Canal STDCred Sem Acúmulos requer atenção</h2>
+          <div class="matrix">
+            <div class="matrix-row matrix-head">
+              <div>Alerta</div>
+              <div>Severidade</div>
+              <div>TTR acumulado</div>
+              <div>Serviço / Cluster</div>
+            </div>
+            <div class="matrix-row">
+              <div>Canal STDCred Sem Acúmulos (30 min)</div>
+              <div class="risk high">sev-2-high</div>
+              <div class="risk high">04:59:53</div>
+              <div>Canal STDCred</div>
+            </div>
+            <div class="matrix-row">
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+            </div>
+            <div class="matrix-row">
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+            </div>
+            <div class="matrix-row">
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+            </div>
+            <div class="matrix-row">
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Acao recomendada:</strong> Escalar investigação do Canal STDCred Sem Acúmulos — evento reconhecido às 19h, sem resolução até o fim do turno. Verificar no início do turno seguinte.
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 10 — CONCLUSÃO E PRÓXIMOS PASSOS -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Conclusão e próximos passos</div>
+          <h2>Turno estável — Payments Boletos e recorrência de canal demandam ação preventiva</h2>
+          <div class="takeaways">
+            <div class="takeaway">92% de resolução no turno com 12 eventos — operação dentro do padrão esperado para a Dotz.</div>
+            <div class="takeaway">MTTR de 01:30:24 elevado pelo Payments Boletos (10h 59min) — outlier que distorce a média e demanda RCA.</div>
+            <div class="takeaway">Payments Conductor DataHub recorrente por 7 dias consecutivos — plano de ação preventivo necessário para reduzir disparos.</div>
+            <div class="takeaway">Canal STDCred encerrou o turno em aberto (acknowledged às 19h) — acompanhar no início do próximo turno.</div>
+          </div>
+          <div class="callout light">
+            <strong>Proximo passo:</strong> Abrir RCA para Payments - Pagamento de Boletos Bancários (TTR ~11h) e planejar supressão ou ajuste de threshold para Payments Conductor DataHub (7 dias consecutivos, 15 eventos).
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+    </main>
+
+    <script src="elven-deck-charts.js"></script>
+    <script>
+      function renderCharts() {
+        ElvenDeck.barChart(
+          document.getElementById("chart-severidade"),
+          { name: "Eventos", data: [5, 4, 3], color: ElvenDeck.colors.red },
+          { labels: ["sev-2-high", "not-classified", "sev-5-informational"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-top-eventos"),
+          { name: "Ocorrências", data: [3, 3, 1, 1, 1], color: ElvenDeck.colors.teal },
+          { labels: ["Payments Conductor", "Canal STDCred", "Canal TEF 90min", "Canal TOTVS", "Outline"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-recorrencia"),
+          { name: "Ocorrências", data: [15, 13, 10, 5, 58], color: "#34d399" },
+          { labels: ["Payments Conductor", "Canal STDCred", "Apple Store", "Payments Boletos", "DatasourceNoData"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-ttr"),
+          { name: "Eventos TTR>30min", data: [1, 1, 1, 1], color: ElvenDeck.colors.red },
+          { labels: ["Payments Boletos", "Accertify URL", "Canal TEF 90min", "Canal STDCred 30min"] }
+        );
+      }
+      window.addEventListener("load", renderCharts);
+      window.addEventListener("resize", renderCharts);
+    </script>
+  </body>
+</html>

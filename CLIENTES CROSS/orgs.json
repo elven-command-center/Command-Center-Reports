@@ -1,0 +1,19 @@
+{
+  "orgs": [
+    {
+      "org_uid": "e4897023-d487-4c9c-b95e-944225f5e2cc",
+      "org_name": "Onfly",
+      "org_id": 33
+    },
+    {
+      "org_uid": "ee4d4a77-38c6-44e6-a499-e4cbc07c19ac",
+      "org_name": "Elven observability",
+      "org_id": 2472
+    },
+    {
+      "org_uid": "4454360a-a533-4629-8672-739949bf7810",
+      "org_name": "Dotz",
+      "org_id": 1240
+    }
+  ]
+}
