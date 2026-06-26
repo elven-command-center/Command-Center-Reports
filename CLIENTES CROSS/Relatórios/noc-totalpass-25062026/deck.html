@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TotalPass | Relatório Command Center Operacional — 25/06/2026</title>
+    <link rel="stylesheet" href="elven-deck.css" />
+  </head>
+  <body>
+    <main class="deck">
+
+      <!-- 01 — CAPA -->
+      <section class="slide cover">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div style="position:absolute; top:42px; left:72px;">
+          <div style="font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:6px;">Cliente</div>
+          <div style="font-size:42px; font-weight:800; letter-spacing:0.04em; color:#d7ff63; line-height:1;">TotalPass</div>
+        </div>
+        <div class="content" style="top:130px;">
+          <div class="kicker">Command Center TotalPass - Relatório Operacional</div>
+          <h1>Operação TotalPass estável — 3 eventos críticos resolvidos em 16 minutos</h1>
+          <p class="sub">Métricas operacionais da organização TotalPass — 3 eventos monitorados em 25/06/2026.</p>
+        </div>
+        <div class="metric-rail">
+          <div class="metric">
+            <div class="value">00:16:19</div>
+            <div class="label">MTTR médio</div>
+          </div>
+          <div class="metric">
+            <div class="value">00:00:47</div>
+            <div class="label">MTTA médio</div>
+          </div>
+          <div class="metric">
+            <div class="value">3</div>
+            <div class="label">total de eventos</div>
+          </div>
+          <div class="metric">
+            <div class="value">100%</div>
+            <div class="label">taxa de resolução</div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 02 — RESUMO EXECUTIVO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Resumo executivo</div>
+          <h2>Turno com volume mínimo e resposta exemplar</h2>
+          <div class="three-col">
+            <div class="panel">
+              <h3>Volume de eventos</h3>
+              <p>Foram monitorados 3 eventos no turno de 25/06, volume reduzido concentrado em um único alerta crítico de CPU no DocumentDB (totalpay-0).</p>
+            </div>
+            <div class="panel">
+              <h3>Tempo de resposta</h3>
+              <p>MTTR médio de 16 minutos e 19 segundos — todos os eventos resolvidos dentro do SLA. Tempo de reconhecimento (ACK) médio de 47 segundos, indicando equipe em alta prontidão.</p>
+            </div>
+            <div class="panel">
+              <h3>Criticidade</h3>
+              <p>100% dos eventos classificados como sev-1-critical. Um único alerta excedeu 30 minutos de TTR (37:59), representando 33% do total do turno.</p>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Leitura final:</strong> Turno de baixo volume com resolução total — oportunidade de investigar a causa raiz do ciclo de CPU alto no DocumentDB totalpay-0 antes de novo disparo.
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 03 — BREAKDOWN DE STATUS -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Status dos eventos</div>
+          <h2>100% dos eventos reconhecidos e resolvidos no turno</h2>
+          <div class="two-col">
+            <div class="matrix">
+              <div class="matrix-row matrix-head">
+                <div>Status</div>
+                <div>Qtd</div>
+                <div>%</div>
+              </div>
+              <div class="matrix-row">
+                <div>ACK + Resolvido</div>
+                <div>3</div>
+                <div>100,0%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Resolvido sem ACK</div>
+                <div>0</div>
+                <div>0,0%</div>
+              </div>
+              <div class="matrix-row">
+                <div>ACK sem Resolução</div>
+                <div class="risk med">0</div>
+                <div class="risk med">0,0%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Sem ACK e Sem Resolução</div>
+                <div class="risk high">0</div>
+                <div class="risk high">0,0%</div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">0</div>
+                  <div class="small">eventos sem ACK e sem resolução — nenhum residual no turno de 25/06.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">00:00:47</div>
+                  <div class="small">MTTA médio de 00:00:47 — 3 eventos reconhecidos no turno.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">100%</div>
+                  <div class="small">dos eventos foram resolvidos ao longo do turno de 25/06.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 04 — DISTRIBUIÇÃO POR SEVERIDADE -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Severidade</div>
+          <h2>3 eventos sev-1-critical — 1 com TTR acima de 30 minutos</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Distribuição por severidade</strong>
+                <span>25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-severidade"></div>
+              <div class="note">Todos os 3 eventos do turno são sev-1-critical. Nenhum evento not-classified registrado — ambiente de monitoramento bem configurado.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">3</div>
+                  <div class="small">eventos sev-1-critical — 100% do total. Requerem resposta imediata.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">1</div>
+                  <div class="small">evento com TTR acima de 30 min — 33% do total. Gargalo principal de resolução.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">0</div>
+                  <div class="small">eventos not-classified — 0%. Sem necessidade de triagem proativa no turno.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 05 — TOP EVENTOS POR VOLUME -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Volume de alertas</div>
+          <h2>Um único título concentrou 100% dos alertas do turno</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 eventos por ocorrências</strong>
+                <span>25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-top-eventos"></div>
+              <div class="note">Único alerta ativo no turno — CPU alto no DocumentDB totalpay-0 com 3 disparos, todos resolvidos dentro do SLA.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">3</div>
+                  <div class="small">CPU alto no DocumentDB totalpay-0 — 3 disparos, todos reconhecidos e resolvidos no turno.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">—</div>
+                  <div class="small">Nenhum segundo título registrado no turno de 25/06.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">—</div>
+                  <div class="small">Nenhum terceiro título registrado no turno de 25/06.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 06 — RECORRÊNCIA -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Recorrência</div>
+          <h2>Alerta recorrente identificado — 2 dias de incidência na semana</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 alertas por recorrência</strong>
+                <span>25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-recorrencia"></div>
+              <div class="note">O alerta de CPU alto no DocumentDB apareceu em 2 dos últimos 7 dias, com 4 disparos acumulados — padrão de recorrência a investigar.</div>
+            </div>
+            <div>
+              <div class="matrix">
+                <div class="matrix-row matrix-head">
+                  <div>Título</div>
+                  <div>Dias</div>
+                  <div>Total</div>
+                </div>
+                <div class="matrix-row">
+                  <div>CPU alto no DocumentDB (totalpay-0)</div>
+                  <div class="risk high">2</div>
+                  <div>4</div>
+                </div>
+                <div class="matrix-row">
+                  <div>—</div>
+                  <div>—</div>
+                  <div>—</div>
+                </div>
+                <div class="matrix-row">
+                  <div>—</div>
+                  <div>—</div>
+                  <div>—</div>
+                </div>
+                <div class="matrix-row">
+                  <div>—</div>
+                  <div>—</div>
+                  <div>—</div>
+                </div>
+                <div class="matrix-row">
+                  <div>—</div>
+                  <div>—</div>
+                  <div>—</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 07 — ANÁLISE TTR PROLONGADO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Analise TTR prolongado</div>
+          <h2>1 evento com TTR prolongado — maior TTR de 00:37:59</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 títulos com TTR acima de 30 min</strong>
+                <span>25/06/2026</span>
+              </div>
+              <div class="chart" id="chart-ttr"></div>
+              <div class="note">1 evento com TTR acima de 30 min — CPU alto no DocumentDB totalpay-0 (37:59). Único ponto de atenção no turno.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">1</div>
+                  <div class="small">evento com TTR acima de 30 min — 33% do total do turno.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">00:37:59</div>
+                  <div class="small">CPU alto no DocumentDB (totalpay-0) — maior TTR acumulado registrado no turno.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">totalpay-0</div>
+                  <div class="small">instância com maior concentração de TTR longo — investigar causa raiz.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 08 — TAGS E CONTEXTO OPERACIONAL -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Tags e contexto operacional</div>
+          <h2>Sem tags categorizadas no turno — ambiente de baixo volume</h2>
+          <div class="two-col">
+            <div>
+              <div class="matrix">
+                <div class="matrix-row matrix-head">
+                  <div>Tag</div>
+                  <div>Qtd</div>
+                  <div>% do total</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Sem tags registradas</div>
+                  <div>—</div>
+                  <div>—</div>
+                </div>
+                <div class="matrix-row">
+                  <div>—</div>
+                  <div>—</div>
+                  <div>—</div>
+                </div>
+                <div class="matrix-row">
+                  <div>—</div>
+                  <div>—</div>
+                  <div>—</div>
+                </div>
+                <div class="matrix-row">
+                  <div>—</div>
+                  <div>—</div>
+                  <div>—</div>
+                </div>
+                <div class="matrix-row">
+                  <div>—</div>
+                  <div>—</div>
+                  <div>—</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">—</div>
+                  <div class="small">Nenhuma tag dominante registrada no turno de 25/06.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">0</div>
+                  <div class="small">Nenhum evento categorizado por tag de infraestrutura no turno de 25/06.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">0</div>
+                  <div class="small">categorias distintas identificadas no turno — oportunidade de enriquecer metadados de alertas.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 09 — ALERTAS CRITICOS EM ABERTO -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Alertas criticos em aberto</div>
+          <h2>Nenhum alerta crítico em aberto ao final do turno</h2>
+          <div class="matrix">
+            <div class="matrix-row matrix-head">
+              <div>Alerta</div>
+              <div>Severidade</div>
+              <div>TTR acumulado</div>
+              <div>Serviço / Cluster</div>
+            </div>
+            <div class="matrix-row">
+              <div>Nenhum alerta residual — todos os eventos do turno foram resolvidos</div>
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+            </div>
+            <div class="matrix-row">
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+            </div>
+            <div class="matrix-row">
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+            </div>
+            <div class="matrix-row">
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+            </div>
+            <div class="matrix-row">
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+              <div>—</div>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Acao recomendada:</strong> Investigar causa raiz do ciclo de CPU alto no DocumentDB totalpay-0 para prevenir reincidência nos próximos turnos.
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+      <!-- 10 — CONCLUSÃO E PRÓXIMOS PASSOS -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Conclusão e próximos passos</div>
+          <h2>Turno estável — foco em prevenção do ciclo de CPU no DocumentDB</h2>
+          <div class="takeaways">
+            <div class="takeaway">3 eventos sev-1-critical processados e resolvidos — taxa de resolução de 100% no turno.</div>
+            <div class="takeaway">MTTR médio de 16min19s e ACK em 47s demonstram alta prontidão operacional da equipe.</div>
+            <div class="takeaway">Alerta de CPU alto no DocumentDB totalpay-0 com padrão de recorrência — 2 dias nos últimos 7, 4 disparos acumulados.</div>
+            <div class="takeaway">Sem alertas residuais ao final do turno — nenhum item em aberto para o próximo turno.</div>
+          </div>
+          <div class="callout light">
+            <strong>Proximo passo:</strong> Abrir investigação de causa raiz para o ciclo de CPU no DocumentDB totalpay-0 — verificar métricas de conexão, índices e consultas longas.
+          </div>
+        </div>
+        <div class="source">25/06/2026</div>
+      </section>
+
+    </main>
+
+    <script src="elven-deck-charts.js"></script>
+    <script>
+      function renderCharts() {
+        ElvenDeck.barChart(
+          document.getElementById("chart-severidade"),
+          { name: "Eventos", data: [3, 0], color: ElvenDeck.colors.red },
+          { labels: ["sev-1-critical", "not-classified"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-top-eventos"),
+          { name: "Ocorrências", data: [3], color: ElvenDeck.colors.teal },
+          { labels: ["CPU alto DocumentDB (totalpay-0)"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-recorrencia"),
+          { name: "Ocorrências", data: [4], color: "#34d399" },
+          { labels: ["CPU alto DocumentDB (totalpay-0)"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-ttr"),
+          { name: "Eventos TTR>30min", data: [1], color: ElvenDeck.colors.red },
+          { labels: ["CPU alto DocumentDB (totalpay-0)"] }
+        );
+      }
+      window.addEventListener("load", renderCharts);
+      window.addEventListener("resize", renderCharts);
+    </script>
+  </body>
+</html>
