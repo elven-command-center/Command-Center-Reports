@@ -10,30 +10,32 @@ Ao receber qualquer gatilho de relatório ("execute o relatório", "relatório",
 **1. Qual a data?**
 
 **2. Qual o cliente?**
-Listar todos os clientes do `orgs.json`:
-- Onfly
-- Elven observability
-- Dotz
-- Cogtive
-- Conta Azul
-- Elven Works
-- Grupo Irrah
-- 1sTi
-- JCA
-- MultiClubes
-- Radar E-commerce
-- Sleep up
-- TotalPass
-- Trillia
-- Vórtx
-- Solucx
+Listar todos os clientes do `orgs.json` numerados, sem bullet points, com o número na frente do nome:
+1. Onfly
+2. Elven observability
+3. Dotz
+4. Cogtive
+5. Conta Azul
+6. Elven Works
+7. Grupo Irrah
+8. 1sTi
+9. JCA
+10. MultiClubes
+11. Radar E-commerce
+12. Sleep up
+13. TotalPass
+14. Trillia
+15. Vórtx
+16. Solucx
 
 **3. Catálogo de informações — adicionar ao relatório?**
-Listar sempre as opções:
-- Seguir padrão
-- SLA — compliance, violações e plano contratado
-- IA — eventos tratados pela IA e status de execução
-- Runbook — runbook disponível por evento
+Listar sempre as opções numeradas (sem bullet points):
+0. Seguir padrão
+1. SLA — compliance, violações e plano contratado
+2. IA — eventos tratados pela IA e status de execução
+3. Runbook — runbook disponível por evento
+4. Recorrência detalhada — lista completa com dias, total, severidade e TTR médio
+5. Lista detalhada de eventos — tabela completa do turno para rastreabilidade
 
 **Why:** Projeto multi-cliente com blocos opcionais via catálogo DW. Iniciar sem data/cliente gera dados errados.
 

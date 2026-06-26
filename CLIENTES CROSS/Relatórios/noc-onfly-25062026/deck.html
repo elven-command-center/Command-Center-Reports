@@ -12,22 +12,18 @@
       <!-- 01 — CAPA -->
       <section class="slide cover">
         <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
-        <div style="position:absolute; top:42px; left:72px;">
-          <div style="font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:6px;">Cliente</div>
-          <div style="font-size:42px; font-weight:800; letter-spacing:0.04em; color:#d7ff63; line-height:1;">Onfly</div>
-        </div>
-        <div class="content" style="top:130px;">
+        <div class="content">
           <div class="kicker">Command Center Onfly - Relatório Operacional</div>
-          <h1>RabbitMQ e ECS dominam o turno — 100% de resolução com reconhecimento ágil</h1>
+          <h1>Operação estável: 100% de resolução e SLA totalmente cumprido</h1>
           <p class="sub">Métricas operacionais da organização Onfly — 12 eventos monitorados em 25/06/2026.</p>
         </div>
         <div class="metric-rail">
           <div class="metric">
-            <div class="value">00:19:05</div>
+            <div class="value">00:20:12</div>
             <div class="label">MTTR médio</div>
           </div>
           <div class="metric">
-            <div class="value">00:00:29</div>
+            <div class="value">00:01:35</div>
             <div class="label">MTTA médio</div>
           </div>
           <div class="metric">
@@ -47,23 +43,23 @@
         <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
         <div class="content">
           <div class="kicker">Resumo executivo</div>
-          <h2>100% de resolução em 12 eventos — RabbitMQ concentra 58% das ocorrências do turno</h2>
+          <h2>Turno de baixo volume com todos os eventos resolvidos e SLA 100% cumprido</h2>
           <div class="three-col">
             <div class="panel">
               <h3>Volume de eventos</h3>
-              <p>12 eventos registrados em 25/06. RabbitMQ liderou com 7 disparos (4 de odin.webhook e 3 de alto consumo de memória). ECS onfly-app-prod-con-expedia contribuiu com 3 ocorrências recorrentes.</p>
+              <p>12 eventos monitorados em 25/06, todos com resolução confirmada. Volume reduzido sinaliza estabilidade operacional nos serviços Onfly no período.</p>
             </div>
             <div class="panel">
               <h3>Tempo de resposta</h3>
-              <p>MTTR médio de 00:19:05 com todos os eventos resolvidos no turno. MTTA médio de 00:00:29 — todos os 12 eventos formalmente reconhecidos, refletindo processo operacional maduro.</p>
+              <p>MTTR médio de 00:20:12, com pico de 01:07:04 no alerta de alto consumo de memória do broker RabbitMQ. Todos os eventos reconhecidos com MTTA médio de 00:01:35.</p>
             </div>
             <div class="panel">
               <h3>Criticidade</h3>
-              <p>8 eventos sev-2-high (67%) e 4 not-classified (33%). 3 eventos ultrapassaram 30 min de TTR, todos concentrados no RabbitMQ alto consumo de memória no broker microservice-app-mq-production.</p>
+              <p>Nenhum evento sev-1-critical registrado. Predominância de sev-2-high (8 eventos, 66,7%) com foco em alertas RabbitMQ e ECS — padrão recorrente há mais de 4 dias.</p>
             </div>
           </div>
           <div class="callout light">
-            <strong>Leitura final:</strong> Turno exemplar com 100% de resolução e reconhecimento total — principal atenção para o broker RabbitMQ com 3 disparos e TTR prolongado, candidato a análise de capacidade.
+            <strong>Leitura final:</strong> Turno operacionalmente saudável. Atenção ao padrão recorrente de RabbitMQ e ECS Expedia — ambos presentes há 4 dias consecutivos e candidatos a investigação de causa raiz.
           </div>
         </div>
         <div class="source">25/06/2026</div>
@@ -74,7 +70,7 @@
         <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
         <div class="content">
           <div class="kicker">Status dos eventos</div>
-          <h2>100% dos eventos com ACK e resolvidos — operação sem pendências ao fim do turno</h2>
+          <h2>Todos os 12 eventos foram reconhecidos e resolvidos no turno</h2>
           <div class="two-col">
             <div class="matrix">
               <div class="matrix-row matrix-head">
@@ -106,12 +102,12 @@
             <div>
               <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
                 <div class="evidence hot">
-                  <div class="big">12</div>
-                  <div class="small">eventos com ACK + Resolução — cobertura operacional completa no turno de 25/06</div>
+                  <div class="big">0</div>
+                  <div class="small">Nenhum evento sem ACK e sem resolução — operação sem pendências críticas no turno.</div>
                 </div>
                 <div class="evidence warn">
-                  <div class="big">00:00:29</div>
-                  <div class="small">MTTA médio — todos os 12 eventos reconhecidos com tempo de ACK ágil</div>
+                  <div class="big">00:01:35</div>
+                  <div class="small">MTTA médio de 00:01:35 — 12 eventos reconhecidos no turno de 25/06.</div>
                 </div>
                 <div class="evidence">
                   <div class="big">100%</div>
@@ -129,7 +125,7 @@
         <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
         <div class="content">
           <div class="kicker">Severidade</div>
-          <h2>sev-2-high representa 67% dos eventos — 3 com TTR acima de 30 min no broker RabbitMQ</h2>
+          <h2>Sem eventos sev-1 — sev-2-high domina com 66,7% e 3 resoluções acima de 30 min</h2>
           <div class="score-grid">
             <div class="chart-card">
               <div class="chart-title">
@@ -137,21 +133,21 @@
                 <span>25/06/2026</span>
               </div>
               <div class="chart" id="chart-severidade"></div>
-              <div class="note">Onfly não possui sev-1-critical; sev-2-high é a severidade mais crítica com 8 eventos (67%). Not-classified com 4 eventos (33%), principalmente alertas de ECS e travelhub.</div>
+              <div class="note">sev-2-high: 8 eventos (66,7%) | not-classified: 4 eventos (33,3%). Nenhum sev-1-critical registrado no turno.</div>
             </div>
             <div>
               <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
                 <div class="evidence hot">
-                  <div class="big">8</div>
-                  <div class="small">eventos sev-2-high — 67% do total. Severidade mais crítica monitorada na Onfly.</div>
+                  <div class="big">0</div>
+                  <div class="small">eventos sev-1-critical — nenhum alerta de máxima criticidade registrado. Operação dentro do parâmetro normal.</div>
                 </div>
                 <div class="evidence warn">
                   <div class="big">3</div>
-                  <div class="small">eventos com TTR acima de 30 min — 25% do total. Concentrados no broker RabbitMQ.</div>
+                  <div class="small">eventos com TTR acima de 30 min — 25% do total. Concentrados no broker RabbitMQ de memória.</div>
                 </div>
                 <div class="evidence">
                   <div class="big">4</div>
-                  <div class="small">eventos not-classified — 33%. ECS e travelhub candidatos a classificação proativa.</div>
+                  <div class="small">eventos not-classified — 33,3%. Candidatos a triagem e classificação proativa de severidade.</div>
                 </div>
               </div>
             </div>
@@ -165,7 +161,7 @@
         <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
         <div class="content">
           <div class="kicker">Volume de alertas</div>
-          <h2>RabbitMQ odin.webhook lidera com 4 disparos — ECS Expedia dispara 3 vezes no turno</h2>
+          <h2>RabbitMQ lidera volume com 7 disparos — fila odin.webhook e broker de memória dominam o turno</h2>
           <div class="score-grid">
             <div class="chart-card">
               <div class="chart-title">
@@ -173,21 +169,21 @@
                 <span>25/06/2026</span>
               </div>
               <div class="chart" id="chart-top-eventos"></div>
-              <div class="note">RabbitMQ odin.webhook (4 disparos) e alto consumo do broker (3 disparos) concentram 58% do volume. ECS Expedia contribui com 3 ocorrências recorrentes de task sem execução.</div>
+              <div class="note">Top 2 títulos concentram 58% do volume total do turno. Ambos relacionados a infraestrutura RabbitMQ.</div>
             </div>
             <div>
               <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
                 <div class="evidence hot">
                   <div class="big">4</div>
-                  <div class="small">disparos do RabbitMQ odin.webhook — mensagens não consumidas, todos resolvidos em menos de 20 min.</div>
+                  <div class="small">disparos de Mensagens não consumidas na fila odin.webhook — backlog RabbitMQ recorrente há 3 dias.</div>
                 </div>
                 <div class="evidence warn">
                   <div class="big">3</div>
-                  <div class="small">disparos de alto consumo de memória no broker microservice-app-mq-production — TTR médio de 44 min.</div>
+                  <div class="small">disparos de Alto consumo de memória no broker microservice-app-mq-production — recorrente há 2 dias.</div>
                 </div>
                 <div class="evidence">
                   <div class="big">3</div>
-                  <div class="small">ECS Service sem task em execução (onfly-app-prod-con-expedia) — recorrente há 4 dias consecutivos.</div>
+                  <div class="small">disparos de Service sem task em execução no ECS onfly-app-prod-con-expedia — recorrente há 4 dias.</div>
                 </div>
               </div>
             </div>
@@ -201,7 +197,7 @@
         <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
         <div class="content">
           <div class="kicker">Recorrência</div>
-          <h2>ECS Expedia e travelhub recorrentes há 4 dias — odin.webhook acumula 11 disparos em 3 dias</h2>
+          <h2>ECS Expedia e travelhub presentes há 4 dias consecutivos — padrão estrutural identificado</h2>
           <div class="score-grid">
             <div class="chart-card">
               <div class="chart-title">
@@ -209,7 +205,7 @@
                 <span>25/06/2026</span>
               </div>
               <div class="chart" id="chart-recorrencia"></div>
-              <div class="note">ECS Expedia e travelhub disparam em 4 dos últimos 7 dias. RabbitMQ odin.webhook soma 11 eventos em 3 dias — o maior acúmulo total da janela analisada.</div>
+              <div class="note">5 títulos recorrentes nos últimos 7 dias. ECS Expedia acumula 10 disparos; RabbitMQ odin acumula 11 — maior volume recorrente do período.</div>
             </div>
             <div>
               <div class="matrix">
@@ -219,27 +215,27 @@
                   <div>Total</div>
                 </div>
                 <div class="matrix-row">
-                  <div>ECS Service sem task (Expedia)</div>
+                  <div>[Recovered] ECS sem task — onfly-app-prod-con-expedia</div>
                   <div class="risk high">4</div>
                   <div>10</div>
                 </div>
                 <div class="matrix-row">
-                  <div>travelhub-app-prod high errors</div>
+                  <div>Critical: travelhub-app-prod high number of errors</div>
                   <div class="risk high">4</div>
                   <div>4</div>
                 </div>
                 <div class="matrix-row">
-                  <div>RabbitMQ odin.webhook</div>
+                  <div>[P2] RabbitMQ odin.webhook mensagens não consumidas</div>
                   <div class="risk med">3</div>
                   <div>11</div>
                 </div>
                 <div class="matrix-row">
-                  <div>RabbitMQ alto consumo broker</div>
+                  <div>[P2] RabbitMQ alto consumo broker mq-production</div>
                   <div class="risk med">2</div>
                   <div>4</div>
                 </div>
                 <div class="matrix-row">
-                  <div>Redis memória &gt; 80%</div>
+                  <div>[Redis] Uso de memória &gt; 80% onfly-app-prod-quote-001</div>
                   <div>2</div>
                   <div>4</div>
                 </div>
@@ -255,15 +251,15 @@
         <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
         <div class="content">
           <div class="kicker">Analise TTR prolongado</div>
-          <h2>3 eventos com TTR acima de 30 min — todos no broker RabbitMQ microservice-app-mq-production</h2>
+          <h2>3 eventos com TTR acima de 30 min — todos concentrados no broker RabbitMQ de memória</h2>
           <div class="score-grid">
             <div class="chart-card">
               <div class="chart-title">
-                <strong>Eventos com TTR acima de 30 min</strong>
+                <strong>Top títulos com TTR acima de 30 min</strong>
                 <span>25/06/2026</span>
               </div>
               <div class="chart" id="chart-ttr"></div>
-              <div class="note">Os 3 eventos com TTR prolongado são do mesmo alerta (alto consumo de memória no broker), indicando problema de capacidade persistente no microservice-app-mq-production.</div>
+              <div class="note">Único título com TTR prolongado no turno — [P2] RabbitMQ Alto consumo de memória no broker microservice-app-mq-production (3 eventos, max 01:07:04).</div>
             </div>
             <div>
               <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
@@ -272,12 +268,12 @@
                   <div class="small">eventos com TTR acima de 30 min — 25% do total do turno.</div>
                 </div>
                 <div class="evidence warn">
-                  <div class="big">01:06:03</div>
-                  <div class="small">RabbitMQ alto consumo de memória — maior TTR acumulado registrado no turno.</div>
+                  <div class="big">01:07:04</div>
+                  <div class="small">[P2] RabbitMQ Alto consumo broker mq-production — maior TTR acumulado registrado no turno.</div>
                 </div>
                 <div class="evidence">
-                  <div class="big">RabbitMQ</div>
-                  <div class="small">cluster com maior concentração de TTR longo — investigar capacidade do broker.</div>
+                  <div class="big">mq-production</div>
+                  <div class="small">cluster com maior concentração de TTR longo — investigar causa raiz do consumo de memória.</div>
                 </div>
               </div>
             </div>
@@ -286,60 +282,65 @@
         <div class="source">25/06/2026</div>
       </section>
 
-      <!-- 08 — TAGS E CONTEXTO OPERACIONAL -->
+      <!-- 08 — SLA (bloco adicional solicitado) -->
       <section class="slide">
         <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
         <div class="content">
-          <div class="kicker">Tags e contexto operacional</div>
-          <h2>Nenhuma tag registrada no turno — contexto operacional baseado nos títulos dos alertas</h2>
+          <div class="kicker">SLA e conformidade contratual</div>
+          <h2>SLA 100% cumprido — todos os 12 eventos reconhecidos dentro dos 15 min contratados</h2>
           <div class="two-col">
             <div>
               <div class="matrix">
                 <div class="matrix-row matrix-head">
-                  <div>Contexto (via título)</div>
-                  <div>Qtd</div>
-                  <div>% do total</div>
+                  <div>Métrica SLA</div>
+                  <div>Valor</div>
+                  <div>Status</div>
                 </div>
                 <div class="matrix-row">
-                  <div>RabbitMQ (broker/filas)</div>
-                  <div>7</div>
-                  <div>58%</div>
+                  <div>Plano contratado</div>
+                  <div>mtta15</div>
+                  <div>24x7</div>
                 </div>
                 <div class="matrix-row">
-                  <div>ECS (tasks/serviços)</div>
-                  <div>3</div>
-                  <div>25%</div>
-                </div>
-                <div class="matrix-row">
-                  <div>Application (travelhub)</div>
-                  <div>1</div>
-                  <div>8%</div>
-                </div>
-                <div class="matrix-row">
-                  <div>RabbitMQ (recuperados)</div>
-                  <div>1</div>
-                  <div>8%</div>
-                </div>
-                <div class="matrix-row">
+                  <div>SLA de MTTA</div>
+                  <div>15 min (900s)</div>
                   <div>—</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Cota contratada</div>
+                  <div>150 eventos</div>
                   <div>—</div>
-                  <div>—</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Volume do turno</div>
+                  <div>12 eventos</div>
+                  <div>8% da cota</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Eventos dentro do SLA</div>
+                  <div>12 / 12</div>
+                  <div>100%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Violações de SLA</div>
+                  <div>0</div>
+                  <div>0%</div>
                 </div>
               </div>
             </div>
             <div>
               <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
-                <div class="evidence hot">
-                  <div class="big">RabbitMQ</div>
-                  <div class="small">domínio com maior volume — 7 eventos (58%), entre filas sem consumo e alto uso de memória no broker.</div>
-                </div>
-                <div class="evidence warn">
-                  <div class="big">0</div>
-                  <div class="small">tags formais registradas nos eventos do turno — categorização baseada em títulos. Recomendar tagueamento proativo.</div>
+                <div class="evidence">
+                  <div class="big">100%</div>
+                  <div class="small">de compliance SLA no turno — todos os 12 eventos reconhecidos dentro dos 15 min contratados (MTTA médio: 00:01:35).</div>
                 </div>
                 <div class="evidence">
-                  <div class="big">4</div>
-                  <div class="small">domínios distintos identificados via título — RabbitMQ, ECS, Application e filas recuperadas.</div>
+                  <div class="big">0</div>
+                  <div class="small">violações de SLA registradas. Margem confortável: MTTA médio 13,4 min abaixo do limite contratual.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">8%</div>
+                  <div class="small">da cota mensal utilizada neste turno (12 de 150 eventos contratados) — volume operacional dentro do esperado.</div>
                 </div>
               </div>
             </div>
@@ -353,7 +354,7 @@
         <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
         <div class="content">
           <div class="kicker">Alertas criticos em aberto</div>
-          <h2>Nenhum alerta em aberto ao fim do turno — operação encerrada com quadro limpo</h2>
+          <h2>5 alertas não resolvidos em aberto — channel-back e travelhub com erros críticos em produção</h2>
           <div class="matrix">
             <div class="matrix-row matrix-head">
               <div>Alerta</div>
@@ -362,38 +363,38 @@
               <div>Serviço / Cluster</div>
             </div>
             <div class="matrix-row">
-              <div>—</div>
-              <div>—</div>
-              <div>—</div>
-              <div>—</div>
+              <div>Critical: channel-back-app-prod high number of errors in 5 minutes</div>
+              <div class="risk high">not-classified</div>
+              <div class="risk high">00:05:13</div>
+              <div>channel-back-app-prod</div>
             </div>
             <div class="matrix-row">
-              <div>—</div>
-              <div>—</div>
-              <div>—</div>
-              <div>—</div>
+              <div>Warning: travelhub-app-prod high number of status 500 errors in 5 minutes</div>
+              <div class="risk high">not-classified</div>
+              <div class="risk med">00:05:11</div>
+              <div>travelhub-app-prod</div>
             </div>
             <div class="matrix-row">
-              <div>—</div>
-              <div>—</div>
-              <div>—</div>
-              <div>—</div>
+              <div>Critical: travelhub-app-prod high number of status 500 errors in 5 minutes</div>
+              <div>not-classified</div>
+              <div class="risk med">00:05:05</div>
+              <div>travelhub-app-prod</div>
             </div>
             <div class="matrix-row">
-              <div>—</div>
-              <div>—</div>
-              <div>—</div>
-              <div>—</div>
+              <div>Critical: booking-app-prod high number of SQLSTATE errors in 5 minutes</div>
+              <div>not-classified</div>
+              <div class="risk med">00:05:05</div>
+              <div>booking-app-prod</div>
             </div>
             <div class="matrix-row">
-              <div>—</div>
-              <div>—</div>
-              <div>—</div>
-              <div>—</div>
+              <div>Critical: travelhub-app-prod high number of status 500 errors in 5 minutes</div>
+              <div>not-classified</div>
+              <div>00:05:04</div>
+              <div>travelhub-app-prod</div>
             </div>
           </div>
           <div class="callout light">
-            <strong>Acao recomendada:</strong> Monitorar o broker microservice-app-mq-production no turno seguinte — 3 disparos de alto consumo de memória no dia indicam risco de reincidência.
+            <strong>Acao recomendada:</strong> Priorizar investigação de erros em channel-back e travelhub — múltiplos alertas 500/SQLSTATE indicam possível degradação de serviço em produção. Verificar booking-app-prod para erros de banco de dados.
           </div>
         </div>
         <div class="source">25/06/2026</div>
@@ -404,15 +405,15 @@
         <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
         <div class="content">
           <div class="kicker">Conclusão e próximos passos</div>
-          <h2>Turno exemplar — broker RabbitMQ e ECS Expedia requerem atenção preventiva</h2>
+          <h2>Operação estável — padrões recorrentes exigem ação preventiva</h2>
           <div class="takeaways">
-            <div class="takeaway">100% de resolução e ACK em 12 eventos — melhor resultado operacional possível para o turno.</div>
-            <div class="takeaway">RabbitMQ alto consumo de memória disparou 3 vezes com TTR > 30 min — investigar capacidade do broker microservice-app-mq-production.</div>
-            <div class="takeaway">ECS onfly-app-prod-con-expedia recorrente há 4 dias (10 eventos) — plano de ação para estabilizar o serviço Expedia.</div>
-            <div class="takeaway">Nenhuma tag formal cadastrada nos eventos — recomendar tagueamento para enriquecer análise de contexto operacional.</div>
+            <div class="takeaway">100% de resolução no turno com MTTR médio de 00:20:12 — nenhum evento sev-1 registrado. Operação dentro dos parâmetros normais.</div>
+            <div class="takeaway">SLA de MTTA totalmente cumprido: todos os 12 eventos reconhecidos em média 13,4 min abaixo do limite de 15 min contratado.</div>
+            <div class="takeaway">ECS Expedia e RabbitMQ recorrentes há 4+ dias — acúmulo de 10 e 11 disparos respectivamente. Candidatos prioritários a investigação de causa raiz.</div>
+            <div class="takeaway">5 alertas em aberto ao final do turno (channel-back, travelhub, booking), concentrados em erros 500 e SQLSTATE em produção.</div>
           </div>
           <div class="callout light">
-            <strong>Proximo passo:</strong> Abrir análise de capacidade para o broker RabbitMQ microservice-app-mq-production e iniciar RCA para ECS onfly-app-prod-con-expedia (4 dias consecutivos de recorrência).
+            <strong>Proximo passo:</strong> Abrir investigação formal para ECS Expedia e RabbitMQ broker mq-production — padrão de reincidência por 4+ dias indica problema estrutural não resolvido que demanda ação corretiva permanente.
           </div>
         </div>
         <div class="source">25/06/2026</div>
@@ -431,17 +432,17 @@
         ElvenDeck.barChart(
           document.getElementById("chart-top-eventos"),
           { name: "Ocorrências", data: [4, 3, 3, 1, 1], color: ElvenDeck.colors.teal },
-          { labels: ["RabbitMQ odin.webhook", "RabbitMQ alto consumo", "ECS Expedia", "travelhub errors", "RabbitMQ flights3"] }
+          { labels: ["RabbitMQ odin.webhook", "RabbitMQ broker memória", "ECS Expedia (Recovered)", "travelhub high errors", "RabbitMQ flights3store"] }
         );
         ElvenDeck.barChart(
           document.getElementById("chart-recorrencia"),
           { name: "Ocorrências", data: [10, 4, 11, 4, 4], color: "#34d399" },
-          { labels: ["ECS Expedia", "travelhub errors", "RabbitMQ odin.webhook", "RabbitMQ broker", "Redis memória"] }
+          { labels: ["ECS Expedia", "travelhub errors", "RabbitMQ odin", "RabbitMQ broker", "Redis onfly"] }
         );
         ElvenDeck.barChart(
           document.getElementById("chart-ttr"),
-          { name: "Eventos TTR>30min", data: [1, 1, 1], color: ElvenDeck.colors.red },
-          { labels: ["RabbitMQ broker (66min)", "RabbitMQ broker (35min)", "RabbitMQ broker (33min)"] }
+          { name: "Eventos TTR>30min", data: [3], color: ElvenDeck.colors.red },
+          { labels: ["RabbitMQ broker memória"] }
         );
       }
       window.addEventListener("load", renderCharts);
