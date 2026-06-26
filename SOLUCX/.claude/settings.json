@@ -11,7 +11,12 @@
       "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\PC\\\\OneDrive\\\\Desktop\\\\CLAUDE\\\\COMMAND CENTER\\\\BLIP\\\\Relatórios\\\\_template-noc\")",
       "mcp__powerbi-modeling-mcp__database_operations",
       "Skill(update-config)",
-      "Skill(update-config:*)"
+      "Skill(update-config:*)",
+      "mcp__powerbi-modeling-mcp__dax_query_operations",
+      "mcp__powerbi-modeling-mcp__measure_operations",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(Get-OdbcDsn *)",
+      "mcp__ccd_session__mark_chapter"
     ],
     "additionalDirectories": [
       "C:\\Users\\PC"

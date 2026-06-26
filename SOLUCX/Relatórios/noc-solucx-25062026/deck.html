@@ -27,6 +27,10 @@
             <div class="label">MTTR médio</div>
           </div>
           <div class="metric">
+            <div class="value">N/A</div>
+            <div class="label">MTTA médio</div>
+          </div>
+          <div class="metric">
             <div class="value">2</div>
             <div class="label">total de eventos</div>
           </div>
@@ -51,7 +55,7 @@
             </div>
             <div class="panel">
               <h3>Tempo de resposta</h3>
-              <p>O único evento resolvido no dia apresentou TTR de 23 segundos, indicando resposta imediata ao alerta crítico de reinicialização de container. Nenhum evento ultrapassou o limiar de 30 minutos de resolução.</p>
+              <p>O único evento resolvido no dia apresentou TTR de 23 segundos e MTTA não registrado — nenhum evento recebeu reconhecimento (ACK) formal no turno. Nenhum evento ultrapassou o limiar de 30 minutos de resolução.</p>
             </div>
             <div class="panel">
               <h3>Criticidade</h3>
@@ -106,8 +110,8 @@
                   <div class="small">NrMTDConsumption permanece em aberto sem reconhecimento — alerta de ingestão New Relic acima de 50% da quota mensal.</div>
                 </div>
                 <div class="evidence warn">
-                  <div class="big">0</div>
-                  <div class="small">Nenhum evento com ACK pendente registrado no turno.</div>
+                  <div class="big">N/A</div>
+                  <div class="small">MTTA — nenhum evento recebeu reconhecimento formal (ACK) no turno de 25/06. Processo de triagem sem registro.</div>
                 </div>
                 <div class="evidence">
                   <div class="big">50%</div>
