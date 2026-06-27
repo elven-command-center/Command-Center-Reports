@@ -1,0 +1,353 @@
+/* @elven-observability/decks-skill — elven-deck.css
+ *
+ * Tema canônico dos decks Elven Works. Fonte da verdade: o deck real
+ * kontik-zupper-incident-2026-05-17 (PS Elven), reproduzido fielmente.
+ *
+ * NÃO ajuste valores "no olho". Cada número aqui (insets, font-size,
+ * min-height, gaps) veio de um deck aprovado e entregue. Mexer = drift.
+ *
+ * Modelo de composição:
+ *   .slide                  moldura 1280x720 (variantes: .cover, .dark)
+ *     .logo                 logo Elven, canto superior direito
+ *     .content              caixa de conteúdo (inset fixo)
+ *       .kicker             etiqueta de seção (traço + caps)
+ *       h1 / h2             título do slide
+ *       <componentes>       panel, chart-card, timeline, evidence, etc.
+ *     .source               crédito/fonte, rodapé esquerdo
+ *   .slide::after           numeração automática (counter)
+ */
+
+:root {
+  --w: 1280px;
+  --h: 720px;
+  --ink: #0f1923;
+  --paper: #f4f7f8;
+  --white: #ffffff;
+  --muted: #64748b;
+  --teal: #00bfa5;
+  --teal-2: #00897b;
+  --cyan: #00e5ff;
+  --blue: #0d47a1;
+  --lime: #d7ff63;
+  --red: #ff5252;
+  --amber: #fbbf24;
+  --violet: #7c3aed;
+  --line: rgba(15, 25, 35, 0.14);
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  background: #081018;
+  color: var(--white);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+body { counter-reset: slide; }
+.deck { width: 100%; }
+
+.slide {
+  width: var(--w);
+  height: var(--h);
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto 28px;
+  background: var(--paper);
+  color: var(--ink);
+  page-break-after: always;
+  break-after: page;
+  counter-increment: slide;
+}
+.slide.dark { background: #0f1923; color: var(--white); }
+.slide.cover {
+  background:
+    radial-gradient(circle at 88% 16%, rgba(215, 255, 99, 0.2), transparent 26%),
+    radial-gradient(circle at 13% 80%, rgba(0, 229, 255, 0.18), transparent 30%),
+    linear-gradient(135deg, #0d47a1 0%, #00897b 54%, #00bfa5 100%);
+  color: var(--white);
+}
+.slide::after {
+  content: counter(slide, decimal-leading-zero);
+  position: absolute;
+  right: 44px;
+  bottom: 28px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(100, 116, 139, 0.74);
+  font-weight: 700;
+}
+.slide.dark::after, .slide.cover::after { color: rgba(255, 255, 255, 0.55); }
+
+.content { position: absolute; inset: 52px 72px 54px 72px; }
+
+.logo { position: absolute; right: 68px; top: 42px; width: 172px; height: auto; }
+.logo.on-dark { filter: brightness(0) invert(1); }
+/* Salvaguarda: mesmo sem a classe .on-dark, o logo fica branco em fundo
+ * escuro. O autor não precisa lembrar — a variante do slide resolve. */
+.slide.cover .logo, .slide.dark .logo { filter: brightness(0) invert(1); }
+.logo.on-light { filter: none; }
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 24px;
+  margin-bottom: 18px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--teal-2);
+}
+.dark .kicker, .cover .kicker { color: var(--lime); }
+.kicker::before {
+  content: "";
+  width: 24px;
+  height: 4px;
+  background: currentColor;
+  display: inline-block;
+}
+
+h1, h2, h3, p { margin: 0; }
+h1 {
+  font-size: 62px;
+  line-height: 1.03;
+  letter-spacing: -0.8px;
+  font-weight: 900;
+  max-width: 970px;
+}
+h2 {
+  font-size: 40px;
+  line-height: 1.08;
+  font-weight: 900;
+  max-width: 1000px;
+}
+h3 { font-size: 20px; line-height: 1.16; font-weight: 850; }
+
+.sub {
+  margin-top: 20px;
+  max-width: 900px;
+  font-size: 21px;
+  line-height: 1.42;
+  color: rgba(255, 255, 255, 0.9);
+}
+.light-sub {
+  margin-top: 13px;
+  max-width: 920px;
+  color: #4b5b6b;
+  font-size: 18px;
+  line-height: 1.42;
+}
+.dark .light-sub { color: rgba(255, 255, 255, 0.72); }
+
+.mono, code {
+  font-family: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
+  font-size: 0.9em;
+}
+code { background: rgba(15, 25, 35, 0.07); padding: 1px 4px; }
+.dark code { background: rgba(255, 255, 255, 0.08); }
+
+/* Cover — faixa de métricas ----------------------------------------- */
+.metric-rail {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  position: absolute;
+  left: 72px;
+  right: 72px;
+  bottom: 56px;
+}
+.metric { border-top: 1px solid rgba(255, 255, 255, 0.34); padding-top: 14px; }
+.metric .value { font-size: 34px; line-height: 1; font-weight: 900; color: var(--white); }
+.metric .label { margin-top: 8px; font-size: 13px; line-height: 1.28; color: rgba(255, 255, 255, 0.76); }
+
+/* Grades ------------------------------------------------------------ */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 28px; }
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 28px; }
+/* score-grid: gráfico (largo) + lateral (cards/tabela). Spec do
+ * component-catalog. Sem esta regra o grid colapsa em coluna única e o
+ * conteúdo da lateral estoura o slide. */
+.score-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 28px; margin-top: 28px; align-items: start; }
+.score-grid .evidence-row { margin-top: 0; }
+
+/* Slides de texto curto: centraliza verticalmente o conteúdo para não
+ * deixar a metade inferior vazia. */
+.slide.vcenter .content { display: flex; flex-direction: column; justify-content: center; }
+
+/* Panel — card branco genérico -------------------------------------- */
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 22px;
+  min-height: 132px;
+}
+.panel.dark-panel { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.14); color: var(--white); }
+.panel h3 { margin-bottom: 10px; }
+.panel p, .panel li { font-size: 15px; line-height: 1.38; color: #4b5b6b; }
+.dark .panel p, .dark .panel li, .panel.dark-panel p, .panel.dark-panel li { color: rgba(255, 255, 255, 0.74); }
+.panel ul { margin: 10px 0 0; padding-left: 18px; }
+
+/* Chart card -------------------------------------------------------- */
+.chart-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 22px 22px 16px;
+  min-height: 368px;
+}
+.chart-card.compact { min-height: 290px; }
+.dark .chart-card { background: rgba(255, 255, 255, 0.055); border-color: rgba(255, 255, 255, 0.14); }
+.chart-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+.chart-title strong { font-size: 15px; letter-spacing: 0.3px; text-transform: uppercase; }
+.chart-title span { font-size: 12px; color: var(--muted); }
+.dark .chart-title span { color: rgba(255, 255, 255, 0.58); }
+.chart { width: 100%; height: 268px; }
+.chart.small { height: 188px; }
+.note { margin-top: 12px; font-size: 13px; line-height: 1.35; color: #5d6b7b; }
+.dark .note { color: rgba(255, 255, 255, 0.65); }
+
+/* Timeline ---------------------------------------------------------- */
+.timeline {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-top: 2px solid currentColor;
+}
+.tl-item { position: relative; padding: 28px 14px 0 0; min-height: 220px; }
+.tl-item::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  background: var(--teal);
+}
+.tl-item.hot::before { background: var(--red); }
+.tl-item.warn::before { background: var(--amber); }
+.tl-time { font-size: 25px; font-weight: 900; line-height: 1; }
+.tl-title { margin-top: 10px; font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 1.1px; }
+.tl-copy { margin-top: 10px; font-size: 14px; line-height: 1.32; color: #4b5b6b; }
+.dark .tl-copy { color: rgba(255, 255, 255, 0.68); }
+
+/* Callout ----------------------------------------------------------- */
+.callout {
+  background: var(--ink);
+  color: var(--white);
+  padding: 22px 24px;
+  margin-top: 22px;
+  border-left: 8px solid var(--teal);
+  font-size: 17px;
+  line-height: 1.38;
+}
+.callout.light { background: #fff; color: var(--ink); border: 1px solid var(--line); border-left: 8px solid var(--teal); }
+.callout strong { color: var(--lime); }
+.callout.light strong { color: var(--teal-2); }
+
+/* Evidence ---------------------------------------------------------- */
+.evidence-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+.evidence { padding: 18px; border-top: 5px solid var(--teal); background: #fff; min-height: 118px; }
+.evidence.warn { border-color: var(--amber); }
+.evidence.hot { border-color: var(--red); }
+.evidence .big { font-size: 29px; font-weight: 900; line-height: 1; }
+.evidence .small { margin-top: 8px; font-size: 13px; line-height: 1.3; color: #526273; }
+.dark .evidence { background: rgba(255, 255, 255, 0.06); }
+.dark .evidence .small { color: rgba(255, 255, 255, 0.7); }
+
+/* Matrix (tabela de ações) ------------------------------------------ */
+.matrix { margin-top: 24px; border-top: 1px solid var(--line); }
+.matrix-row { display: grid; grid-template-columns: 0.85fr 1.45fr 1.1fr 1fr; border-bottom: 1px solid var(--line); }
+/* Tabelas de 3 colunas (status, tags, recorrência) reusam a .matrix-row
+ * de 4 colunas do slide de alertas. Reescala para 3 células e remove o
+ * vão da 4ª coluna fantasma. */
+.two-col .matrix-row { grid-template-columns: 1.4fr 0.8fr 0.8fr; }
+.score-grid .matrix { margin-top: 0; }
+.score-grid .matrix-row { grid-template-columns: 1.9fr 0.6fr 0.9fr; }
+.matrix-row > div { padding: 12px 13px; font-size: 13px; line-height: 1.25; }
+.matrix-head > div { font-size: 11px; font-weight: 900; letter-spacing: 1.3px; text-transform: uppercase; color: #65758a; }
+.risk { font-weight: 850; }
+.risk.high { color: var(--red); }
+.risk.med { color: #b45309; }
+.risk.low { color: var(--teal-2); }
+
+/* Diagrama (nós + setas) -------------------------------------------- */
+.diagram {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: 1fr 64px 1fr 64px 1fr;
+  align-items: stretch;
+  gap: 14px;
+}
+.node { background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.16); padding: 22px; min-height: 170px; }
+.node p { margin-top: 12px; color: rgba(255, 255, 255, 0.72); font-size: 16px; line-height: 1.38; }
+.arrow { display: grid; place-items: center; color: var(--lime); font-size: 44px; font-weight: 900; }
+/* Diagrama em slide claro: nós ganham fundo branco */
+.slide:not(.dark) .node { background: #fff; border-color: var(--line); }
+.slide:not(.dark) .node p { color: #4b5b6b; }
+.slide:not(.dark) .arrow { color: var(--teal-2); }
+
+/* Decisão (dois lados) ---------------------------------------------- */
+.decision { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 28px; }
+.decision > div { background: #fff; border: 1px solid var(--line); padding: 22px; }
+.dark .decision > div { background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.16); }
+
+/* Takeaways (fechamento de workshop) -------------------------------- */
+.takeaways { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 26px; margin-top: 28px; }
+.takeaway {
+  position: relative;
+  padding-left: 26px;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.dark .takeaway { color: rgba(255, 255, 255, 0.92); }
+.takeaway::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 12px;
+  height: 12px;
+  background: var(--teal);
+}
+
+/* Bloco de código (hands-on, trechos longos) ------------------------ */
+.code-block {
+  margin-top: 18px;
+  background: #0b1622;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid var(--teal);
+  padding: 18px 20px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #d6e2ec;
+  white-space: pre-wrap;
+  overflow: hidden;
+}
+.code-block .cmt { color: #5f7287; }
+.code-block .ok { color: var(--teal); }
+
+/* Source / créditos ------------------------------------------------- */
+.source { position: absolute; left: 72px; bottom: 30px; font-size: 10px; letter-spacing: 0.3px; color: rgba(100, 116, 139, 0.86); }
+.dark .source, .cover .source { color: rgba(255, 255, 255, 0.55); }
+
+/* Tags -------------------------------------------------------------- */
+.tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.tag {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  padding: 7px 10px;
+  color: var(--ink);
+  background: rgba(0, 191, 165, 0.12);
+  border: 1px solid rgba(0, 137, 123, 0.28);
+}
+.dark .tag { color: var(--white); background: rgba(0, 229, 255, 0.12); border-color: rgba(0, 229, 255, 0.22); }
+
+@page { size: 1280px 720px; margin: 0; }
