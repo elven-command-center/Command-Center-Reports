@@ -18,11 +18,11 @@ metadata:
 `C:\Users\PC\OneDrive\Desktop\CLAUDE\COMMAND CENTER\CLIENTES CROSS\Relatórios\_template-noc\`
 
 **Skill de geração:**
-`C:\Users\PC\OneDrive\Desktop\CLAUDE\COMMAND CENTER\REPORT CC\skills\analise-dados-cc\`
+`C:\Users\PC\OneDrive\Desktop\CLAUDE\COMMAND CENTER\REPORT CC\skills\elven-cc-data-analysis\`
 
 ## Padrão de slug e pasta
 
-```
+```text
 cc-{cliente-kebab}-{DDMMAAAA}
 Exemplo: cc-elven-works-20062026
 ```
@@ -70,6 +70,7 @@ Exemplo: cc-elven-works-20062026
 ```
 
 **Regras da capa:**
+
 - Badge dentro do `.content` como primeiro filho — nunca `position: absolute` (causa overlap com o kicker)
 - Kicker fixo: `COMMAND CENTER - Relatório Operacional`
 - Usar `-` (hífen), nunca `—` (em dash) em qualquer texto do deck

@@ -1,5 +1,5 @@
 ---
-name: analise-dados-cc
+name: elven-cc-data-analysis
 description: Gera relatórios analíticos em PDF (deck visual estilo Elven Command Center) para clientes monitorados, consultando dados diretamente do banco PostgreSQL via ODBC (schema dbt_prd, database data_warehouse). Use esta skill sempre que o usuário pedir "análise", "relatório", "relatório do cliente X", "gera o relatório", "quero ver os dados de", ou qualquer combinação envolvendo cliente + período + métricas do Command Center — mesmo que não cite explicitamente "análise" ou "PDF".
 ---
 

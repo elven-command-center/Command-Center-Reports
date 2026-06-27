@@ -51,14 +51,14 @@ Sempre liste assim, numerado, sem bullet points:
 
 ```
 0. Seguir padrão
-1. SLA - compliance, violações e plano contratado
-2. IA - eventos tratados pela IA e status de execução
-3. Runbook - cobertura de runbooks por evento
-4. Recorrência detalhada - lista completa com dias, total, severidade e TTR médio
-5. Lista detalhada de eventos - tabela completa do turno para rastreabilidade
-6. Cota contratada - uso mensal vs cota (alerta se >100%)
-7. Tendência de volume - histórico 30 dias com série diária
-8. Distribuição por horário - Business Hour / Off Hour / Sleep Hour
-9. Canais de notificação - WhatsApp, on_call, Slack, Teams…
-10. Times respondedores - equipes que atuaram no período
+1. SLA — compliance, violações e plano contratado
+2. IA — eventos tratados pela IA e status de execução
+3. Runbook — cobertura de runbooks por evento
+4. Recorrência detalhada — lista completa com dias, total, severidade e TTR médio
+5. Lista detalhada de eventos — tabela completa do turno para rastreabilidade
+6. Cota contratada — uso mensal vs cota (alerta se >100%)
+7. Tendência de volume — histórico 30 dias com série diária
+8. Distribuição por horário — Business Hour / Off Hour / Sleep Hour
+9. Canais de notificação — WhatsApp, on_call, Slack, Teams…
+10. Times respondedores — equipes que atuaram no período
 ```
