@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dotz | Relatório Command Center — 22 a 26/06/2026</title>
+    <link rel="stylesheet" href="elven-deck.css" />
+  </head>
+  <body>
+    <main class="deck">
+
+      <!-- 01 — CAPA -->
+      <section class="slide cover">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Command Center Dotz</div>
+          <h1>269 alertas monitorados: MTTR de 8h18 e 96,7% de resolução no período</h1>
+          <p class="sub">Métricas operacionais da organização Dotz — 269 eventos monitorados de 22 a 26/06/2026.</p>
+        </div>
+        <div class="metric-rail">
+          <div class="metric">
+            <div class="value">08:18:22</div>
+            <div class="label">MTTR médio</div>
+          </div>
+          <div class="metric">
+            <div class="value">02:14:05</div>
+            <div class="label">MTTA médio</div>
+          </div>
+          <div class="metric">
+            <div class="value">269</div>
+            <div class="label">total de eventos</div>
+          </div>
+          <div class="metric">
+            <div class="value">96,7%</div>
+            <div class="label">taxa de resolução</div>
+          </div>
+        </div>
+        <div class="source">22 a 26/06/2026</div>
+      </section>
+
+      <!-- 02 — RESUMO EXECUTIVO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Resumo executivo</div>
+          <h2>Semana estável com volume concentrado em datasource e canais de pagamento</h2>
+          <div class="three-col">
+            <div class="panel">
+              <h3>Volume de eventos</h3>
+              <p>269 eventos registrados entre 22 e 26/06. DatasourceError (125) e DatasourceNoData (56) dominam o volume — juntos representam 67% dos disparos do período.</p>
+            </div>
+            <div class="panel">
+              <h3>Tempo de resposta</h3>
+              <p>MTTR médio de 08:18:22 reflete resolução eficiente considerando a complexidade dos alertas. 218 eventos tiveram ACK, com MTTA de 02:14:05.</p>
+            </div>
+            <div class="panel">
+              <h3>Criticidade</h3>
+              <p>Nenhum evento sev-1-critical no período. 136 eventos (50,6%) ultrapassaram 30 min de TTR, com pico de 54:32:03 em DatasourceNoData.</p>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Leitura final:</strong> Semana sem criticidade sev-1, mas com alto índice de TTR prolongado. Foco de melhoria: DatasourceError e DatasourceNoData que juntos concentram 67% do volume e os maiores TTRs.
+          </div>
+        </div>
+        <div class="source">22 a 26/06/2026</div>
+      </section>
+
+      <!-- 03 — BREAKDOWN DE STATUS -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Status dos eventos</div>
+          <h2>78,1% dos eventos foram reconhecidos e resolvidos — apenas 1 sem nenhuma tratativa</h2>
+          <div class="two-col">
+            <div class="matrix">
+              <div class="matrix-row matrix-head">
+                <div>Status</div>
+                <div>Qtd</div>
+                <div>%</div>
+              </div>
+              <div class="matrix-row">
+                <div>ACK + Resolvido</div>
+                <div>210</div>
+                <div>78,1%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Resolvido sem ACK</div>
+                <div>50</div>
+                <div>18,6%</div>
+              </div>
+              <div class="matrix-row">
+                <div>ACK sem Resolução</div>
+                <div class="risk med">8</div>
+                <div class="risk med">3,0%</div>
+              </div>
+              <div class="matrix-row">
+                <div>Sem ACK e Sem Resolução</div>
+                <div class="risk high">1</div>
+                <div class="risk high">0,4%</div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">1</div>
+                  <div class="small">evento sem ACK e sem resolução — requer investigação imediata.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">02:14:05</div>
+                  <div class="small">MTTA médio — 218 eventos reconhecidos no período de 22 a 26/06.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">96,7%</div>
+                  <div class="small">dos eventos foram resolvidos ao longo do turno de 22 a 26/06.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">22 a 26/06/2026</div>
+      </section>
+
+      <!-- 04 — DISTRIBUIÇÃO POR SEVERIDADE -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Severidade</div>
+          <h2>Nenhum sev-1 no período — 50,6% dos eventos com TTR acima de 30 min</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Distribuição por severidade</strong>
+                <span>22 a 26/06/2026</span>
+              </div>
+              <div class="chart" id="chart-severidade"></div>
+              <div class="note">Todos os 269 eventos classificados como not-classified. Nenhum sev-1 registrado. Alto índice de TTR prolongado merece atenção.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">0</div>
+                  <div class="small">eventos sev-1-critical — 0% do total. Requerem resposta imediata.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">136</div>
+                  <div class="small">eventos com TTR acima de 30 min — 50,6% do total. Gargalo principal de resolução.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">269</div>
+                  <div class="small">eventos not-classified — 100%. Candidatos a triagem e classificação proativa.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">22 a 26/06/2026</div>
+      </section>
+
+      <!-- 05 — TOP EVENTOS POR VOLUME -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Volume de alertas</div>
+          <h2>DatasourceError lidera com 125 disparos — 46,5% do volume total do período</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 eventos por ocorrências</strong>
+                <span>22 a 26/06/2026</span>
+              </div>
+              <div class="chart" id="chart-top-eventos"></div>
+              <div class="note">DatasourceError e DatasourceNoData somam 181 eventos (67% do total). Ambos indicam instabilidade em fontes de dados do Grafana.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">125</div>
+                  <div class="small">DatasourceError — alerta de fonte de dados Grafana. Maior volume do período.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">56</div>
+                  <div class="small">DatasourceNoData — ausência de dados no datasource. Inclui o maior TTR registrado (54:32:03).</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">12</div>
+                  <div class="small">Canal TEF Sem Trocas (120 min) — canal sem movimentação. Recorrente em 10 eventos com TTR longo.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">22 a 26/06/2026</div>
+      </section>
+
+      <!-- 06 — RECORRÊNCIA -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Recorrência</div>
+          <h2>Payments Conductor DataHub presente nos 5 dias — alerta estrutural a investigar</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 alertas por recorrência</strong>
+                <span>22 a 26/06/2026</span>
+              </div>
+              <div class="chart" id="chart-recorrencia"></div>
+              <div class="note">2 alertas ativos nos 5 dias do período. Canal STDCred e TOTVS indicam instabilidade estrutural em canais de acúmulo.</div>
+            </div>
+            <div>
+              <div class="matrix">
+                <div class="matrix-row matrix-head">
+                  <div>Título</div>
+                  <div>Dias</div>
+                  <div>Total</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Payments Conductor DataHub</div>
+                  <div class="risk high">5</div>
+                  <div>9</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Payments - Pagamento de Boletos</div>
+                  <div class="risk high">5</div>
+                  <div>5</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Canal STDCred Sem Acúmulos</div>
+                  <div class="risk med">4</div>
+                  <div>9</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Apple Store - Conta Dotz</div>
+                  <div class="risk med">3</div>
+                  <div>7</div>
+                </div>
+                <div class="matrix-row">
+                  <div>Canal TOTVS Sem Acúmulos</div>
+                  <div>3</div>
+                  <div>3</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">22 a 26/06/2026</div>
+      </section>
+
+      <!-- 07 — ANÁLISE TTR PROLONGADO -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Analise TTR prolongado</div>
+          <h2>136 eventos com TTR acima de 30 min — DatasourceNoData com pico de 54h32</h2>
+          <div class="score-grid">
+            <div class="chart-card">
+              <div class="chart-title">
+                <strong>Top 5 títulos com TTR acima de 30 min</strong>
+                <span>22 a 26/06/2026</span>
+              </div>
+              <div class="chart" id="chart-ttr"></div>
+              <div class="note">DatasourceError e DatasourceNoData concentram 79% dos eventos com TTR prolongado. DatasourceNoData tem o pico mais crítico: 54:32:03.</div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">136</div>
+                  <div class="small">eventos com TTR acima de 30 min — 50,6% do total do turno.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">54:32:03</div>
+                  <div class="small">DatasourceNoData — maior TTR acumulado registrado no turno.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">DatasourceError</div>
+                  <div class="small">cluster com maior concentração de TTR longo — investigar causa raiz.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">22 a 26/06/2026</div>
+      </section>
+
+      <!-- 08 — TAGS E CONTEXTO OPERACIONAL -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Tags e contexto operacional</div>
+          <h2>10 categorias identificadas — Elven_Alert e database dominam com 37,9% do volume</h2>
+          <div class="two-col">
+            <div>
+              <div class="matrix">
+                <div class="matrix-row matrix-head">
+                  <div>Tag</div>
+                  <div>Qtd</div>
+                  <div>%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>grafana_folder: Elven_Alert</div>
+                  <div>182</div>
+                  <div>19,0%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>ref_id: A</div>
+                  <div>181</div>
+                  <div>18,9%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>datasource_uid: eer94rrk2ic5ca</div>
+                  <div>181</div>
+                  <div>18,9%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>database: true</div>
+                  <div>138</div>
+                  <div>14,4%</div>
+                </div>
+                <div class="matrix-row">
+                  <div>negocios: varejo</div>
+                  <div>55</div>
+                  <div>5,7%</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+                <div class="evidence hot">
+                  <div class="big">grafana_folder: Elven_Alert</div>
+                  <div class="small">tag dominante com 182 eventos — 19,0% do volume total.</div>
+                </div>
+                <div class="evidence warn">
+                  <div class="big">138</div>
+                  <div class="small">eventos com tag database:true — origem majoritariamente em camada de dados e infraestrutura Grafana.</div>
+                </div>
+                <div class="evidence">
+                  <div class="big">10</div>
+                  <div class="small">categorias distintas identificadas no turno — diversidade de domínios impactados.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">22 a 26/06/2026</div>
+      </section>
+
+      <!-- 09 — ALERTAS CRITICOS EM ABERTO -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Alertas criticos em aberto</div>
+          <h2>5 eventos em aberto — 4x DatasourceNoData e 1x Canal STDCred sev-2</h2>
+          <div class="matrix">
+            <div class="matrix-row matrix-head">
+              <div>Alerta</div>
+              <div>Severidade</div>
+              <div>TTR acumulado</div>
+              <div>Serviço / Cluster</div>
+            </div>
+            <!-- Repetir matrix-row para cada alerta em aberto -->
+            <div class="matrix-row">
+              <div>DatasourceNoData</div>
+              <div class="risk high">not-classified</div>
+              <div class="risk high">—</div>
+              <div>Grafana datasource</div>
+            </div>
+            <div class="matrix-row">
+              <div>DatasourceNoData</div>
+              <div class="risk high">not-classified</div>
+              <div class="risk med">—</div>
+              <div>Grafana datasource</div>
+            </div>
+            <div class="matrix-row">
+              <div>DatasourceNoData</div>
+              <div>not-classified</div>
+              <div class="risk med">—</div>
+              <div>Grafana datasource</div>
+            </div>
+            <div class="matrix-row">
+              <div>DatasourceNoData</div>
+              <div>not-classified</div>
+              <div class="risk med">—</div>
+              <div>Grafana datasource</div>
+            </div>
+            <div class="matrix-row">
+              <div>Canal STDCred Sem Acúmulos</div>
+              <div>sev-2-high</div>
+              <div>em aberto</div>
+              <div>Canal STDCred</div>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Acao recomendada:</strong> Verificar conectividade do datasource Grafana (eer94rrk2ic5ca) e acionar time de canais para o STDCred sem acúmulos.
+          </div>
+        </div>
+        <div class="source">22 a 26/06/2026</div>
+      </section>
+
+      <!-- 10 — CONCLUSÃO E PRÓXIMOS PASSOS -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-command-center.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Conclusão e próximos passos</div>
+          <h2>Semana controlada — foco em datasource Grafana e canais de pagamento recorrentes</h2>
+          <div class="takeaways">
+            <div class="takeaway">269 eventos no período, 96,7% resolvidos. Nenhum sev-1 registrado.</div>
+            <div class="takeaway">DatasourceError e DatasourceNoData representam 67% do volume — origem única: datasource Grafana eer94rrk2ic5ca.</div>
+            <div class="takeaway">Payments Conductor e Boletos presentes nos 5 dias — padrão recorrente que indica instabilidade estrutural em integrações de pagamento.</div>
+            <div class="takeaway">136 eventos com TTR acima de 30 min (50,6%). Maior TTR: 54:32:03 em DatasourceNoData — investigação de causa raiz necessária.</div>
+          </div>
+          <div class="callout light">
+            <strong>Proximo passo:</strong> Investigar datasource Grafana eer94rrk2ic5ca como causa raiz dos alertas DatasourceError e DatasourceNoData, e acionar time de Payments para análise da integração Conductor.
+          </div>
+        </div>
+        <div class="source">22 a 26/06/2026</div>
+      </section>
+
+    </main>
+
+    <script src="elven-deck-charts.js"></script>
+    <script>
+      function renderCharts() {
+        ElvenDeck.barChart(
+          document.getElementById("chart-severidade"),
+          { name: "Eventos", data: [0, 269], color: ElvenDeck.colors.red },
+          { labels: ["sev-1-critical", "not-classified"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-top-eventos"),
+          { name: "Ocorrências", data: [125, 56, 12, 9, 9], color: ElvenDeck.colors.teal },
+          { labels: ["DatasourceError", "DatasourceNoData", "Canal TEF Sem Trocas", "Canal STDCred Sem Acúmulos", "Payments Conductor DataHub"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-recorrencia"),
+          { name: "Ocorrências", data: [9, 5, 9, 7, 3], color: "#34d399" },
+          { labels: ["Payments Conductor DataHub", "Payments Boletos", "Canal STDCred", "Apple Store Dotz", "Canal TOTVS"] }
+        );
+        ElvenDeck.barChart(
+          document.getElementById("chart-ttr"),
+          { name: "Eventos TTR>30min", data: [67, 41, 10, 4, 4], color: ElvenDeck.colors.red },
+          { labels: ["DatasourceError", "DatasourceNoData", "Canal TEF Sem Trocas", "Canal RLI", "Payments Boletos"] }
+        );
+      }
+      window.addEventListener("load", renderCharts);
+      window.addEventListener("resize", renderCharts);
+    </script>
+  </body>
+</html>
