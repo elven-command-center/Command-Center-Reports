@@ -23,8 +23,11 @@ metadata:
 ## Padrão de slug e pasta
 
 ```text
-cc-{cliente-kebab}-{DDMMAAAA}
-Exemplo: cc-elven-works-20062026
+Data única:   cc-{cliente-kebab}-{DDMMAAAA}
+              Exemplo: cc-elven-works-20062026
+
+Período:      cc-{cliente-kebab}-{DD}a{DDMMAAAA}
+              Exemplo: cc-unicred-22a26062026
 ```
 
 ## Fluxo completo

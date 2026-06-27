@@ -221,22 +221,46 @@ LIMIT 5;
 ## C1 — SLA (catálogo adicional)
 
 ```sql
--- Compliance geral: % eventos resolvidos dentro do SLA do plano
--- Nota: ajuste o threshold de SLA conforme o plano do cliente
+-- Compliance MTTA: % eventos reconhecidos dentro da janela SLA do plano
+-- SLA é de reconhecimento (TTA), não de resolução (TTR)
+-- Fonte do sla_duration: dim__commandCenterClients (não dim__orgs)
 SELECT
-  COUNT(*) AS total,
-  COUNT(*) FILTER (WHERE m.ttr <= 3600) AS dentro_sla_1h,
-  COUNT(*) FILTER (WHERE m.ttr > 3600)  AS fora_sla_1h,
-  ROUND(COUNT(*) FILTER (WHERE m.ttr <= 3600)::numeric / NULLIF(COUNT(*), 0) * 100, 1) AS compliance_pct,
-  o.plan_name
-FROM dbt_prd.dim__eventsMetrics m
-JOIN dbt_prd.fct__events e ON e.event_id = m.event_id AND e.event_type = m.event_type
-JOIN dbt_prd.dim__orgs o ON o.org_uid = e.org_uid
+  cc.sla_duration,
+  cc.plan_name,
+  COUNT(*) AS total_com_ack,
+  COUNT(*) FILTER (WHERE m.tta <= cc.sla_duration) AS dentro_sla,
+  COUNT(*) FILTER (WHERE m.tta > cc.sla_duration)  AS fora_sla,
+  ROUND(COUNT(*) FILTER (WHERE m.tta <= cc.sla_duration)::numeric / NULLIF(COUNT(*), 0) * 100, 1) AS compliance_pct
+FROM dbt_prd."dim__eventsMetrics" m
+JOIN dbt_prd."fct__events" e ON e.event_id = m.event_id AND e.event_type = m.event_type
+JOIN dbt_prd."dim__commandCenterClients" cc ON cc.org_uid = e.org_uid
 WHERE e.org_uid = '{org_uid}'
   AND e.event_happened_tzbr::date BETWEEN '{date_start}' AND '{date_end}'
-  AND m.is_resolved = true
+  AND m.is_ack = true
   AND e.deleted_at IS NULL
-GROUP BY o.plan_name;
+  AND cc.deleted_at IS NULL
+GROUP BY cc.sla_duration, cc.plan_name;
+```
+
+---
+
+## C5 — Lista detalhada de eventos (catálogo adicional)
+
+```sql
+SELECT
+  e.title,
+  e.severity,
+  e.event_happened_tzbr::date AS data,
+  TO_CHAR((m.ttr || ' seconds')::interval, 'HH24:MI:SS') AS ttr,
+  m.is_ack,
+  m.is_resolved
+FROM dbt_prd."fct__events" e
+LEFT JOIN dbt_prd."dim__eventsMetrics" m ON m.event_id = e.event_id AND m.event_type = e.event_type
+WHERE e.org_uid = '{org_uid}'
+  AND e.event_happened_tzbr::date BETWEEN '{date_start}' AND '{date_end}'
+  AND e.deleted_at IS NULL
+ORDER BY e.event_happened_tzbr DESC
+LIMIT 30;
 ```
 
 ---
