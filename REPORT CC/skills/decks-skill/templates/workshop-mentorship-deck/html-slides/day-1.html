@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso | Dia 1 — tema do dia</title>
+    <link rel="stylesheet" href="elven-deck.css" />
+  </head>
+  <body>
+    <main class="deck">
+      <!--
+        TEMPLATE workshop-mentorship-deck / day-1 — sistema visual kontik.
+        Moldura (lint): todo slide com .content, .kicker, .logo; slide 01 = cover;
+        canvas 1280x720; sem emoji. Componha dentro do .content.
+        Catálogo de composição: reference/slide-recipes.md
+      -->
+
+      <!-- 01 — CAPA -->
+      <section class="slide cover">
+        <img class="logo on-dark" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Nome do curso - Dia 1</div>
+          <h1>Headline do Dia 1, em uma frase declarativa.</h1>
+          <p class="sub">Subtítulo: o que o dia entrega e por que importa.</p>
+        </div>
+        <div class="metric-rail">
+          <div class="metric">
+            <div class="value">90'</div>
+            <div class="label">duração da sessão, seis blocos</div>
+          </div>
+          <div class="metric">
+            <div class="value">0</div>
+            <div class="label">blocos de teoria objetiva</div>
+          </div>
+          <div class="metric">
+            <div class="value">0</div>
+            <div class="label">hands-on guiados em ambiente real</div>
+          </div>
+          <div class="metric">
+            <div class="value">1</div>
+            <div class="label">mensagem principal do dia</div>
+          </div>
+        </div>
+        <div class="source">Instrutor: nome. Curso de N dias - Dia 1.</div>
+      </section>
+
+      <!-- 02 — TEORIA (three-col + callout) -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Teoria objetiva</div>
+          <h2>O conceito central do dia, em uma frase.</h2>
+          <div class="three-col">
+            <div class="panel">
+              <h3>Conceito A</h3>
+              <p>Explicação objetiva. Use <span class="mono">termos técnicos</span> em mono.</p>
+            </div>
+            <div class="panel">
+              <h3>Conceito B</h3>
+              <p>Explicação objetiva, ligada ao conceito anterior.</p>
+            </div>
+            <div class="panel">
+              <h3>Conceito C</h3>
+              <p>Explicação objetiva que prepara o hands-on.</p>
+            </div>
+          </div>
+          <div class="callout light">
+            <strong>Frase do dia:</strong> a ideia que a turma precisa levar para casa.
+          </div>
+        </div>
+        <div class="source">Referência: repo / ambiente real usado na demo.</div>
+      </section>
+
+      <!-- 03 — ARQUITETURA (slide dark; diagram de nós) -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Arquitetura</div>
+          <h2>Como as peças se conectam — frase que descreve o diagrama.</h2>
+          <div class="diagram">
+            <div class="node">
+              <h3>Origem</h3>
+              <p>O que produz o sinal. Bootstrap, app, runtime.</p>
+            </div>
+            <div class="arrow">&rarr;</div>
+            <div class="node">
+              <h3>Coletor</h3>
+              <p>O que recebe e processa. Endpoint, protocolo.</p>
+            </div>
+            <div class="arrow">&rarr;</div>
+            <div class="node">
+              <h3>Destino</h3>
+              <p>Onde o sinal é observado. Stack, dashboards.</p>
+            </div>
+          </div>
+          <div class="decision">
+            <div class="yes">
+              <h3>O que precisa permanecer igual</h3>
+              <p class="light-sub">A identidade e o contrato que não mudam entre ambientes.</p>
+            </div>
+            <div class="no">
+              <h3>O que muda</h3>
+              <p class="light-sub">Apenas o mecanismo — a narrativa operacional não muda.</p>
+            </div>
+          </div>
+        </div>
+        <div class="source">Validação antes de seguir para o próximo bloco.</div>
+      </section>
+
+      <!-- 04 — HANDS-ON (code + panel de critério) -->
+      <section class="slide">
+        <img class="logo" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Hands-on 1</div>
+          <h2>O que a turma vai executar e provar agora.</h2>
+          <div class="two-col">
+            <div class="code">comando-de-setup
+# habilita o que estava comentado
+comando-de-smoke-test
+
+# valida:
+#   endpoint    host:porta
+#   ambiente    nome-do-ambiente</div>
+            <div class="panel" style="min-height: 282px;">
+              <h3>Critério de sucesso</h3>
+              <ul>
+                <li>Primeiro sinal esperado depois do setup.</li>
+                <li>Segundo sinal — o que confirma que funcionou.</li>
+                <li>Terceiro sinal de validação.</li>
+              </ul>
+              <div class="callout light" style="margin-top: 16px;">
+                <strong>Erro clássico:</strong> o tropeço mais comum e como reconhecê-lo.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source">Lab completo em labs/day-1/lab.md.</div>
+      </section>
+
+      <!-- 05 — FECHAMENTO (takeaways) -->
+      <section class="slide dark">
+        <img class="logo on-dark" src="assets/elven-logo.png" alt="Elven" />
+        <div class="content">
+          <div class="kicker">Fechamento - Dia 1</div>
+          <h2>A mensagem principal do dia, em uma frase memorável.</h2>
+          <div class="takeaways">
+            <div class="takeaway">Primeiro ponto que a turma leva do dia.</div>
+            <div class="takeaway">Segundo ponto de fechamento.</div>
+            <div class="takeaway">Terceiro ponto de fechamento.</div>
+            <div class="takeaway">Quarto ponto de fechamento.</div>
+          </div>
+        </div>
+        <div class="source">Próximo: Dia 2 - tema do próximo dia.</div>
+      </section>
+    </main>
+
+    <!-- Inclua o motor de gráficos só se algum slide tiver data-chart. -->
+    <!-- <script src="elven-deck-charts.js"></script> -->
+  </body>
+</html>
