@@ -122,7 +122,7 @@ Defina os dados em `renderCharts()` (ver Passo 6 do SKILL.md).
       <div class="note">Legenda.</div>
     </div>
     <div>
-      <div class="evidence-row" style="grid-template-columns: 1fr; margin-top: 0;">
+      <div class="evidence-row stack">
         <div class="evidence hot"><div class="big">dado</div><div class="small">Evidência crítica.</div></div>
         <div class="evidence warn"><div class="big">dado</div><div class="small">Evidência de atenção.</div></div>
         <div class="evidence"><div class="big">dado</div><div class="small">Evidência positiva.</div></div>
