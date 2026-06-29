@@ -1,4 +1,4 @@
-# Lab — Dia 1: `<Título>`
+# Lab - Dia 1: `<Título>`
 
 ## O que se prova
 
@@ -12,7 +12,7 @@
 
 ## Execução
 
-### Passo 1 — `<ação>`
+### Passo 1 - `<ação>`
 
 ```bash
 <comando>
@@ -24,13 +24,13 @@ Resultado esperado:
 <output esperado>
 ```
 
-### Passo 2 — `<ação>`
+### Passo 2 - `<ação>`
 
 ```bash
 <comando>
 ```
 
-### Passo 3 — Validação
+### Passo 3 - Validação
 
 ```bash
 <comando de validação>
@@ -47,8 +47,8 @@ Resultado esperado:
 
 > **Atenção:** os erros abaixo são esperados em alguns ambientes. Saiba reconhecer.
 
-- **Falha A** — sintoma `<X>`, causa `<Y>`, fix `<Z>`
-- **Falha B** — sintoma `<X>`, causa `<Y>`, fix `<Z>`
+- **Falha A** - sintoma `<X>`, causa `<Y>`, fix `<Z>`
+- **Falha B** - sintoma `<X>`, causa `<Y>`, fix `<Z>`
 
 ## Debrief
 

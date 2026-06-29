@@ -1,10 +1,10 @@
-# Email pra participantes — `<Curso>`
+# Email pra participantes - `<Curso>`
 
 Mande 24h antes do Dia 1.
 
 ---
 
-**Subject**: `<Curso> — Pronto pra começar amanhã?`
+**Subject**: `<Curso> - Pronto pra começar amanhã?`
 
 Olá `<nome>`,
 
@@ -12,8 +12,8 @@ Tudo bem? Te escrevo pra confirmar o início do `<Curso>` amanhã `<dia/horário
 
 **O que preparar**:
 
-- `<item 1 — link>`
-- `<item 2 — link>`
+- `<item 1 - link>`
+- `<item 2 - link>`
 
 **Pré-requisitos**: rode o trecho de saneamento em `participant-pack.md` antes do início. Se algo falhar, me responde aqui que a gente resolve antes.
 

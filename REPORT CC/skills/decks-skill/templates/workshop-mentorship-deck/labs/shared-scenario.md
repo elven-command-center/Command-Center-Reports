@@ -1,4 +1,4 @@
-# Cenário compartilhado — `<Curso>`
+# Cenário compartilhado - `<Curso>`
 
 Cenário base reaproveitado pelos labs de todos os dias.
 

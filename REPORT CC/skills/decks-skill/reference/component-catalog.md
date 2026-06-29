@@ -52,7 +52,7 @@ Rodapé esquerdo, texto pequeno. Para citar origem dos dados.
 | `h3` | título de card (20px) |
 | `.sub` | subtítulo da capa (22px, claro) |
 | `.light-sub` | subtítulo em slide light (18px, cinza) |
-| `.mono` | trecho inline em fonte monoespaçada — variáveis, nomes técnicos |
+| `.mono` | trecho inline em fonte monoespaçada - variáveis, nomes técnicos |
 
 ---
 
@@ -97,7 +97,7 @@ Todos com `margin-top` e `gap` embutidos.
 </div>
 ```
 
-Card branco genérico. `.panel.dark-panel` = variante de fundo escuro (para usar em slide light). Card branco mantém texto escuro mesmo em `slide dark` — automático.
+Card branco genérico. `.panel.dark-panel` = variante de fundo escuro (para usar em slide light). Card branco mantém texto escuro mesmo em `slide dark` - automático.
 
 ### `.evidence-row` › `.evidence`
 
@@ -231,10 +231,10 @@ Lista de fechamento. Marcador quadrado teal (lima em slide dark).
 </div>
 ```
 
-Etiquetas categóricas. **Substituem emoji** — nunca use emoji no corpo do deck (lint L10).
+Etiquetas categóricas. **Substituem emoji** - nunca use emoji no corpo do deck (lint L10).
 
 ---
 
 ## Texto em cards brancos sobre slide dark
 
-`.panel`, `.evidence`, `.node`, `.decision .yes/.no` são sempre brancos e **forçam texto escuro** mesmo dentro de `slide dark`. Você não precisa (e não deve) sobrescrever a cor — senão o título some. Se precisa de um card escuro num slide light, use `.panel.dark-panel`.
+`.panel`, `.evidence`, `.node`, `.decision .yes/.no` são sempre brancos e **forçam texto escuro** mesmo dentro de `slide dark`. Você não precisa (e não deve) sobrescrever a cor - senão o título some. Se precisa de um card escuro num slide light, use `.panel.dark-panel`.

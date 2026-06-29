@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * @elven-observability/decks-skill — render-deck
+ * @elven-observability/decks-skill - render-deck
  *
  * Renders an Elven deck HTML file to PDF using Puppeteer.
  * Output: 1280x720, 1 page per slide, print backgrounds, zero margin.

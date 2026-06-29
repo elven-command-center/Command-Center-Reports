@@ -1,4 +1,4 @@
-# Slide NN — Encerramento
+# Slide NN - Encerramento
 
 ## Objetivo do slide
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * @elven-observability/decks-skill — preview-deck
+ * @elven-observability/decks-skill - preview-deck
  *
  * Renders one PNG per slide (1280x720 @2x) plus a contact-sheet.png
  * using Puppeteer.
@@ -62,7 +62,7 @@ async function main() {
   try {
     const page = await browser.newPage();
     // 1.5x: nítido para QA, e mantém o PNG abaixo de 2000px por lado
-    // (1920x1080) — seguro para abrir em qualquer visualizador/ferramenta.
+    // (1920x1080) - seguro para abrir em qualquer visualizador/ferramenta.
     await page.setViewport({ width: 1280, height: 720, deviceScaleFactor: 1.5 });
     await page.goto(`file://${input}`, {
       waitUntil: "networkidle0",

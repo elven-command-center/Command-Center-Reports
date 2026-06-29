@@ -14,13 +14,13 @@ Ao final do Dia 1, a turma deve conseguir:
 
 ## Agenda de 90 minutos
 
-### Bloco 1 — 10 min
+### Bloco 1 - 10 min
 
 - recapitular / framing inicial
 - provocar com pergunta-chave
 - alinhar a frase do dia
 
-### Bloco 2 — 18 min
+### Bloco 2 - 18 min
 
 Teoria objetiva:
 
@@ -28,7 +28,7 @@ Teoria objetiva:
 - `<conceito 2>`
 - `<conceito 3>`
 
-### Bloco 3 — 12 min
+### Bloco 3 - 12 min
 
 Demo guiada:
 
@@ -36,7 +36,7 @@ Demo guiada:
 - mostrar fluxo `<A → B → C>`
 - explicitar `<o que está acontecendo>`
 
-### Bloco 4 — 20 min
+### Bloco 4 - 20 min
 
 Hands-on 1:
 
@@ -45,7 +45,7 @@ Hands-on 1:
 - rodar `<smoke test>`
 - validar `<sinal de sucesso>`
 
-### Bloco 5 — 20 min
+### Bloco 5 - 20 min
 
 Hands-on 2 (opcional dependendo do tema):
 
@@ -53,7 +53,7 @@ Hands-on 2 (opcional dependendo do tema):
 - `<passo 2>`
 - discutir trade-offs
 
-### Bloco 6 — 10 min
+### Bloco 6 - 10 min
 
 Debrief:
 

@@ -1,4 +1,4 @@
-# Slide 01 — Capa
+# Slide 01 - Capa
 
 ## Objetivo do slide
 

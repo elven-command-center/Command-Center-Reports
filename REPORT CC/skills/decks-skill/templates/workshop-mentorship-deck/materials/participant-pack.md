@@ -1,4 +1,4 @@
-# Participant pack — `<Curso>`
+# Participant pack - `<Curso>`
 
 Material que a turma recebe antes do início.
 

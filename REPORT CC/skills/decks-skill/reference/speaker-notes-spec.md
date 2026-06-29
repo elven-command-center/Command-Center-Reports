@@ -1,13 +1,13 @@
 # Speaker notes spec (workshop-mentorship-deck only)
 
-Toda speaker note de slide em workshop precisa ter exatamente **4 seções na ordem exata**. Não é opcional, não é "use o que se aplica" — é o contrato.
+Toda speaker note de slide em workshop precisa ter exatamente **4 seções na ordem exata**. Não é opcional, não é "use o que se aplica" - é o contrato.
 
 ---
 
 ## Estrutura
 
 ```markdown
-# Slide NN — Título exato do slide
+# Slide NN - Título exato do slide
 
 ## Objetivo do slide
 
@@ -26,7 +26,7 @@ não pede interação, deixe a seção como:
 
 > Sem interação proposta. Mantenha ritmo.
 
-Não delete a seção — ela faz parte do contrato.)
+Não delete a seção - ela faz parte do contrato.)
 
 ## Versão curta
 
@@ -37,10 +37,10 @@ Não delete a seção — ela faz parte do contrato.)
 
 ## Por que 4 seções
 
-- **Objetivo do slide** — força o autor a justificar a existência do slide. Se você não consegue escrever o objetivo em 2 frases, o slide está errado.
-- **Fala pronta** — onde a profundidade vive. O slide é estrutura+memória; a speaker note é a aula.
-- **Interação opcional** — força o instrutor a pensar em ritmo. Workshop sem interação vira monólogo.
-- **Versão curta** — backup pra quando o cronômetro aperta. Salva sessão real.
+- **Objetivo do slide** - força o autor a justificar a existência do slide. Se você não consegue escrever o objetivo em 2 frases, o slide está errado.
+- **Fala pronta** - onde a profundidade vive. O slide é estrutura+memória; a speaker note é a aula.
+- **Interação opcional** - força o instrutor a pensar em ritmo. Workshop sem interação vira monólogo.
+- **Versão curta** - backup pra quando o cronômetro aperta. Salva sessão real.
 
 Pular qualquer uma delas perde uma função crítica.
 
@@ -88,7 +88,7 @@ empurrando o runtime, o que sobra é o que você escreveu.
 **Seção `## Interação opcional` deletada:**
 
 ```markdown
-# Slide 03 — Bootstrap Node
+# Slide 03 - Bootstrap Node
 
 ## Objetivo do slide
 …
@@ -109,13 +109,13 @@ empurrando o runtime, o que sobra é o que você escreveu.
 Cobertura: o dia inteiro, costurando todas as speaker notes.
 
 ```markdown
-# Script Dia X — <Curso>
+# Script Dia X - <Curso>
 
-## Slide 01 — Capa
+## Slide 01 - Capa
 
 (Fala pronta integral do slide 01.)
 
-## Slide 02 — Seção
+## Slide 02 - Seção
 
 (Fala pronta integral do slide 02.)
 
@@ -123,7 +123,7 @@ Cobertura: o dia inteiro, costurando todas as speaker notes.
 
 (Frase explicitando passagem entre blocos. Não é parte do slide.)
 
-## Slide 03 — …
+## Slide 03 - …
 ```
 
 - Cabeçalhos por slide pra navegação.
@@ -135,7 +135,7 @@ Cobertura: o dia inteiro, costurando todas as speaker notes.
 
 ## Como o lint trata speaker notes em v0.1
 
-Lint binário v0.1.0 **não inspeciona speaker notes** ainda — só o HTML do deck. Validação manual via `quality-gate.md` G4.
+Lint binário v0.1.0 **não inspeciona speaker notes** ainda - só o HTML do deck. Validação manual via `quality-gate.md` G4.
 
 Roadmap pós-v0.1: lint de speaker notes (markdownlint custom rule) que checa as 4 seções obrigatórias. Issue: rastreamento futuro.
 
@@ -143,4 +143,4 @@ Roadmap pós-v0.1: lint de speaker notes (markdownlint custom rule) que checa as
 
 ## Exemplo canônico
 
-Veja `Mentoring/materials/speaker-notes/day-2/01-capa.md` — exemplo real, em produção. Use como referência de tom e densidade.
+Veja `Mentoring/materials/speaker-notes/day-2/01-capa.md` - exemplo real, em produção. Use como referência de tom e densidade.

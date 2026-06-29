@@ -1,12 +1,12 @@
-# Script Dia 1 — `<Curso>`
+# Script Dia 1 - `<Curso>`
 
 Teleprompter contínuo. Tudo o que vai ser falado em voz alta, na ordem.
 
-## Slide 01 — Capa
+## Slide 01 - Capa
 
 `<Reusa "Fala pronta" do slide-01 OU reescreve costurando.>`
 
-## Slide 02 — `<Título>`
+## Slide 02 - `<Título>`
 
 `<…>`
 
@@ -14,7 +14,7 @@ Teleprompter contínuo. Tudo o que vai ser falado em voz alta, na ordem.
 
 `<Frase ponte, costurando do conceitual pro prático.>`
 
-## Slide 03 — `<Título>`
+## Slide 03 - `<Título>`
 
 `<…>`
 
@@ -22,6 +22,6 @@ Teleprompter contínuo. Tudo o que vai ser falado em voz alta, na ordem.
 
 `<Instrução em voz para guiar o lab; pausas pra deixar a turma executar.>`
 
-## Slide N — Encerramento
+## Slide N - Encerramento
 
 `<Fechamento, ponte pro Dia 2.>`

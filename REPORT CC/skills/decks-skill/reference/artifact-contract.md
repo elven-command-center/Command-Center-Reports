@@ -23,16 +23,16 @@ Pacote = **uma pasta** com o deck + suporte mínimo. Sem speaker notes, sem labs
 
 ### Conteúdo obrigatório do HTML
 
-- Slide 01 = `class="slide cover"` com kicker `<CLIENTE>|<SUBCLIENTE> — <CONTEXTO>` (receita R1).
+- Slide 01 = `class="slide cover"` com kicker `<CLIENTE>|<SUBCLIENTE> - <CONTEXTO>` (receita R1).
 - Slide 02 = resumo executivo (receita R2: `three-col` de `.panel` + `.callout`).
 - Slide final = fechamento (receita R9: `.takeaways` + `.callout` de próximo passo).
 - Toda métrica numérica tem fonte declarada em `.source` OU em `source-notes.md`.
 - Toda inspeção de código declara "read-only" em `.source`.
 
-### `source-notes.md` — estrutura mínima
+### `source-notes.md` - estrutura mínima
 
 ```markdown
-# Source notes — <slug>
+# Source notes - <slug>
 
 ## Fontes brutas
 - Loki: query `{env="prod", service="…"}`
@@ -55,10 +55,10 @@ Pacote = **uma pasta** com o deck + suporte mínimo. Sem speaker notes, sem labs
 - Hipótese B: descartada porque …
 ```
 
-### `qa-notes.md` — estrutura mínima
+### `qa-notes.md` - estrutura mínima
 
 ```markdown
-# QA notes — <slug>
+# QA notes - <slug>
 
 ## Conteúdo
 - [ ] Todas as métricas batem com `source-notes.md`?
@@ -127,8 +127,8 @@ Pacote = **árvore** com agenda + slides MD + HTML decks + labs + materials. Mul
 ## Objetivo
 ## Resultado do dia
 ## Agenda de 90 minutos
-### Bloco 1 — N min
-### Bloco N — N min
+### Bloco 1 - N min
+### Bloco N - N min
 ## Fio condutor do instrutor
 ### Mensagem principal
 ## Lab do dia
@@ -138,7 +138,7 @@ Pacote = **árvore** com agenda + slides MD + HTML decks + labs + materials. Mul
 #### `labs/day-X/lab.md`
 
 ```markdown
-# Lab — Dia X
+# Lab - Dia X
 
 ## O que se prova
 ## Pré-requisitos
@@ -153,7 +153,7 @@ Pacote = **árvore** com agenda + slides MD + HTML decks + labs + materials. Mul
 4 seções obrigatórias na ordem exata:
 
 ```markdown
-# Slide NN — Título do slide
+# Slide NN - Título do slide
 
 ## Objetivo do slide
 ## Fala pronta

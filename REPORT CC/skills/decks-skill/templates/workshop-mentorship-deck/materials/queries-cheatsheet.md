@@ -1,4 +1,4 @@
-# Queries cheatsheet — `<Curso>`
+# Queries cheatsheet - `<Curso>`
 
 Trechos prontos pra colar em Grafana Explore durante a sessão.
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# @elven-observability/decks-skill — lint
+# @elven-observability/decks-skill - lint
 #
 # Binary 10/10 check for Elven deck HTML files. Exit 0 only when every file
 # passes every rule. Each failure prints the rule ID + reason.
@@ -86,7 +86,7 @@ lint_one() {
 
   # L6: first slide carries the cover variant. Aceita o token `cover` em
   # qualquer posição da lista de classes (ex: class="slide layout-cover cover"),
-  # mas exige o token isolado — `layout-cover` sozinho NÃO conta.
+  # mas exige o token isolado - `layout-cover` sozinho NÃO conta.
   local first_slide
   first_slide=$(printf '%s' "$stripped" | grep -nE 'class="slide([ "])' | head -n 1)
   if [ -n "$first_slide" ] && ! echo "$first_slide" | grep -qE 'class="slide[^"]* cover[ "]'; then

@@ -63,13 +63,13 @@ A speaker note é onde a profundidade vive. O slide é onde estrutura e memória
 
 Numa sequência típica (dia de workshop OU report):
 
-1. **enquadramento / tensão** — qual é o problema, por que importa hoje
-2. **modelo mental** — como pensar nisso
-3. **visão concreta do sistema** — onde isso aparece no runtime
-4. **regras operacionais** — o que muda no dia-a-dia
-5. **prova prática** — demo / dado real
+1. **enquadramento / tensão** - qual é o problema, por que importa hoje
+2. **modelo mental** - como pensar nisso
+3. **visão concreta do sistema** - onde isso aparece no runtime
+4. **regras operacionais** - o que muda no dia-a-dia
+5. **prova prática** - demo / dado real
 6. **hands-on** (workshop) ou **análise profunda** (report)
-7. **fechamento + ponte** — pro próximo dia ou pra ação concreta
+7. **fechamento + ponte** - pro próximo dia ou pra ação concreta
 
 Não precisa ser exato, mas slides devem se conectar.
 
@@ -103,7 +103,7 @@ Em PR / review, esse é o gate G6 do `quality-gate.md`.
 
 - Inline: `<code>` (variáveis, paths, comandos curtos).
 - Bloco: `.code` em `<pre>`. Máximo ~12 linhas. Se for mais, está sobrando.
-- Sintaxe highlight: **não há** em v0.1. O texto fica branco-azulado sobre `#0b1220`. Comentários inline use `# …` ou `// …` literal — não precisa estilizar.
+- Sintaxe highlight: **não há** em v0.1. O texto fica branco-azulado sobre `#0b1220`. Comentários inline use `# …` ou `// …` literal - não precisa estilizar.
 - Sem `:` no fim de label de variável dentro do `.code`; siga a sintaxe da linguagem real.
 
 ---
@@ -121,4 +121,4 @@ Em PR / review, esse é o gate G6 do `quality-gate.md`.
 
 - Nomes de variáveis, arquivos, classes, comandos: sempre em `<code>`.
 - Nomes próprios de produtos/projetos: sem `<code>`, capitalização oficial (`Beyla`, `Tempo`, `Loki`, `Mimir`, `OpenTelemetry`, `Prometheus`).
-- Acrônimos: na primeira menção, sempre desenvolva — "MTTD (mean time to detect)".
+- Acrônimos: na primeira menção, sempre desenvolva - "MTTD (mean time to detect)".

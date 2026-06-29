@@ -1,4 +1,4 @@
-/* @elven-observability/decks-skill — elven-deck.css
+/* @elven-observability/decks-skill - elven-deck.css
  *
  * Tema canônico dos decks Elven Works. Fonte da verdade: o deck real
  * kontik-zupper-incident-2026-05-17 (PS Elven), reproduzido fielmente.
@@ -82,7 +82,7 @@ body { counter-reset: slide; }
 .logo { position: absolute; right: 68px; top: 42px; width: 104px; height: auto; }
 .logo.on-dark { filter: brightness(0) invert(1); }
 /* Salvaguarda: mesmo sem a classe .on-dark, o logo fica branco em fundo
- * escuro. O autor não precisa lembrar — a variante do slide resolve. */
+ * escuro. O autor não precisa lembrar - a variante do slide resolve. */
 .slide.cover .logo, .slide.dark .logo { filter: brightness(0) invert(1); }
 .logo.on-light { filter: none; }
 
@@ -146,7 +146,7 @@ h3 { font-size: 20px; line-height: 1.16; font-weight: 850; }
 code { background: rgba(15, 25, 35, 0.07); padding: 1px 4px; }
 .dark code { background: rgba(255, 255, 255, 0.08); }
 
-/* Cover — faixa de métricas ----------------------------------------- */
+/* Cover - faixa de métricas ----------------------------------------- */
 .metric-rail {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -164,7 +164,7 @@ code { background: rgba(15, 25, 35, 0.07); padding: 1px 4px; }
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 28px; }
 .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 28px; }
 
-/* Panel — card branco genérico -------------------------------------- */
+/* Panel - card branco genérico -------------------------------------- */
 .panel {
   background: #fff;
   border: 1px solid var(--line);

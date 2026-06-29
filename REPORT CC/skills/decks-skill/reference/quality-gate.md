@@ -4,7 +4,7 @@ Lint binário (10/10) é gate **estrutural**. Estes 6 gates são **qualitativos*
 
 ---
 
-## G1 — Identidade visual
+## G1 - Identidade visual
 
 Abra o PDF rendered lado-a-lado com a referência canônica:
 
@@ -24,7 +24,7 @@ Se há drift visível, ajuste `themes/elven-deck.css` antes de seguir.
 
 ---
 
-## G2 — Narrativa
+## G2 - Narrativa
 
 - A sequência de slides forma uma história contínua
 - Cada slide tem razão de existir (não é decorativo, não é redundante)
@@ -35,7 +35,7 @@ Teste: leia só os headlines em sequência. Eles contam uma história sozinhos?
 
 ---
 
-## G3 — Coerência de artefato (workshop)
+## G3 - Coerência de artefato (workshop)
 
 Verifique consistência entre:
 
@@ -48,18 +48,18 @@ Use `grep` pra checar nomes de apps/comandos/env vars repetidos. Se um arquivo d
 
 ---
 
-## G4 — Qualidade de fala (workshop)
+## G4 - Qualidade de fala (workshop)
 
 - Speaker notes têm 4 seções (Objetivo / Fala pronta / Interação opcional / Versão curta)
 - `## Fala pronta` é fala real, não meta-comentário
-- Não tem "esse slide serve para…" ou "o instrutor pode dizer…" — esses são leak de tom
+- Não tem "esse slide serve para…" ou "o instrutor pode dizer…" - esses são leak de tom
 - Cada speaker note termina com transição implícita pro próximo (ou explícita no `day-X-script.md`)
 
 Teste: pegue 1 speaker note aleatória. Você consegue **ler em voz alta** e parecer natural? Se não, refaça.
 
 ---
 
-## G5 — QA visual
+## G5 - QA visual
 
 Rode `decks-skill preview <deck>.html` e abra `contact-sheet.png`. Verifique:
 
@@ -75,7 +75,7 @@ Se ANY slide tem problema, fix antes de gerar PDF final.
 
 ---
 
-## G6 — Fechamento honesto
+## G6 - Fechamento honesto
 
 A pergunta final:
 
@@ -90,7 +90,7 @@ Razões comuns:
 - speaker notes ainda parecem rascunho (workshop)
 - referências de "atual"/"2026" não foram conferidas
 - métricas no deck não batem com `source-notes.md` (client-report)
-- cliente errado no cover (já aconteceu — confira)
+- cliente errado no cover (já aconteceu - confira)
 
 Só termine quando tudo passa.
 

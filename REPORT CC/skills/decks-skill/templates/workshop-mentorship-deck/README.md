@@ -1,4 +1,4 @@
-# `<Curso>` — Mentoria Elven Works
+# `<Curso>` - Mentoria Elven Works
 
 Pacote canônico de mentoria/workshop multi-dia.
 

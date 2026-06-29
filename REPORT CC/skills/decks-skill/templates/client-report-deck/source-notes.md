@@ -1,4 +1,4 @@
-# Source notes — `<slug>`
+# Source notes - `<slug>`
 
 Use este arquivo para documentar **de onde vieram os dados** que aparecem no deck. Garante rastreabilidade quando o cliente pergunta "como vocês chegaram nesse número?".
 
@@ -13,8 +13,8 @@ Use este arquivo para documentar **de onde vieram os dados** que aparecem no dec
 
 ## Trechos de código inspecionados (read-only)
 
-- `<arquivo>:<linhas>` — `<descrição>`
-- `<classe::método>` — `<descrição>`
+- `<arquivo>:<linhas>` - `<descrição>`
+- `<classe::método>` - `<descrição>`
 
 ## Janela temporal analisada
 
@@ -34,4 +34,4 @@ Use este arquivo para documentar **de onde vieram os dados** que aparecem no dec
 
 ## Notas internas (não vão no deck)
 
-- `<nota>` — uso pra reviewer entender contexto
+- `<nota>` - uso pra reviewer entender contexto

@@ -1,4 +1,4 @@
-/* @elven-observability/decks-skill — elven-deck-charts.js
+/* @elven-observability/decks-skill - elven-deck-charts.js
  *
  * Motor de gráficos SVG dos decks Elven. Mesma engine do deck canônico
  * kontik-zupper-incident-2026-05-17, generalizada para qualquer dado.
@@ -28,7 +28,7 @@
  *     window.addEventListener("resize", renderCharts);
  *   </script>
  *
- * O renderizador de PDF chama window.renderCharts() explicitamente — então
+ * O renderizador de PDF chama window.renderCharts() explicitamente - então
  * SEMPRE defina a função com esse nome e registre nos eventos load/resize.
  *
  * Detecção dark: se o .chart estiver dentro de um .slide.dark, grid e

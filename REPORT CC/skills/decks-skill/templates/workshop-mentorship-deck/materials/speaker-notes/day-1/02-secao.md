@@ -1,4 +1,4 @@
-# Slide 02 — `<Título>`
+# Slide 02 - `<Título>`
 
 ## Objetivo do slide
 

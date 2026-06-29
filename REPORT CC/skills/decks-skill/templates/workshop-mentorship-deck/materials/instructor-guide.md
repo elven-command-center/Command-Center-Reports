@@ -1,4 +1,4 @@
-# Instructor guide — `<Curso>`
+# Instructor guide - `<Curso>`
 
 Guia de bolso pra instrutor antes/durante/depois da sessão.
 

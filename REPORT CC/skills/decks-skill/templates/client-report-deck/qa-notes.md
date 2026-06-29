@@ -1,4 +1,4 @@
-# QA notes — `<slug>`
+# QA notes - `<slug>`
 
 Bata item a item antes de mandar o deck ao cliente.
 

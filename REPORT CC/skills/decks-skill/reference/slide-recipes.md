@@ -1,6 +1,6 @@
 # Slide recipes
 
-Combinações de componentes **testadas** — extraídas do deck aprovado `kontik-zupper-incident-24h`. Não há "layout fixo": cada slide é uma variante (`light`/`dark`/`cover`/`split-dark`) com `.content`, e dentro dela você compõe. Estas receitas são pontos de partida confiáveis.
+Combinações de componentes **testadas** - extraídas do deck aprovado `kontik-zupper-incident-24h`. Não há "layout fixo": cada slide é uma variante (`light`/`dark`/`cover`/`split-dark`) com `.content`, e dentro dela você compõe. Estas receitas são pontos de partida confiáveis.
 
 Toda receita assume a moldura obrigatória (lint L6-L9):
 
@@ -14,7 +14,7 @@ Toda receita assume a moldura obrigatória (lint L6-L9):
 
 ---
 
-## R1 — Capa (sempre slide 01)
+## R1 - Capa (sempre slide 01)
 
 **Quando:** primeiro slide. Variante `cover` (gradiente). `h1` + `.sub` + régua de 4 métricas.
 
@@ -36,7 +36,7 @@ Toda receita assume a moldura obrigatória (lint L6-L9):
 
 ---
 
-## R2 — Resumo executivo
+## R2 - Resumo executivo
 
 **Quando:** slide 02. A tese do relatório em 3 pilares + leitura final.
 
@@ -59,7 +59,7 @@ Toda receita assume a moldura obrigatória (lint L6-L9):
 
 ---
 
-## R3 — Linha do tempo
+## R3 - Linha do tempo
 
 **Quando:** narrar uma janela em fases. Variante `dark`. Até 6 marcos.
 
@@ -84,7 +84,7 @@ Toda receita assume a moldura obrigatória (lint L6-L9):
 
 ---
 
-## R4 — Dois gráficos lado a lado
+## R4 - Dois gráficos lado a lado
 
 **Quando:** comparar duas séries de dados. `two-col` com dois `chart-card`.
 
@@ -107,7 +107,7 @@ Defina os dados em `renderCharts()` (ver Passo 6 do SKILL.md).
 
 ---
 
-## R5 — Gráfico + evidências
+## R5 - Gráfico + evidências
 
 **Quando:** um gráfico forte + 3 evidências numéricas. `score-grid` (1.2fr / 0.8fr).
 
@@ -134,7 +134,7 @@ Defina os dados em `renderCharts()` (ver Passo 6 do SKILL.md).
 
 ---
 
-## R6 — Gráfico + código + interpretação
+## R6 - Gráfico + código + interpretação
 
 **Quando:** mostrar dado + trecho de código read-only + leitura. `score-grid`.
 
@@ -152,7 +152,7 @@ Defina os dados em `renderCharts()` (ver Passo 6 do SKILL.md).
 
 ---
 
-## R7 — Diagrama causal + decisão
+## R7 - Diagrama causal + decisão
 
 **Quando:** mostrar causalidade. Variante `dark`. `diagram` (nós + setas) + `decision`.
 
@@ -177,11 +177,11 @@ Defina os dados em `renderCharts()` (ver Passo 6 do SKILL.md).
 </section>
 ```
 
-> Cards `.node`, `.decision .yes/.no` são brancos — o tema mantém o texto escuro mesmo em slide `dark`. Não force cor.
+> Cards `.node`, `.decision .yes/.no` são brancos - o tema mantém o texto escuro mesmo em slide `dark`. Não force cor.
 
 ---
 
-## R8 — Plano de ação (matriz)
+## R8 - Plano de ação (matriz)
 
 **Quando:** tabela de ações priorizadas. `matrix`.
 
@@ -206,7 +206,7 @@ Defina os dados em `renderCharts()` (ver Passo 6 do SKILL.md).
 
 ---
 
-## R9 — Fechamento
+## R9 - Fechamento
 
 **Quando:** último slide. `takeaways` em grade 2 colunas + callout de próximo passo.
 
@@ -229,7 +229,7 @@ Defina os dados em `renderCharts()` (ver Passo 6 do SKILL.md).
 
 | Variante | `class` | Quando |
 |---|---|---|
-| Light | `slide` | padrão — maioria dos slides |
+| Light | `slide` | padrão - maioria dos slides |
 | Dark | `slide dark` | timeline, diagrama, fechamento de impacto |
 | Cover | `slide cover` | sempre o slide 01 (gradiente) |
 | Split | `slide split-dark` | comparação lado a lado dark/light (raro) |
@@ -238,5 +238,5 @@ Defina os dados em `renderCharts()` (ver Passo 6 do SKILL.md).
 
 - Slide 01 sempre `cover`. Todo slide tem `.logo` + `.content` + `.kicker`.
 - Headline diz a TESE do slide, não o tópico.
-- Não invente classe CSS — componha com o catálogo (`component-catalog.md`).
+- Não invente classe CSS - componha com o catálogo (`component-catalog.md`).
 - Falta um componente? Abra issue; não improvise.
