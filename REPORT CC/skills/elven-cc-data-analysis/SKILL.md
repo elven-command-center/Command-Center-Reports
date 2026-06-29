@@ -32,39 +32,27 @@ Só depois das três respostas, inicie o processo de geração.
 
 ---
 
-## Conexão ODBC
-
-```python
-import pyodbc
-
-conn = pyodbc.connect('DSN=PostgreSQL35W;Database=data_warehouse', timeout=30)
-cursor = conn.cursor()
-```
-
-Todas as queries usam o schema `dbt_prd`. Filtre sempre por `org_uid` e pelo período informado.
-As queries de referência estão em `references/queries.md`.
-
----
-
 ## Processo de geração
 
-### 1. Montar e executar as queries
+### 1. Executar as queries (script pronto - NÃO reescrever)
 
-Leia `references/queries.md` e selecione as queries correspondentes às métricas escolhidas (padrão + extras do catálogo).
+**Use o script parametrizado `scripts/cc_report.py`** - ele já contém P1..P11 + catálogo, com o
+filtro padrão de responder embutido e saída compacta (economiza tokens). **Não leia `queries.md`
+nem monte um script novo** salvo se precisar editar/depurar uma query específica.
 
-Para cada query:
-- Substitua `{org_uid}` pelo uid do cliente
-- Substitua `{date_start}` e `{date_end}` pelo período (formato: `YYYY-MM-DD`)
-- Substitua `{resp_filter}` pelo bloco do **filtro padrão de responder** (ver abaixo)
-- Execute e colete os resultados
+```powershell
+python "C:\Users\PC\.claude\skills\elven-cc-data-analysis\scripts\cc_report.py" `
+  --org <org_uid> --start AAAA-MM-DD --end AAAA-MM-DD [--catalog 5,7] [--all-teams]
+```
 
-**Filtro padrão obrigatório - Responder = Time NOC - Elven.** Por padrão, todo relatório
-considera **apenas eventos atendidos pelo time "Time NOC - Elven"** do cliente. O bloco
-`{resp_filter}` (definido no topo de `references/queries.md`) já vem embutido em todas as
-queries e deve ser sempre aplicado. Só remova (substituindo `{resp_filter}` por string vazia)
-se o usuário pedir explicitamente "todos os times" / "sem filtro de responder". O filtro casa
-por **nome do time + org_uid** (`TRIM(team_name) = 'Time NOC - Elven'`), pois o `team_id` muda
-por cliente.
+- `--catalog` recebe os números do catálogo extra (1=SLA, 2=IA, 3=Runbook, 5=Lista detalhada,
+  7=Tendência, 8=Horário, 9=Canais, 10=Times). Omita para só o padrão.
+- `--all-teams` remove o filtro de responder; **sem essa flag**, o script já filtra apenas
+  **"Time NOC - Elven"** (casa por nome do time + org_uid, pois o `team_id` muda por cliente).
+- A saída é uma linha por métrica (`Pn_x: col=val ...`) e listas pipe-delimitadas - leia direto.
+
+`references/queries.md` continua sendo a fonte das queries para consulta/edição pontual; o
+script é a forma padrão de executar. Conexão: `DSN=PostgreSQL35W;Database=data_warehouse`, schema `dbt_prd`.
 
 ### 2. Criar a pasta do relatório
 
@@ -74,17 +62,16 @@ $slug = "cc-{cliente}-{DDMMAAAA}"
 $base = "C:\Users\PC\OneDrive\Desktop\CLAUDE\COMMAND CENTER\REPORT CC\Relatórios"
 $dst  = "$base\$slug"
 New-Item -ItemType Directory -Force $dst
-New-Item -ItemType Directory -Force "$dst\assets"
-# o _template-noc tem apenas /assets; use um relatório recente como referência de layout do deck.html
+# _template-noc já traz assets/, elven-deck.css e elven-deck-charts.js (fonte estável)
 Copy-Item "$base\_template-noc\*" "$dst\" -Recurse -Force
 ```
 
 ### 3. Preencher o deck.html
 
-Substitua os marcadores `{{...}}` no `deck.html` copiado do template com os dados coletados.
-Os marcadores disponíveis por slide estão documentados no `CLAUDE.md` do projeto CLIENTES CROSS.
-
-Para slides extras (catálogo adicional), adicione slides após os slides padrão usando o padrão visual do template.
+Use como base de layout o `deck.html` de um relatório **recente do mesmo perfil** (ex: outro
+relatório CC) e adapte os dados. CSS e JS de gráficos já vêm do `_template-noc` - não precisa
+recriá-los. Para slides extras (catálogo adicional), adicione slides após os padrão reusando as
+classes existentes (`.matrix`, `.score-grid`, `.evidence-row.stack`, etc.) - nunca estilo inline.
 
 ### 4. Gerar o PDF
 
@@ -96,7 +83,8 @@ node "C:\Users\PC\.claude\skills\decks-skill\scripts\render-deck.js" `
 
 ### 5. Apresentar ao usuário
 
-Informe o caminho do PDF gerado e pergunte se há ajustes ou se deseja adicionar mais itens do catálogo.
+Informe o caminho do PDF gerado e um resumo curto dos números. **Não** pergunte se há ajustes
+nem ofereça mais itens do catálogo (o usuário pede extras quando quiser).
 
 ---
 
@@ -113,6 +101,9 @@ Informe o caminho do PDF gerado e pergunte se há ajustes ou se deseja adicionar
 
 ## Arquivos de referência
 
+- `scripts/cc_report.py` - **executa todas as queries de uma vez** (padrão + catálogo) com saída compacta. Forma padrão de coletar dados; edite-o se mudar uma query.
 - `references/catalog.md` - catálogo de métricas (padrão + extras); **você pode editar este arquivo** para ajustar o que entra no relatório padrão
-- `references/queries.md` - queries SQL por métrica; **você pode editar** para ajustar filtros e cálculos
+- `references/queries.md` - queries SQL por métrica (fonte/consulta pontual); manter em sincronia com `cc_report.py` ao alterar uma query
 - `references/schemas.md` - mapa das tabelas do dbt_prd para consulta rápida
+
+> Token-saving: não leia `queries.md` no fluxo normal - rode `cc_report.py`. Não releia decks inteiros sem necessidade; reaproveite as classes CSS do `_template-noc`.
