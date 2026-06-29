@@ -1,4 +1,4 @@
-# Catálogo de Métricas — Command Center
+# Catálogo de Métricas - Command Center
 
 Este arquivo define quais métricas entram no relatório padrão e quais são opcionais.
 **Você pode editar este arquivo** para ajustar o que compõe o relatório padrão ou adicionar/remover opções.
@@ -36,7 +36,7 @@ O usuário pode adicionar qualquer combinação destas opções ao relatório pa
 | 2 | IA | Eventos tratados pela IA (`ai_touched = true`) e status de execução (`ai_execution_status`) |
 | 3 | Runbook | Cobertura de runbooks por evento (`has_runbook`) |
 | 4 | Recorrência detalhada | Lista completa de títulos recorrentes com dias, total, severidade e TTR médio |
-| 5 | Lista detalhada de eventos | Tabela completa do período para rastreabilidade |
+| 5 | Lista detalhada de eventos | Tabela agrupada por data+título: Data (DD/MM/AAAA) · Título · Qtd · TTA médio · TTR médio (sem severidade/ACK/resolvido), ~18 linhas |
 | 6 | Cota contratada | Uso mensal de eventos vs cota do plano (alerta se >100%) |
 | 7 | Tendência de volume | Série histórica de 30 dias com volume diário |
 | 8 | Distribuição por horário | Business Hour / Off Hour / Sleep Hour (`event_time_cluster_tzbr`) |
@@ -51,14 +51,14 @@ Sempre liste assim, numerado, sem bullet points:
 
 ```
 0. Seguir padrão
-1. SLA — compliance, violações e plano contratado
-2. IA — eventos tratados pela IA e status de execução
-3. Runbook — cobertura de runbooks por evento
-4. Recorrência detalhada — lista completa com dias, total, severidade e TTR médio
-5. Lista detalhada de eventos — tabela completa do turno para rastreabilidade
-6. Cota contratada — uso mensal vs cota (alerta se >100%)
-7. Tendência de volume — histórico 30 dias com série diária
-8. Distribuição por horário — Business Hour / Off Hour / Sleep Hour
-9. Canais de notificação — WhatsApp, on_call, Slack, Teams…
-10. Times respondedores — equipes que atuaram no período
+1. SLA - compliance, violações e plano contratado
+2. IA - eventos tratados pela IA e status de execução
+3. Runbook - cobertura de runbooks por evento
+4. Recorrência detalhada - lista completa com dias, total, severidade e TTR médio
+5. Lista detalhada de eventos - agrupada por data+título (Data DD/MM/AAAA, Qtd, TTA médio, TTR médio)
+6. Cota contratada - uso mensal vs cota (alerta se >100%)
+7. Tendência de volume - histórico 30 dias com série diária
+8. Distribuição por horário - Business Hour / Off Hour / Sleep Hour
+9. Canais de notificação - WhatsApp, on_call, Slack, Teams…
+10. Times respondedores - equipes que atuaram no período
 ```

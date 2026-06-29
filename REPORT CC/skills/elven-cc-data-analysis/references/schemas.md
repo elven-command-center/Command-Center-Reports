@@ -1,10 +1,10 @@
-# Schema — dbt_prd (data_warehouse)
+# Schema - dbt_prd (data_warehouse)
 
 Conexão: `DSN=PostgreSQL35W`, `Database=data_warehouse`
 
 ## Tabelas principais
 
-### fct__events — Eventos (tabela central)
+### fct__events - Eventos (tabela central)
 | Coluna | Tipo | Descrição |
 |--------|------|-----------|
 | event_id | bigint | ID único do evento |
@@ -22,7 +22,7 @@ Conexão: `DSN=PostgreSQL35W`, `Database=data_warehouse`
 | human_touched | boolean | Teve interação humana? |
 | deleted_at | timestamptz | Null = ativo; não-null = deletado |
 
-### dim__eventsMetrics — Métricas calculadas por evento
+### dim__eventsMetrics - Métricas calculadas por evento
 | Coluna | Tipo | Descrição |
 |--------|------|-----------|
 | event_id | bigint | FK para fct__events |
@@ -37,7 +37,7 @@ Conexão: `DSN=PostgreSQL35W`, `Database=data_warehouse`
 | ttd | bigint | Time to Detect (segundos) |
 | response_effort | bigint | Esforço de resposta |
 
-### fct__eventsHistory — Histórico de ações por evento
+### fct__eventsHistory - Histórico de ações por evento
 | Coluna | Tipo | Descrição |
 |--------|------|-----------|
 | event_id | bigint | FK para fct__events |
@@ -48,7 +48,7 @@ Conexão: `DSN=PostgreSQL35W`, `Database=data_warehouse`
 | event_happened_tzbr | timestamp | Data/hora (BR) |
 | status | varchar | Status após a ação |
 
-### dim__eventsCommandCenter — Metadados do Command Center
+### dim__eventsCommandCenter - Metadados do Command Center
 | Coluna | Tipo | Descrição |
 |--------|------|-----------|
 | event_id | bigint | FK para fct__events |
@@ -59,21 +59,32 @@ Conexão: `DSN=PostgreSQL35W`, `Database=data_warehouse`
 | runbook_type | text | Tipo de runbook |
 | closed_tzbr | timestamp | Data/hora de fechamento (BR) |
 
-### dim__eventsTags — Tags dos eventos
+### dim__eventsTags - Tags dos eventos
 | Coluna | Tipo | Descrição |
 |--------|------|-----------|
 | event_id | bigint | FK para fct__events |
 | event_type | text | Tipo do evento |
 | tag | text | Tag/categoria do evento |
 
-### dim__eventsResponders — Respondedores
+### dim__eventsResponders - Respondedores
 | Coluna | Tipo | Descrição |
 |--------|------|-----------|
 | event_id | bigint | FK para fct__events |
 | responder_type | varchar | Tipo: team, user, etc. |
 | responder_uid | varchar | UID do respondedor |
 
-### dim__orgs — Organizações
+### dim__commandCenterClients - Configuração do plano por cliente
+| Coluna | Tipo | Descrição |
+|--------|------|-----------|
+| cc_client_id | bigint | ID interno |
+| org_uid | varchar | UID da organização (chave de filtro) |
+| plan_name | varchar | Plano contratado (ex: `mtta15`) |
+| contracted_quota | int | Cota de eventos contratada (0 = ilimitado) |
+| sla_duration | int | SLA em segundos (ex: 900 = 15 min) |
+| support_hours | varchar | Horário de suporte (ex: `24x7`) |
+| sre_elven | boolean | SRE Elven ativo? |
+
+### dim__orgs - Organizações
 | Coluna | Tipo | Descrição |
 |--------|------|-----------|
 | org_uid | varchar | UID único (chave principal de filtro) |

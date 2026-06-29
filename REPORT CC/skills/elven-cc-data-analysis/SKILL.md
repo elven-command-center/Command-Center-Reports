@@ -1,9 +1,9 @@
 ---
 name: elven-cc-data-analysis
-description: Gera relatórios analíticos em PDF (deck visual estilo Elven Command Center) para clientes monitorados, consultando dados diretamente do banco PostgreSQL via ODBC (schema dbt_prd, database data_warehouse). Use esta skill sempre que o usuário pedir "análise", "relatório", "relatório do cliente X", "gera o relatório", "quero ver os dados de", ou qualquer combinação envolvendo cliente + período + métricas do Command Center — mesmo que não cite explicitamente "análise" ou "PDF".
+description: Gera relatórios analíticos em PDF (deck visual estilo Elven Command Center) para clientes monitorados, consultando dados diretamente do banco PostgreSQL via ODBC (schema dbt_prd, database data_warehouse). Use esta skill sempre que o usuário pedir "análise", "relatório", "relatório do cliente X", "gera o relatório", "quero ver os dados de", ou qualquer combinação envolvendo cliente + período + métricas do Command Center - mesmo que não cite explicitamente "análise" ou "PDF".
 ---
 
-# Análise de Dados — Command Center
+# Análise de Dados - Command Center
 
 Skill para gerar relatórios analíticos visuais em PDF para clientes do Command Center, com dados extraídos do Data Warehouse via ODBC.
 
@@ -24,7 +24,7 @@ Leia os clientes de `references/orgs.json` (incluído na skill) e liste-os numer
 ```
 O usuário responde com o número ou o nome. Use o `org_uid` correspondente nos filtros SQL.
 
-**3. Catálogo de informações — o que incluir no relatório?**
+**3. Catálogo de informações - o que incluir no relatório?**
 Liste as opções disponíveis em `references/catalog.md`. Sempre ofereça a opção `0. Seguir padrão` primeiro.
 O usuário pode escolher `0` (padrão) ou adicionar extras numerados (ex: `0, 3, 7`).
 
@@ -55,16 +55,27 @@ Leia `references/queries.md` e selecione as queries correspondentes às métrica
 Para cada query:
 - Substitua `{org_uid}` pelo uid do cliente
 - Substitua `{date_start}` e `{date_end}` pelo período (formato: `YYYY-MM-DD`)
+- Substitua `{resp_filter}` pelo bloco do **filtro padrão de responder** (ver abaixo)
 - Execute e colete os resultados
+
+**Filtro padrão obrigatório - Responder = Time NOC - Elven.** Por padrão, todo relatório
+considera **apenas eventos atendidos pelo time "Time NOC - Elven"** do cliente. O bloco
+`{resp_filter}` (definido no topo de `references/queries.md`) já vem embutido em todas as
+queries e deve ser sempre aplicado. Só remova (substituindo `{resp_filter}` por string vazia)
+se o usuário pedir explicitamente "todos os times" / "sem filtro de responder". O filtro casa
+por **nome do time + org_uid** (`TRIM(team_name) = 'Time NOC - Elven'`), pois o `team_id` muda
+por cliente.
 
 ### 2. Criar a pasta do relatório
 
 ```powershell
+# slug: data única -> cc-{cliente}-{DDMMAAAA}; período -> cc-{cliente}-{DDaDDMMAAAA}
 $slug = "cc-{cliente}-{DDMMAAAA}"
-$base = "C:\Users\PC\OneDrive\Desktop\CLAUDE\COMMAND CENTER\CLIENTES CROSS\Relatórios"
+$base = "C:\Users\PC\OneDrive\Desktop\CLAUDE\COMMAND CENTER\REPORT CC\Relatórios"
 $dst  = "$base\$slug"
 New-Item -ItemType Directory -Force $dst
 New-Item -ItemType Directory -Force "$dst\assets"
+# o _template-noc tem apenas /assets; use um relatório recente como referência de layout do deck.html
 Copy-Item "$base\_template-noc\*" "$dst\" -Recurse -Force
 ```
 
@@ -94,7 +105,7 @@ Informe o caminho do PDF gerado e pergunte se há ajustes ou se deseja adicionar
 - Use `python` (não `python3`) no Windows
 - Sempre formate números com separador de milhar (ex: `1.351`)
 - MTTR e MTTA no formato `HH:MM:SS`; use `N/A` quando não houver dados
-- Aplique o branding Elven Command Center (nunca "NOC") — ver template em `_template-noc`
+- Aplique o branding Elven Command Center (nunca "NOC") - ver template em `_template-noc`
 - Se o usuário não souber o período exato, sugira "ontem" ou "últimos 7 dias" como padrão
 - Mantenha os dados sensíveis (org_uid) apenas nos filtros SQL, nunca exiba no relatório
 
@@ -102,6 +113,6 @@ Informe o caminho do PDF gerado e pergunte se há ajustes ou se deseja adicionar
 
 ## Arquivos de referência
 
-- `references/catalog.md` — catálogo de métricas (padrão + extras); **você pode editar este arquivo** para ajustar o que entra no relatório padrão
-- `references/queries.md` — queries SQL por métrica; **você pode editar** para ajustar filtros e cálculos
-- `references/schemas.md` — mapa das tabelas do dbt_prd para consulta rápida
+- `references/catalog.md` - catálogo de métricas (padrão + extras); **você pode editar este arquivo** para ajustar o que entra no relatório padrão
+- `references/queries.md` - queries SQL por métrica; **você pode editar** para ajustar filtros e cálculos
+- `references/schemas.md` - mapa das tabelas do dbt_prd para consulta rápida
