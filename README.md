@@ -12,12 +12,12 @@ Cada pasta é um projeto independente e autossuficiente (com seu próprio
 a um cliente distinto:
 
 | Pasta | Cliente |
-|---|---|
+| --- | --- |
 | [`BLIP/`](BLIP/) | **Blip** — monitoramento NOC via Power BI e relatórios periódicos do Command Center. |
 | [`COMMAND CENTER/`](COMMAND%20CENTER/) | **Command Center** — operação interna / padrão de referência. |
 | [`KONTIK/`](KONTIK/) | **Kontik** — relatórios de eventos e decks do cliente Kontik. |
 
-```
+```text
 COMMAND CENTER/
 ├── BLIP/             — cliente Blip
 ├── COMMAND CENTER/   — cliente Command Center (interno / referência)

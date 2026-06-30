@@ -7,7 +7,7 @@ visuais (16:9, em PDF) por período.
 
 ## Estrutura do projeto
 
-```
+```text
 COMMAND CENTER/
 ├── Relatórios/
 │   ├── _template-noc/              — template base para novos decks

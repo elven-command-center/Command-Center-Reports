@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(git -C \"C:\\\\Users\\\\PC\\\\OneDrive\\\\Desktop\\\\CLAUDE\\\\COMMAND CENTER\\\\BLIP\" rebase --abort)",
-      "Bash(git -C \"C:\\\\Users\\\\PC\\\\OneDrive\\\\Desktop\\\\CLAUDE\\\\COMMAND CENTER\\\\BLIP\" status --short)"
+      "Bash(git -C \"C:\\\\Users\\\\PC\\\\OneDrive\\\\Desktop\\\\CLAUDE\\\\COMMAND CENTER\\\\BLIP\" status --short)",
+      "Bash(ls CLAUDE.md)",
+      "Bash(ls *.py *.ps1)"
     ],
     "additionalDirectories": [
       "C:\\Users\\PC\\AppData\\Local\\Temp\\blip-claude-backup"
