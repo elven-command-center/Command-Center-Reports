@@ -1,27 +1,24 @@
 # Command Center — Elven Works
 
 Repositório de monitoramento operacional e geração de relatórios periódicos
-(decks 16:9 em PDF, padrão visual Elven Works) para os clientes do Command Center.
+(decks 16:9 em PDF, padrão visual Elven Works) do Command Center.
 
 ---
 
-## Estrutura — 3 pastas, cada uma de um cliente diferente
+## Estrutura — 2 projetos
 
-Cada pasta é um projeto independente e autossuficiente (com seu próprio
-`CLAUDE.md`, `README.md`, template de deck e histórico de relatórios), aplicado
-a um cliente distinto:
+Cada pasta é um projeto independente e autossuficiente, com seu próprio
+`README.md`, template de deck e histórico de relatórios:
 
-| Pasta | Cliente |
+| Pasta | Conteúdo |
 | --- | --- |
-| [`BLIP/`](BLIP/) | **Blip** — monitoramento NOC via Power BI e relatórios periódicos do Command Center. |
-| [`COMMAND CENTER/`](COMMAND%20CENTER/) | **Command Center** — operação interna / padrão de referência. |
-| [`KONTIK/`](KONTIK/) | **Kontik** — relatórios de eventos e decks do cliente Kontik. |
+| [`COMMAND CENTER/`](COMMAND%20CENTER/) | Relatórios NOC multi-cliente e o código-fonte da skill de decks (`elven-decks-main`). |
+| [`REPORT CC/`](REPORT%20CC/) | Relatórios analíticos por cliente, gerados via skills a partir do Data Warehouse. |
 
 ```text
 COMMAND CENTER/
-├── BLIP/             — cliente Blip
-├── COMMAND CENTER/   — cliente Command Center (interno / referência)
-├── KONTIK/           — cliente Kontik
+├── COMMAND CENTER/   — relatórios NOC multi-cliente + skill de decks
+├── REPORT CC/        — relatórios analíticos por cliente
 └── README.md         — este arquivo
 ```
 
@@ -29,14 +26,15 @@ COMMAND CENTER/
 
 ## Como cada projeto funciona
 
-Todas as pastas seguem o mesmo padrão:
+Os dois projetos seguem o mesmo padrão:
 
-- `Dashboard/` ou fonte de dados (Power BI / Data Warehouse) com as métricas do dia.
-- `Relatórios/` — um deck por dia, mais o `_template-noc/` (template canônico).
-- `elven-decks-main/` — código-fonte da skill de geração de decks.
-- `CLAUDE.md` — instruções operacionais detalhadas do cliente.
-- `setup-skill.ps1` — verifica/instala a skill de decks.
+- `Relatórios/` — um deck por período, mais o `_template-noc/` (template canônico).
+- `skills/` ou `elven-decks-main/` — skills de geração e render dos decks.
+- `README.md` — visão geral e fluxo do projeto.
 
-> O passo a passo completo de cada cliente (extração de dados, marcadores do
-> template, lint e render do PDF) está no `README.md` e no `CLAUDE.md` da
-> respectiva pasta.
+As métricas vêm do Data Warehouse (PostgreSQL). As credenciais de acesso
+**não ficam no repositório** — são lidas de variáveis de ambiente / cofre de
+segredos no momento da execução.
+
+> O passo a passo completo de cada projeto (coleta de dados, marcadores do
+> template, lint e render do PDF) está no `README.md` da respectiva pasta.
