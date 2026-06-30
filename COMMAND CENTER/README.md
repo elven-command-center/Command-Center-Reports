@@ -33,7 +33,7 @@ COMMAND CENTER/
 
 | Campo | Valor |
 |---|---|
-| Host | `steras-crud-production.crzxob4akzlo.us-east-1.rds.amazonaws.com` |
+| Host | `<DB_HOST>` (ver variável de ambiente / cofre de segredos) |
 | Porta | `5432` |
 | Banco | `data_warehouse` |
 | Schema | `dbt_prd` |
@@ -55,12 +55,14 @@ AND 'Time NOC - Elven' = ANY(responder_names)
 ### 1. Coletar dados (Python/psycopg2)
 
 ```python
+import os
 import psycopg2
 
 conn = psycopg2.connect(
-    host='steras-crud-production.crzxob4akzlo.us-east-1.rds.amazonaws.com',
-    port=5432, dbname='data_warehouse', user='noc_user',
-    password='!hlDE5KxG0hVMNB9a74', connect_timeout=15
+    host=os.environ['DB_HOST'],
+    port=5432, dbname='data_warehouse',
+    user=os.environ['DB_USER'],
+    password=os.environ['DB_PASSWORD'], connect_timeout=15
 )
 cur = conn.cursor()
 EXCL = "'Blip','Unicred'"
