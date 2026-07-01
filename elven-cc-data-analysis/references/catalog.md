@@ -15,7 +15,7 @@ Estas métricas são sempre incluídas quando o usuário escolhe a opção `0. S
 | P2 | MTTR médio | Tempo médio de resolução (HH:MM:SS) | Capa + Resumo |
 | P3 | MTTA médio | Tempo médio de reconhecimento (HH:MM:SS) | Capa + Status |
 | P4 | Taxa de resolução | % de eventos resolvidos sobre total | Capa + Resumo |
-| P5 | Status dos eventos | Matrix ACK × Resolução (4 quadrantes) | Slide Status |
+| P5 | Status dos eventos | Matriz ACK × Resolução (4 quadrantes) | Slide Status |
 | P6 | Distribuição por severidade | Sev-1 vs Not Classified + TTR >30min | Slide Severidade |
 | P7 | Top 5 alertas por volume | Títulos com mais disparos no período | Slide Volume |
 | P8 | Top 5 alertas recorrentes | Títulos que aparecem em mais dias distintos | Slide Recorrência |

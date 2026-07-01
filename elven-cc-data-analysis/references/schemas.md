@@ -93,6 +93,21 @@ Conexão: `DSN=PostgreSQL35W`, `Database=data_warehouse`
 | plan_name | varchar | Plano contratado |
 | is_active | boolean | Organização ativa? |
 
+### dsh__events_noc_investigation - View denormalizada (1 linha = 1 evento, sem JOIN)
+| Coluna | Tipo | Descrição |
+|--------|------|-----------|
+| event_id, event_type | bigint, text | Chave do evento |
+| org_uid | varchar | UID da organização |
+| title, severity | text, varchar | Título e severidade |
+| tta, ttr | bigint | Em segundos, já calculados |
+| is_ack, is_resolved | boolean | Status já calculado |
+| responder_names | ARRAY(text) | Nomes dos times/respondedores do evento, ex: `{NOC,"Time NOC - Elven"}` - filtrar com `'Time NOC - Elven' = ANY(responder_names)`, sem precisar de JOIN em `dim__eventsResponders`/`dim__teams` |
+| tags | ARRAY(text) | Mesmos valores de `dim__eventsTags.tag` - filtrar com `'tag' = ANY(tags)` ou overlap `tags && ARRAY['tag1','tag2']` |
+| is_deleted | text (`'0'`/`'1'`) | **Não é `deleted_at`.** Esta view NÃO exclui eventos deletados por padrão - é obrigatório filtrar `AND is_deleted = '0'` manualmente, senão eventos deletados entram na contagem (testado: gerava +1 evento fantasma sev-1-critical num relatório de Unicred) |
+| channels, origin_names | ARRAY | Canais de notificação, origens |
+
+Útil para queries ad-hoc que precisam filtrar por responder ou tags sem escrever JOIN - mas sempre incluir `is_deleted = '0'`.
+
 ## Join padrão
 
 ```sql

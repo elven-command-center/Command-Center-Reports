@@ -37,6 +37,13 @@ casa por **nome do time + org_uid** (a coluna `team_name` pode ter espaço sobra
 > Para gerar o relatório **sem** o filtro (visão de todos os times), basta substituir
 > `{resp_filter}` por string vazia.
 
+**Alternativa para queries ad-hoc (sem JOIN):** a view `dbt_prd.dsh__events_noc_investigation` já traz
+o array `responder_names` por evento - dá pra filtrar direto com `'Time NOC - Elven' = ANY(responder_names)`
+em vez do EXISTS acima. **Só usar com `AND is_deleted = '0'` junto** - essa view não exclui eventos
+deletados sozinha (`is_deleted` é uma coluna própria, texto `'0'`/`'1'`, diferente do `deleted_at` de
+`fct__events`). Sem esse filtro o total vem inflado com eventos deletados. Ver `schemas.md` para mais
+colunas dessa view (`tags` também vem em array, dá pra filtrar sem JOIN em `dim__eventsTags`).
+
 ---
 
 ## P1 - Volume total de alertas
