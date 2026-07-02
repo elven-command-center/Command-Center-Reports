@@ -15,7 +15,7 @@ Estas métricas são sempre incluídas quando o usuário escolhe a opção `0. S
 | P2 | MTTR médio | Tempo médio de resolução (HH:MM:SS) | Capa + Resumo |
 | P3 | MTTA médio | Tempo médio de reconhecimento (HH:MM:SS) | Capa + Status |
 | P4 | Taxa de resolução | % de eventos resolvidos sobre total | Capa + Resumo |
-| P5 | Status dos eventos | Matrix ACK × Resolução (4 quadrantes) | Slide Status |
+| P5 | Status dos eventos | Matriz ACK × Resolução (4 quadrantes) | Slide Status |
 | P6 | Distribuição por severidade | Sev-1 vs Not Classified + TTR >30min | Slide Severidade |
 | P7 | Top 5 alertas por volume | Títulos com mais disparos no período | Slide Volume |
 | P8 | Top 5 alertas recorrentes | Títulos que aparecem em mais dias distintos | Slide Recorrência |
@@ -42,6 +42,8 @@ O usuário pode adicionar qualquer combinação destas opções ao relatório pa
 | 8 | Distribuição por horário | Business Hour / Off Hour / Sleep Hour (`event_time_cluster_tzbr`) |
 | 9 | Canais de notificação | WhatsApp, on_call, Slack, Teams (`channels` em dim__eventsCommandCenter) |
 | 10 | Times respondedores | Equipes que atuaram no período (`dim__eventsResponders`) |
+| 11 | UNICRED - Eventos críticos | Eventos com as tags `Acionamento: TI_PROCESSAMENTO`, `Acionamento: TI_PIX`, `time: pix`, `Acionamento: TI_INF_DATACENTER_NETWORK`, `Acionamento: TI_SUP_COBRANCA` (específico Unicred) |
+| 12 | Comparativo mensal | Mês vigente (dia 1 até a data fim) vs mês anterior completo: volume, média diária, MTTR, TTR >30min e principais recorrências com TTR de cada mês. Como o mês vigente costuma estar incompleto, comparar pela **média diária**, não pelo total absoluto |
 
 ---
 
@@ -61,4 +63,6 @@ Sempre liste assim, numerado, sem bullet points:
 8. Distribuição por horário - Business Hour / Off Hour / Sleep Hour
 9. Canais de notificação - WhatsApp, on_call, Slack, Teams…
 10. Times respondedores - equipes que atuaram no período
+11. UNICRED - Eventos críticos - eventos com tags de acionamento TI Processamento, PIX, Datacenter/Network e Cobrança
+12. Comparativo mensal - mês vigente vs mês anterior (volume, MTTR e principais recorrências com TTR)
 ```

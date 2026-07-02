@@ -37,6 +37,13 @@ casa por **nome do time + org_uid** (a coluna `team_name` pode ter espaço sobra
 > Para gerar o relatório **sem** o filtro (visão de todos os times), basta substituir
 > `{resp_filter}` por string vazia.
 
+**Alternativa para queries ad-hoc (sem JOIN):** a view `dbt_prd.dsh__events_noc_investigation` já traz
+o array `responder_names` por evento - dá pra filtrar direto com `'Time NOC - Elven' = ANY(responder_names)`
+em vez do EXISTS acima. **Só usar com `AND is_deleted = '0'` junto** - essa view não exclui eventos
+deletados sozinha (`is_deleted` é uma coluna própria, texto `'0'`/`'1'`, diferente do `deleted_at` de
+`fct__events`). Sem esse filtro o total vem inflado com eventos deletados. Ver `schemas.md` para mais
+colunas dessa view (`tags` também vem em array, dá pra filtrar sem JOIN em `dim__eventsTags`).
+
 ---
 
 ## P1 - Volume total de alertas
@@ -419,6 +426,124 @@ WHERE e.org_uid = '{org_uid}'
   {resp_filter}
 GROUP BY canal
 ORDER BY qtd DESC;
+```
+
+---
+
+## C11 - UNICRED - Eventos críticos (catálogo adicional, específico Unicred)
+
+> As tags reais no banco seguem o padrão `Acionamento: <NOME>` (maiúsculas) - os nomes
+> informados pelo usuário (`ti_processamento`, `ti_pix`, `ti_inf_datacenter_network`,
+> `ti_sup_cobranca`) foram conferidos contra `dim__eventsTags` e mapeados para:
+> - `Acionamento: TI_PROCESSAMENTO`
+> - `Acionamento: TI_PIX`
+> - `time: pix` (tag literal, categoria diferente de "Acionamento")
+> - `Acionamento: TI_INF_DATACENTER_NETWORK`
+> - `Acionamento: TI_SUP_COBRANCA`
+
+```sql
+-- Resumo por tag
+SELECT
+  t.tag,
+  COUNT(DISTINCT e.event_id) AS qtd
+FROM dbt_prd."dim__eventsTags" t
+JOIN dbt_prd."fct__events" e ON e.event_id = t.event_id AND e.event_type = t.event_type
+WHERE e.org_uid = '{org_uid}'
+  AND e.event_happened_tzbr::date BETWEEN '{date_start}' AND '{date_end}'
+  AND e.deleted_at IS NULL
+  AND t.deleted_at IS NULL
+  AND t.tag IN ('Acionamento: TI_PROCESSAMENTO', 'Acionamento: TI_PIX', 'time: pix',
+                 'Acionamento: TI_INF_DATACENTER_NETWORK', 'Acionamento: TI_SUP_COBRANCA')
+  {resp_filter}
+GROUP BY t.tag
+ORDER BY qtd DESC;
+
+-- Lista detalhada (agrupada por data+título, igual padrão C5, + severidade e tag(s) que casaram)
+SELECT
+  TO_CHAR(e.event_happened_tzbr::date, 'DD/MM/YYYY') AS data,
+  e.title,
+  e.severity,
+  STRING_AGG(DISTINCT t.tag, ', ') AS tags_match,
+  COUNT(DISTINCT e.event_id) AS qtd,
+  TO_CHAR((AVG(m.ttr) || ' seconds')::interval, 'HH24:MI:SS') AS ttr_medio
+FROM dbt_prd."fct__events" e
+JOIN dbt_prd."dim__eventsTags" t ON t.event_id = e.event_id AND t.event_type = e.event_type
+  AND t.deleted_at IS NULL
+  AND t.tag IN ('Acionamento: TI_PROCESSAMENTO', 'Acionamento: TI_PIX', 'time: pix',
+                 'Acionamento: TI_INF_DATACENTER_NETWORK', 'Acionamento: TI_SUP_COBRANCA')
+LEFT JOIN dbt_prd."dim__eventsMetrics" m ON m.event_id = e.event_id AND m.event_type = e.event_type
+WHERE e.org_uid = '{org_uid}'
+  AND e.event_happened_tzbr::date BETWEEN '{date_start}' AND '{date_end}'
+  AND e.deleted_at IS NULL
+  {resp_filter}
+GROUP BY e.event_happened_tzbr::date, e.title, e.severity
+ORDER BY e.event_happened_tzbr::date DESC, qtd DESC
+LIMIT 18;
+```
+
+---
+
+## C12 - Comparativo mensal (catálogo adicional)
+
+> Compara o **mês vigente** (dia 1 do mês de `{date_end}` até `{date_end}`) com o
+> **mês anterior completo** (mês-calendário cheio). As janelas são derivadas só de
+> `{date_end}` - o `{date_start}` do relatório é ignorado nesta opção.
+>
+> **Atenção na leitura:** o mês vigente costuma estar incompleto; compare volume pela
+> coluna `media_dia` (eventos por dia), não pelo total absoluto. MTTR e TTR médio por
+> título já são médias, então comparam direto.
+
+```sql
+-- KPIs por mês: volume, dias com evento, média diária, MTTR e TTR >30min
+SELECT
+  CASE WHEN e.event_happened_tzbr::date >= b.m0i THEN 'mes_vigente' ELSE 'mes_anterior' END AS periodo,
+  COUNT(*) AS total,
+  COUNT(DISTINCT e.event_happened_tzbr::date) AS dias,
+  ROUND(COUNT(*)::numeric / NULLIF(COUNT(DISTINCT e.event_happened_tzbr::date), 0), 1) AS media_dia,
+  TO_CHAR((AVG(m.ttr) FILTER (WHERE m.is_resolved) || ' seconds')::interval, 'HH24:MI:SS') AS mttr,
+  COUNT(*) FILTER (WHERE m.is_resolved AND m.ttr > 1800) AS ttr30_qtd
+FROM dbt_prd."fct__events" e
+LEFT JOIN dbt_prd."dim__eventsMetrics" m ON m.event_id = e.event_id AND m.event_type = e.event_type
+CROSS JOIN (
+  SELECT
+    date_trunc('month', '{date_end}'::date)::date                       AS m0i,  -- início mês vigente
+    '{date_end}'::date                                                  AS m0f,  -- fim mês vigente
+    (date_trunc('month', '{date_end}'::date) - INTERVAL '1 month')::date AS m1i, -- início mês anterior
+    (date_trunc('month', '{date_end}'::date) - INTERVAL '1 day')::date   AS m1f  -- fim mês anterior
+) b
+WHERE e.org_uid = '{org_uid}'
+  AND e.event_happened_tzbr::date BETWEEN b.m1i AND b.m0f
+  AND e.deleted_at IS NULL
+  {resp_filter}
+GROUP BY 1
+ORDER BY 1 DESC;
+
+-- Principais recorrências lado a lado: qtd, dias distintos e TTR médio de cada mês
+SELECT
+  e.title,
+  COUNT(*) FILTER (WHERE e.event_happened_tzbr::date >= b.m0i) AS qtd_atual,
+  COUNT(DISTINCT e.event_happened_tzbr::date) FILTER (WHERE e.event_happened_tzbr::date >= b.m0i) AS dias_atual,
+  TO_CHAR((AVG(m.ttr) FILTER (WHERE m.is_resolved AND e.event_happened_tzbr::date >= b.m0i) || ' seconds')::interval, 'HH24:MI:SS') AS ttr_atual,
+  COUNT(*) FILTER (WHERE e.event_happened_tzbr::date < b.m0i) AS qtd_anterior,
+  COUNT(DISTINCT e.event_happened_tzbr::date) FILTER (WHERE e.event_happened_tzbr::date < b.m0i) AS dias_anterior,
+  TO_CHAR((AVG(m.ttr) FILTER (WHERE m.is_resolved AND e.event_happened_tzbr::date < b.m0i) || ' seconds')::interval, 'HH24:MI:SS') AS ttr_anterior
+FROM dbt_prd."fct__events" e
+LEFT JOIN dbt_prd."dim__eventsMetrics" m ON m.event_id = e.event_id AND m.event_type = e.event_type
+CROSS JOIN (
+  SELECT
+    date_trunc('month', '{date_end}'::date)::date                       AS m0i,
+    '{date_end}'::date                                                  AS m0f,
+    (date_trunc('month', '{date_end}'::date) - INTERVAL '1 month')::date AS m1i,
+    (date_trunc('month', '{date_end}'::date) - INTERVAL '1 day')::date   AS m1f
+) b
+WHERE e.org_uid = '{org_uid}'
+  AND e.event_happened_tzbr::date BETWEEN b.m1i AND b.m0f
+  AND e.deleted_at IS NULL
+  {resp_filter}
+GROUP BY e.title
+HAVING COUNT(DISTINCT e.event_happened_tzbr::date) > 1
+ORDER BY COUNT(*) DESC
+LIMIT 10;
 ```
 
 ---
