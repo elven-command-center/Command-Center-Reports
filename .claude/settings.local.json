@@ -4,7 +4,10 @@
       "Bash(git -C \"C:\\\\Users\\\\PC\\\\OneDrive\\\\Desktop\\\\CLAUDE\\\\COMMAND CENTER\\\\BLIP\" rebase --abort)",
       "Bash(git -C \"C:\\\\Users\\\\PC\\\\OneDrive\\\\Desktop\\\\CLAUDE\\\\COMMAND CENTER\\\\BLIP\" status --short)",
       "Bash(ls CLAUDE.md)",
-      "Bash(ls *.py *.ps1)"
+      "Bash(ls *.py *.ps1)",
+      "PowerShell(python -m py_compile \"C:\\\\Users\\\\PC\\\\OneDrive\\\\Desktop\\\\CLAUDE\\\\SKILLS\\\\elven-cc-data-analysis\\\\scripts\\\\cc_report.py\")",
+      "PowerShell(if \\($?\\) { \"syntax OK\" })",
+      "PowerShell(python \"C:\\\\Users\\\\PC\\\\.claude\\\\skills\\\\elven-cc-data-analysis\\\\scripts\\\\cc_report.py\" --org 26f2760b-22a0-4b25-a3de-08fe7d422312 --start 2026-07-01 --end 2026-07-02 --catalog 12)"
     ],
     "additionalDirectories": [
       "C:\\Users\\PC\\AppData\\Local\\Temp\\blip-claude-backup"
