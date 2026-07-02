@@ -7,8 +7,7 @@ Uso:
   python cc_report.py --org <org_uid> --start YYYY-MM-DD --end YYYY-MM-DD [--catalog 5,7] [--all-teams]
 
 Padrao (sempre roda): P1..P11.
-Catalogo extra via --catalog (numeros do catalog.md): 1=SLA 2=IA 3=Runbook 4=RecorrenciaDetalhada 5=Lista 7=Tendencia 8=Horario 9=Canais 10=Times 11=UnicredCriticos 12=ComparativoMensal.
-No 12, as janelas derivam so de --end (mes vigente = dia 1 ate --end; mes anterior = mes-calendario cheio); --start e ignorado nessa opcao.
+Catalogo extra via --catalog (numeros do catalog.md): 1=SLA 2=IA 3=Runbook 5=Lista 7=Tendencia 8=Horario 9=Canais 10=Times 11=UnicredCriticos.
 Filtro padrao Responder = "Time NOC - Elven" embutido; use --all-teams para remover.
 """
 import argparse, pyodbc
@@ -95,12 +94,5 @@ if "11" in EXTRAS:
     TAGS_UNICRED = "'Acionamento: TI_PROCESSAMENTO','Acionamento: TI_PIX','time: pix','Acionamento: TI_INF_DATACENTER_NETWORK','Acionamento: TI_SUP_COBRANCA'"
     table("C11_unicred_resumo", f"SELECT t.tag, COUNT(DISTINCT e.event_id) qtd FROM dbt_prd.\"dim__eventsTags\" t JOIN dbt_prd.fct__events e ON e.event_id=t.event_id AND e.event_type=t.event_type WHERE {W} AND t.deleted_at IS NULL AND t.tag IN ({TAGS_UNICRED}) GROUP BY t.tag ORDER BY qtd DESC")
     table("C11_unicred_lista", f"SELECT TO_CHAR(e.event_happened_tzbr::date,'DD/MM/YYYY') data, e.title, e.severity, STRING_AGG(DISTINCT t.tag, ', ') tags_match, COUNT(DISTINCT e.event_id) qtd, TO_CHAR((AVG(m.ttr)||' seconds')::interval,'HH24:MI:SS') ttr_medio FROM dbt_prd.fct__events e JOIN dbt_prd.\"dim__eventsTags\" t ON t.event_id=e.event_id AND t.event_type=e.event_type AND t.deleted_at IS NULL AND t.tag IN ({TAGS_UNICRED}) LEFT JOIN dbt_prd.\"dim__eventsMetrics\" m ON m.event_id=e.event_id AND m.event_type=e.event_type WHERE {W} GROUP BY e.event_happened_tzbr::date, e.title, e.severity ORDER BY e.event_happened_tzbr::date DESC, qtd DESC LIMIT 18")
-if "12" in EXTRAS:
-    # Mes vigente (dia 1 do mes de --end ate --end) vs mes anterior completo; comparar volume pela media_dia (mes vigente pode estar incompleto)
-    B = "(SELECT date_trunc('month','{d1}'::date)::date m0i, '{d1}'::date m0f, (date_trunc('month','{d1}'::date)-INTERVAL '1 month')::date m1i, (date_trunc('month','{d1}'::date)-INTERVAL '1 day')::date m1f) b"
-    W12 = "e.org_uid='{org}' AND e.event_happened_tzbr::date BETWEEN b.m1i AND b.m0f AND e.deleted_at IS NULL {resp}"
-    EM = "dbt_prd.fct__events e LEFT JOIN dbt_prd.\"dim__eventsMetrics\" m ON m.event_id=e.event_id AND m.event_type=e.event_type"
-    one("C12_kpis", f"SELECT CASE WHEN e.event_happened_tzbr::date>=b.m0i THEN 'mes_vigente' ELSE 'mes_anterior' END periodo, COUNT(*) total, COUNT(DISTINCT e.event_happened_tzbr::date) dias, ROUND(COUNT(*)::numeric/NULLIF(COUNT(DISTINCT e.event_happened_tzbr::date),0),1) media_dia, TO_CHAR((AVG(m.ttr) FILTER (WHERE m.is_resolved)||' seconds')::interval,'HH24:MI:SS') mttr, COUNT(*) FILTER (WHERE m.is_resolved AND m.ttr>1800) ttr30 FROM {EM} CROSS JOIN {B} WHERE {W12} GROUP BY 1 ORDER BY 1 DESC")
-    table("C12_recorrencias", f"SELECT e.title, COUNT(*) FILTER (WHERE e.event_happened_tzbr::date>=b.m0i) qtd_atual, COUNT(DISTINCT e.event_happened_tzbr::date) FILTER (WHERE e.event_happened_tzbr::date>=b.m0i) dias_atual, TO_CHAR((AVG(m.ttr) FILTER (WHERE m.is_resolved AND e.event_happened_tzbr::date>=b.m0i)||' seconds')::interval,'HH24:MI:SS') ttr_atual, COUNT(*) FILTER (WHERE e.event_happened_tzbr::date<b.m0i) qtd_anterior, COUNT(DISTINCT e.event_happened_tzbr::date) FILTER (WHERE e.event_happened_tzbr::date<b.m0i) dias_anterior, TO_CHAR((AVG(m.ttr) FILTER (WHERE m.is_resolved AND e.event_happened_tzbr::date<b.m0i)||' seconds')::interval,'HH24:MI:SS') ttr_anterior FROM {EM} CROSS JOIN {B} WHERE {W12} GROUP BY e.title HAVING COUNT(DISTINCT e.event_happened_tzbr::date)>1 ORDER BY COUNT(*) DESC LIMIT 10")
 
 conn.close()

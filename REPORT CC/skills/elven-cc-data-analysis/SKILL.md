@@ -45,9 +45,8 @@ python "C:\Users\PC\.claude\skills\elven-cc-data-analysis\scripts\cc_report.py" 
   --org <org_uid> --start AAAA-MM-DD --end AAAA-MM-DD [--catalog 5,7] [--all-teams]
 ```
 
-- `--catalog` recebe os números do catálogo extra (1=SLA, 2=IA, 3=Runbook, 4=Recorrência detalhada,
-  5=Lista detalhada, 7=Tendência, 8=Horário, 9=Canais, 10=Times, 11=Unicred críticos,
-  12=Comparativo mensal). Omita para só o padrão.
+- `--catalog` recebe os números do catálogo extra (1=SLA, 2=IA, 3=Runbook, 5=Lista detalhada,
+  7=Tendência, 8=Horário, 9=Canais, 10=Times). Omita para só o padrão.
 - `--all-teams` remove o filtro de responder; **sem essa flag**, o script já filtra apenas
   **"Time NOC - Elven"** (casa por nome do time + org_uid, pois o `team_id` muda por cliente).
 - A saída é uma linha por métrica (`Pn_x: col=val ...`) e listas pipe-delimitadas - leia direto.
